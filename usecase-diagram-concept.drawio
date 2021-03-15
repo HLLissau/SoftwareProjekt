@@ -1,1 +1,58 @@
-<mxfile host="app.diagrams.net" modified="2021-03-11T13:00:39.798Z" agent="5.0 (Windows)" etag="cIqUrYlfdpuTZfvzp_yf" version="14.4.7" type="github"><diagram id="yBkojRCqP3sQXYgoQ2NI" name="Page-1">1ZZNj9owEIZ/TY6Vkjh8HSH70UNRqTj0WJl4SAxOJjLOAv31HW9MICRotxXVaqUc7Nfjr2dejeOxOD88a15mcxSgvNAXB489eGEYRGHo2c8Xx1oZsVEtpFoKF3QWlvI3ONF3aiUF7FqBBlEZWbbFBIsCEtPSuNa4b4etUbV3LXkKHWGZcNVVf0phslodD/yz/hVkmp12Dnw3kvNTsBN2GRe4v5DYo8dijWjqVn6IQVl4Jy71vKcbo83BNBTmPRM282dxhB+Dp1/j+WQbLWZVEH9xq7xwVbkLu8Oa44nAPpMGliVPbH9PWfbYLDO5ol5ATb4ra+5reQDaauZWBG3gcPOoQQOAnAOYg9FHCnETGmbONCxy/f05BYOTll3gb0Tu0p42a5/JUMPB+QtQUQfUHATXK9gI0B1mlOvSNqtcTRODmrBYIJJ89Y2vQC1wJ43EgkJWaAzmFwFTJVM7YPCKNFZGyQLixun+fWhP2rCHgx7YPawbp9+d9bDHlENF286EfKFmapsLjRvYGgWv/Oth2u0i4nNnpcHr0hL5H52WoFsspiKXhdwZzS3Oz82btXmH7MN5s7eLMy1DLyF1Zm+U6XtU5eFVVR51CQVhD6LxfyPUrcrfSw3GXqsuDx1gdH3TJkPuxS35SVmDPhRYWJprqdSVxJ0jE8IFusequRRC3UqFxqoQ9n28l1/ZVX1gk242+p7If3ghqXv+TXkdu/jZY49/AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-15T13:43:57.606Z" agent="5.0 (Windows)" etag="pTInbx_2HTmEfMa-xucV" version="14.4.7" type="github">
+  <diagram id="yBkojRCqP3sQXYgoQ2NI" name="Page-1">
+    <mxGraphModel dx="1138" dy="633" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="350" width="200" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-11" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.006;entryY=0.563;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-4" target="o0WZnc3gl3h2tKkSv0y9-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-12" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-4" target="o0WZnc3gl3h2tKkSv0y9-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jMGdyeQ5F_8M9k4PBu1C-4" value="Medarbejder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="690" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-6" target="o0WZnc3gl3h2tKkSv0y9-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-7" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-6" target="o0WZnc3gl3h2tKkSv0y9-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-8" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-6" target="o0WZnc3gl3h2tKkSv0y9-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-9" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-6" target="o0WZnc3gl3h2tKkSv0y9-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-10" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="jMGdyeQ5F_8M9k4PBu1C-6" target="o0WZnc3gl3h2tKkSv0y9-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jMGdyeQ5F_8M9k4PBu1C-6" value="&lt;div&gt;Projektleder&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="80" y="540" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jMGdyeQ5F_8M9k4PBu1C-14" value="Aktivitet" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="240" y="350" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-1" value="&lt;div&gt;Ændre aktivitet&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="410" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-2" value="Tildele medarbejdere" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="490" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-3" value="Sætte budgetteret tid" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="590" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-4" value="&lt;div&gt;Søge om hjælp til aktivitet&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="690" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="o0WZnc3gl3h2tKkSv0y9-5" value="Give hjælp til aktivitet" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="780" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
