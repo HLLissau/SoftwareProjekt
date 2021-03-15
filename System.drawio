@@ -1,1 +1,46 @@
-<mxfile host="app.diagrams.net" modified="2021-03-15T13:29:31.769Z" agent="5.0 (Windows)" version="14.4.8" etag="AqJpNMoDEarI6oBshtc9" type="github"><diagram id="yV8WEX0ZW90MQNccCDTL">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-15T13:39:23.307Z" agent="5.0 (Windows)" etag="aQwNsORx3HPOkfpmoHq5" version="14.4.8" type="github">
+  <diagram id="yV8WEX0ZW90MQNccCDTL" name="Page-1">
+    <mxGraphModel dx="1178" dy="642" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="JoodrYxae7IdLOc54JVG-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="260" width="270" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-17" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="JoodrYxae7IdLOc54JVG-2" target="JoodrYxae7IdLOc54JVG-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-19" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="JoodrYxae7IdLOc54JVG-2" target="JoodrYxae7IdLOc54JVG-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-2" value="Projektleder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="465" width="60" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-12" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="JoodrYxae7IdLOc54JVG-3" target="JoodrYxae7IdLOc54JVG-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-15" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="JoodrYxae7IdLOc54JVG-3" target="JoodrYxae7IdLOc54JVG-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-3" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="310" width="60" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-9" value="System" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="420" y="270" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-10" value="Opret bruger" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="300" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-13" value="Ændre brugerretigheder" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="390" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-16" value="Generering af rapport" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="480" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JoodrYxae7IdLOc54JVG-18" value="Tildel medarbejder aktivitet" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="580" width="120" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
