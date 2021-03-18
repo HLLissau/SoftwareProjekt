@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-18T15:40:50.561Z" agent="5.0 (Windows)" etag="2xrDPU3ZanejxF5fpfyu" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-18T19:34:49.870Z" agent="5.0 (Windows)" etag="tWkMHQp6Yx-vTY6Ley7W" version="14.4.9" type="github">
   <diagram id="PCQ58YYebL1j8_6p8NTY" name="Page-1">
-    <mxGraphModel dx="1588" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1138" dy="633" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,33 +29,33 @@
           <mxGeometry y="68" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-17" value="Project" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="830" y="530" width="240" height="192" as="geometry">
+          <mxGeometry x="830" y="530" width="240" height="310" as="geometry">
             <mxRectangle x="420" y="300" width="70" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-18" value="-projectID: int&#xa;-projectName: string&#xa;-projectLeader: Employee&#xa;-Employees: list&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="26" width="240" height="74" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-18" value="-projectID: int&#xa;-projectName: string&#xa;-projectDescription: string&#xa;-projectLeader: Employee&#xa;-Employees: list&#xa;-HelpNeeded : list&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
+          <mxGeometry y="26" width="240" height="134" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="100" width="240" height="10" as="geometry" />
+          <mxGeometry y="160" width="240" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-20" value="+addActivity(a: Activity)&#xa;+removeActivity(a: Activity)&#xa;+addProjectLeader(a: Employee)&#xa;+addEmployee(a: Employee)&#xa;+listEmployees()&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="110" width="240" height="82" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-20" value="+addActivity(a: Activity)&#xa;+removeActivity(a: Activity)&#xa;+addProjectLeader(a: Employee)&#xa;+addEmployee(a: Employee)&#xa;+listEmployees()&#xa;+createTimeReport()&#xa;+setProjectManager(a: Employee)&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
+          <mxGeometry y="170" width="240" height="140" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-21" value="Activity" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="830" y="760" width="220" height="170" as="geometry" />
+          <mxGeometry x="820" y="854" width="220" height="250" as="geometry" />
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-22" value="-activityID: int&#xa;-activityName: string&#xa;-Employees: list" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-21" vertex="1">
-          <mxGeometry y="26" width="220" height="54" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-22" value="-activityID: int&#xa;-activityName: string&#xa;-activityDesciption: string&#xa;-Employees: list&#xa;-ConsumedTime: list&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-21" vertex="1">
+          <mxGeometry y="26" width="220" height="94" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-21" vertex="1">
-          <mxGeometry y="80" width="220" height="20" as="geometry" />
+          <mxGeometry y="120" width="220" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-24" value="+setExpectedTime(a:RegisterTime)&#xa;+addEmployee(a: Employee)&#xa;+registerSpentTime(time)&#xa;+listEmployees()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-21" vertex="1">
-          <mxGeometry y="100" width="220" height="70" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-24" value="+setExpectedTime(a:RegisterTime)&#xa;+addEmployee(a: Employee)&#xa;+registerSpentTime(time)&#xa;+listEmployees()&#xa;+createTimeReport()&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-21" vertex="1">
+          <mxGeometry y="140" width="220" height="110" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-25" value="RegisterTime" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="630" y="330" width="220" height="130" as="geometry" />
+          <mxGeometry x="630" y="330" width="220" height="180" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-26" value="Calendar: GregorianCalendar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-25" vertex="1">
           <mxGeometry y="26" width="220" height="26" as="geometry" />
@@ -63,19 +63,19 @@
         <mxCell id="9kYQHJIdZvFuiitPSYiP-27" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-25" vertex="1">
           <mxGeometry y="52" width="220" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-28" value="registerTime():&#xa;getTime(): Calendar&#xa;setBeginTime(a: Activity, employee)&#xa;setFinishedTime(a: Activity, employee)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-25" vertex="1">
-          <mxGeometry y="60" width="220" height="70" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-28" value="registerTime():&#xa;getTime(): Calendar&#xa;setBeginTime(a: Activity, employee)&#xa;setFinishedTime(a: Activity, employee)&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-25" vertex="1">
+          <mxGeometry y="60" width="220" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-4" value="TimeManagement" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="50" y="270" width="500" height="450" as="geometry" />
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-4" value="TimeManagement" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="20" y="272" width="500" height="450" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-5" value="-employeeList: list&#xa;-projectList: list&#xa;-registerTime: RegisterTime&#xa;-activityList: Activity&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-5" value="-employeeList: list&#xa;-projectList: list&#xa;-registerTime: RegisterTime&#xa;-activityList: Activity&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
           <mxGeometry y="26" width="500" height="64" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-6" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-6" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
           <mxGeometry y="90" width="500" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;&#xa;+addActivity(a: Activity, b: Project, c: Employee)&#xa;+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+deleteActivity(id: String)+addEmployeeToActivity(a: Employee, b: Activity, c: Employee)&#xa;+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;&#xa;+addActivity(a: Activity, b: Project, c: Employee)&#xa;+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+removeProject(a:Project b: Employee)&#xa;+createProject(name: String)&#xa;+deleteActivity(id: String)&#xa;+addEmployeeToActivity(a: Employee, b: Activity, c: Employee)+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;+createTimeReport(a: Project b: Employee)&#xa;+seekHelpOnActivity(a: Activity b: Employee)&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
           <mxGeometry y="120" width="500" height="330" as="geometry" />
         </mxCell>
       </root>
