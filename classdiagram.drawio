@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-18T15:06:20.459Z" agent="5.0 (Windows)" etag="Ly0jrIG91Kj_NtKdMno8" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-18T15:40:50.561Z" agent="5.0 (Windows)" etag="2xrDPU3ZanejxF5fpfyu" version="14.4.9" type="github">
   <diagram id="PCQ58YYebL1j8_6p8NTY" name="Page-1">
-    <mxGraphModel dx="921" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1588" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -67,16 +67,16 @@
           <mxGeometry y="60" width="220" height="70" as="geometry" />
         </mxCell>
         <mxCell id="5m66WqZjrvTX8Qn4TSuP-4" value="TimeManagement" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="160" y="270" width="390" height="450" as="geometry" />
+          <mxGeometry x="50" y="270" width="500" height="450" as="geometry" />
         </mxCell>
         <mxCell id="5m66WqZjrvTX8Qn4TSuP-5" value="-employeeList: list&#xa;-projectList: list&#xa;-registerTime: RegisterTime&#xa;-activityList: Activity&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
-          <mxGeometry y="26" width="390" height="64" as="geometry" />
+          <mxGeometry y="26" width="500" height="64" as="geometry" />
         </mxCell>
         <mxCell id="5m66WqZjrvTX8Qn4TSuP-6" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
-          <mxGeometry y="90" width="390" height="30" as="geometry" />
+          <mxGeometry y="90" width="500" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;&#xa;+addActivity(a: Activity, b: Project, c: Employee)+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+deleteActivity(id: String)+addEmployeeToActivity(a: Employee, b: Activity, c: Employee)&#xa;+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
-          <mxGeometry y="120" width="390" height="330" as="geometry" />
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;&#xa;+addActivity(a: Activity, b: Project, c: Employee)&#xa;+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+deleteActivity(id: String)+addEmployeeToActivity(a: Employee, b: Activity, c: Employee)&#xa;+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="5m66WqZjrvTX8Qn4TSuP-4">
+          <mxGeometry y="120" width="500" height="330" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
