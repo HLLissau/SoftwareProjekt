@@ -1,1 +1,73 @@
-<mxfile host="app.diagrams.net" modified="2021-03-18T13:20:44.453Z" agent="5.0 (Windows)" version="14.4.8" etag="1s8lhN_Lmc0z5VPyERhP" type="github"><diagram id="8G2doO-_ZxqdeLldvh5p">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-03-18T13:27:55.196Z" agent="5.0 (Windows)" etag="nEGGe1C676FZnL8eYjft" version="14.4.8" type="github">
+  <diagram id="8G2doO-_ZxqdeLldvh5p" name="Page-1">
+    <mxGraphModel dx="2249" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="_H1VCfH1Je-cSmd17ztb-1" target="_H1VCfH1Je-cSmd17ztb-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_H1VCfH1Je-cSmd17ztb-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="320" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_H1VCfH1Je-cSmd17ztb-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="480" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-1" value="&lt;div&gt;A user registers time on activity&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="_H1VCfH1Je-cSmd17ztb-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-2" value="get activity code()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="140" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-3" value="beginWorkOnActivity(User, activity)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="310" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-7" value="get activity code" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="140" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-11" value="RegisterTime" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-12" value="Begin work on activity" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="334" y="280" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_H1VCfH1Je-cSmd17ztb-15" target="_H1VCfH1Je-cSmd17ztb-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="680" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="120" y="520" />
+              <mxPoint x="120" y="645" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-15" value="get activity code()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-16" value="User" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-17" value="EndWorkOnActivity(user, activity)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="590" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="_H1VCfH1Je-cSmd17ztb-20" value="Calculate time used()" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
