@@ -1,27 +1,31 @@
-<mxfile host="app.diagrams.net" modified="2021-03-20T10:34:16.135Z" agent="5.0 (Windows)" etag="LDDCcVWgkA7rffwVi0Gu" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-20T10:47:25.321Z" agent="5.0 (Windows)" etag="PLZwWyE5Ppx7oq65DNds" version="14.4.9" type="github">
   <diagram id="kgpKYQtTHZ0yAKxKKP6v" name="Page-1">
     <mxGraphModel dx="1822" dy="1191" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-18" value="" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=100;tabHeight=40;tabPosition=left;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-200" y="-10" width="800" height="460" as="geometry" />
+          <mxGeometry x="-193" y="-14" width="800" height="460" as="geometry" />
         </mxCell>
         <mxCell id="3nuBFxr9cyL0pnOWT2aG-1" value="TimeManagement" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="120" y="80" width="100" height="300" as="geometry" />
+          <mxGeometry x="120" y="80" width="100" height="322" as="geometry" />
         </mxCell>
         <mxCell id="3nuBFxr9cyL0pnOWT2aG-2" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" parent="3nuBFxr9cyL0pnOWT2aG-1" vertex="1">
-          <mxGeometry x="45" y="70" width="10" height="190" as="geometry" />
+          <mxGeometry x="45" y="70" width="10" height="246" as="geometry" />
         </mxCell>
         <mxCell id="3nuBFxr9cyL0pnOWT2aG-5" value="Project" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
-          <mxGeometry x="300" y="80" width="100" height="300" as="geometry" />
+          <mxGeometry x="300" y="80" width="100" height="311" as="geometry" />
         </mxCell>
         <mxCell id="3nuBFxr9cyL0pnOWT2aG-6" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" parent="3nuBFxr9cyL0pnOWT2aG-5" vertex="1">
-          <mxGeometry x="45" y="80" width="10" height="160" as="geometry" />
+          <mxGeometry x="45" y="80" width="10" height="228" as="geometry" />
         </mxCell>
-        <mxCell id="3nuBFxr9cyL0pnOWT2aG-7" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;shadow=0;strokeWidth=1;" parent="1" source="3nuBFxr9cyL0pnOWT2aG-6" target="3nuBFxr9cyL0pnOWT2aG-2" edge="1">
+        <mxCell id="3nuBFxr9cyL0pnOWT2aG-7" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;" parent="1" target="3nuBFxr9cyL0pnOWT2aG-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="275" y="236" as="targetPoint" />
+            <mxPoint x="343" y="387" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="276" y="387" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="3nuBFxr9cyL0pnOWT2aG-8" value="AddProjectLeader(Employee)" style="verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;shadow=0;strokeWidth=1;" parent="1" source="3nuBFxr9cyL0pnOWT2aG-2" target="3nuBFxr9cyL0pnOWT2aG-6" edge="1">
@@ -38,12 +42,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="3nuBFxr9cyL0pnOWT2aG-10" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;exitX=0.64;exitY=1.1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.2;entryY=0.944;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="GEfkpnBCydYt2Uem3Nhz-14" target="3nuBFxr9cyL0pnOWT2aG-6" edge="1">
+        <mxCell id="3nuBFxr9cyL0pnOWT2aG-10" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;exitX=0.64;exitY=1.1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="GEfkpnBCydYt2Uem3Nhz-14" target="3nuBFxr9cyL0pnOWT2aG-6" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="352" y="310" as="targetPoint" />
             <mxPoint x="410" y="310" as="sourcePoint" />
             <Array as="points">
-              <mxPoint x="412" y="310" />
+              <mxPoint x="412" y="295" />
+              <mxPoint x="387" y="295" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -51,7 +56,7 @@
           <mxGeometry x="440" y="80" width="100" height="300" as="geometry" />
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-2" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="GEfkpnBCydYt2Uem3Nhz-1">
-          <mxGeometry x="45" y="85" width="10" height="45" as="geometry" />
+          <mxGeometry x="45" y="91" width="10" height="39" as="geometry" />
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-9" value="SetProjectManager(Project,Employee)" style="verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;shadow=0;strokeWidth=1;" edge="1" parent="1">
           <mxGeometry x="-0.0588" relative="1" as="geometry">
@@ -76,22 +81,44 @@
           <mxGeometry x="-80" y="40" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-14" value="List Employees()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="380" y="250" width="50" height="40" as="geometry" />
+          <mxGeometry x="380" y="236" width="50" height="40" as="geometry" />
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-16" value="" style="points=[];perimeter=orthogonalPerimeter;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="-70" y="140" width="10" height="220" as="geometry" />
+          <mxGeometry x="-70" y="140" width="10" height="271" as="geometry" />
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-17" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;shadow=0;strokeWidth=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-60" y="340" as="targetPoint" />
-            <mxPoint x="160" y="339.9999999999998" as="sourcePoint" />
+            <mxPoint x="-58" y="397" as="targetPoint" />
+            <mxPoint x="162" y="396.9999999999998" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GEfkpnBCydYt2Uem3Nhz-19" value="Set Project manager" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="-190" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GEfkpnBCydYt2Uem3Nhz-20" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="868" y="-135" width="120" height="60" as="geometry" />
+        <mxCell id="GEfkpnBCydYt2Uem3Nhz-24" value="" style="verticalAlign=bottom;endArrow=block;entryX=1;entryY=0;shadow=0;strokeWidth=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="357" y="305" as="sourcePoint" />
+            <mxPoint x="412" y="325" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="412" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GEfkpnBCydYt2Uem3Nhz-25" value="" style="verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;shadow=0;strokeWidth=1;exitX=0.352;exitY=1.025;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GEfkpnBCydYt2Uem3Nhz-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="357" y="380" as="targetPoint" />
+            <mxPoint x="412" y="395" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="414" y="380" />
+              <mxPoint x="389" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GEfkpnBCydYt2Uem3Nhz-26" value="setProject Managet(Employee)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="382" y="321" width="88" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="GEfkpnBCydYt2Uem3Nhz-27" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="945" y="-149" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
