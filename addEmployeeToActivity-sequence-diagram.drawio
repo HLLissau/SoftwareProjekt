@@ -1,13 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2021-03-21T14:54:31.418Z" agent="5.0 (Windows)" etag="PeVRPuX2dogbGbHJQh4A" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-21T16:22:17.138Z" agent="5.0 (Windows)" etag="aH-b6vncS1_an-hUAOER" version="14.4.9" type="github">
   <diagram id="Qg9ViaIGETyGiUArWSUI" name="Page-1">
     <mxGraphModel dx="2062" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="K6d3zdfQYktk-aqqjCJH-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="K6d3zdfQYktk-aqqjCJH-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="30" y="180" width="110" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="K6d3zdfQYktk-aqqjCJH-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="K6d3zdfQYktk-aqqjCJH-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="30" y="220" width="1090" height="810" as="geometry" />
         </mxCell>
         <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;" parent="1" vertex="1">
@@ -19,7 +19,7 @@
         <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-3" value="Time management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;strokeColor=#0F0F0F;" parent="1" vertex="1">
           <mxGeometry x="270" y="260" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-4" value="e: Employee" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;strokeColor=#0F0F0F;" parent="1" vertex="1">
+        <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-4" value="e1: Employee" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;strokeColor=#0F0F0F;" parent="1" vertex="1">
           <mxGeometry x="770" y="260" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-5" value="p: Project" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;strokeColor=#0F0F0F;" parent="1" vertex="1">
@@ -275,7 +275,7 @@
         <mxCell id="2ZUSXK3SyZeQ5Ve37l7V-55" value="true" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="760" y="875" width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="K6d3zdfQYktk-aqqjCJH-2" value="Add employee to activity" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" vertex="1" parent="1">
+        <mxCell id="K6d3zdfQYktk-aqqjCJH-2" value="Add employee to activity" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;" parent="1" vertex="1">
           <mxGeometry x="35" y="190" width="100" height="20" as="geometry" />
         </mxCell>
       </root>
