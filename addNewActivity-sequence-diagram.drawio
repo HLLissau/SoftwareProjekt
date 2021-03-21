@@ -1,9 +1,15 @@
-<mxfile host="app.diagrams.net" modified="2021-03-21T12:30:35.553Z" agent="5.0 (Windows)" etag="5z1ZoWZvhbc-7HUgBuTa" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-21T14:51:49.841Z" agent="5.0 (Windows)" etag="20OqzRRsYIOHkvtSqZ-L" version="14.4.9" type="github">
   <diagram id="sYsKwI7Xcxj4j8B7nzUK" name="Page-1">
-    <mxGraphModel dx="781" dy="1067" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2946" dy="1606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="CEPdaJLZ4nfZLkmYM-Vw-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="CEPdaJLZ4nfZLkmYM-Vw-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="1050" height="650" as="geometry" />
+        </mxCell>
         <mxCell id="fEexxCGZfZVQ-VxQHh0E-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCFCFC;" parent="1" vertex="1">
           <mxGeometry x="320" y="350" width="20" height="450" as="geometry" />
         </mxCell>
@@ -210,6 +216,9 @@
         </mxCell>
         <mxCell id="fEexxCGZfZVQ-VxQHh0E-79" value="true" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="370" y="420" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="CEPdaJLZ4nfZLkmYM-Vw-3" value="&lt;font style=&quot;font-size: 15px&quot;&gt;Add New Activity to a Project&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="55" y="170" width="150" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
