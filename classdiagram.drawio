@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-05T15:09:56.449Z" agent="5.0 (Windows)" etag="2YDtfP-LWpCYOR30hSr4" version="14.4.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-05T15:21:29.306Z" agent="5.0 (Windows)" etag="OMNypjdZGptEq-xLx7mV" version="14.4.9" type="github">
   <diagram id="PCQ58YYebL1j8_6p8NTY" name="Page-1">
-    <mxGraphModel dx="1497" dy="833" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1497" dy="833" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -43,22 +43,24 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Z2eDdZwGfHTgbIGuZqVt-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.644;entryY=0.005;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;strokeWidth=2;" edge="1" parent="1" source="9kYQHJIdZvFuiitPSYiP-17" target="Z2eDdZwGfHTgbIGuZqVt-1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="Z2eDdZwGfHTgbIGuZqVt-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.644;entryY=0.005;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;strokeWidth=2;" edge="1" parent="1" target="Z2eDdZwGfHTgbIGuZqVt-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="689" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-17" value="Project" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="560" y="500" width="240" height="189" as="geometry">
+          <mxGeometry x="560" y="500" width="260" height="189" as="geometry">
             <mxRectangle x="420" y="300" width="70" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-18" value="-helpNeeded : list&#xa;-ProjectManager: Employee&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="26" width="240" height="49" as="geometry" />
+          <mxGeometry y="26" width="260" height="49" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="75" width="240" height="10" as="geometry" />
+          <mxGeometry y="75" width="260" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="9kYQHJIdZvFuiitPSYiP-20" value="+addActivity(a: Activity)&#xa;+removeActivity(a: Activity)&#xa;+setProjectManager(a: Employee)&#xa;+isProjectManager(e: Employee)&#xa;&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
-          <mxGeometry y="85" width="240" height="104" as="geometry" />
+        <mxCell id="9kYQHJIdZvFuiitPSYiP-20" value="+addActivity(a: Activity)&#xa;+removeActivity(a: Activity)&#xa;+setProjectManager(a: Employee)&#xa;+isProjectManager(e: Employee)&#xa;+addEmployeeToActivity(a:activity, e: Employee)&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="9kYQHJIdZvFuiitPSYiP-17" vertex="1">
+          <mxGeometry y="85" width="260" height="104" as="geometry" />
         </mxCell>
         <mxCell id="9kYQHJIdZvFuiitPSYiP-21" value="Activity" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="399" y="827" width="165" height="115" as="geometry" />
@@ -96,7 +98,7 @@
         <mxCell id="5m66WqZjrvTX8Qn4TSuP-6" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
           <mxGeometry y="100" width="503" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+adminLogin(password:String)&#xa;+adminLogout()&#xa;&#xa;+adminLoggedIn()&#xa;+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;+employeeRegistered(e: Employee)&#xa;+addActivity(a: Activity, b: Project, c: Employee)&#xa;+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+removeProject(a:Project b: Employee)&#xa;+createProject(name: String)&#xa;+deleteActivity(id: String)&#xa;+addEmployeeToActivity(a: Employee, b: Activity, c: Employee)&#xa;+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;+createTimeReport(a: Project b: Employee)&#xa;+seekHelpOnActivity(a: Activity b: Employee)&#xa;&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
+        <mxCell id="5m66WqZjrvTX8Qn4TSuP-7" value="+adminLogin(password:String)&#xa;+adminLogout()&#xa;&#xa;+adminLoggedIn()&#xa;+createEmployee(a: Employee)&#xa;+removeEmployee(a: Employee)&#xa;+employeeRegistered(e: Employee)&#xa;+addActivity(a: Activity, b: Project, c: Employee)&#xa;+removeActivity(a: Activity, b: Project, c: Employee)&#xa;+createActivity(name: String)&#xa;+removeProject(a:Project b: Employee)&#xa;+createProject(name: String)&#xa;+deleteActivity(id: String)&#xa;+addEmployeeToActivity(a: Employee, b: Project, c: Activity,, d: Employee)&#xa;+removeEmployeeFromActivity(a: Employee, b: Activity, c: Employee)&#xa;+addEmployeeToProject(a: Employee, b: Project, c: Employee)&#xa;+removeEmployeeFromProject(a: Employee, b: Project, c: Employee)&#xa;+beginWorkOnActivity(a: Employee, b: Activity)&#xa;+stopWorkOnActivity(a: Employee, b: Activity)&#xa;+requestVacation(a: Employee, start: Calendar, end: Calendar)&#xa;+registerSickBegin(a: Employee, b: Calendar)&#xa;+registerSickEnd(a: Employee, b: Calendar)&#xa;+listAvailableEmployees(search: String)&#xa;+listEmployeesOnProject(projectID: String)&#xa;+createTimeReport(a: Project b: Employee)&#xa;+seekHelpOnActivity(a: Activity b: Employee)&#xa;&#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="5m66WqZjrvTX8Qn4TSuP-4" vertex="1">
           <mxGeometry y="130" width="503" height="388" as="geometry" />
         </mxCell>
         <mxCell id="gdBt45IGn8SjIjo88xXn-5" value="1&amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; 1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
