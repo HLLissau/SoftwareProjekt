@@ -55,7 +55,7 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is given a unique id")
 	public void theEmployeeIsGivenAUniqueId() {
-		assertFalse(timeManagement.isUniqueID(employee.getID()));
+		assertFalse(timeManagement.isUniqueEmployeeID(employee.getID()));
 		
 	}
 	@Given("that the administrator is not logged in")

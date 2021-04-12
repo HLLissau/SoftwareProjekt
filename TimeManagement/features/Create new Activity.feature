@@ -1,4 +1,4 @@
-#Feature : Create new Activity
+#Feature: Create new Activity
 #
 #Description: a new activity is created in TimeManagement
 #Actor: Project manager
