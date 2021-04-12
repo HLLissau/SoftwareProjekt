@@ -6,8 +6,9 @@ Scenario: Add employee to TimeManagement
     Given that the administrator is logged in
     And there is a user with name "Jens Hansen", email "JHansen@awesomefirm.dk"
     When the administrator registers the employee in TimeManagement
-    Then the employee is registered in TimeManagement
-    And the employee is given the employee ID "123456" 
+    Then the employee is given a unique id
+    And the employee is registered in TimeManagement
+ 
 
 #Scenario: Add employee when not the administrator
 #    Given that the administrator is not logged in

@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		plugin = "summary"
 		, monochrome = true
 		, snippets = SnippetType.CAMELCASE
-		, features = "use_cases"
+		, features = "features"
 		)
 public class AcceptanceTest {
 
