@@ -14,7 +14,9 @@ public class EmployeeHelper {
 		Employee e = getEmployee();
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
+			
 		}
+		
 		this.timeManagement.addEmployee(e);
 		if(!this.timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminlogout();

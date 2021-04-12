@@ -71,9 +71,8 @@ public class LoginLogoutSteps {
 	    assertTrue(string.equals(errorMessageHandler.getErrorMessage()));
 	}
 	@Given("an employee is registered with TimeManagement")
-	public void anEmployeeIsRegisteredWithTimeManagement() {
-		
-		this.employee= this.employeeHelper.getEmployee();
+	public void anEmployeeIsRegisteredWithTimeManagement() throws Exception {
+		this.employee= this.employeeHelper.registerExampleEmployee();
 		
 	}
 	@When("the administrator registers the employee again")
@@ -81,7 +80,6 @@ public class LoginLogoutSteps {
 	    try {
 			this.timeManagement.addEmployee(employee);
 		} catch (OperationNotAllowedException e) {
-			System.out.println(e.getMessage());
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
