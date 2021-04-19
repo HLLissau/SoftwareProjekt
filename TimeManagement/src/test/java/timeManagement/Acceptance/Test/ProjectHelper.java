@@ -22,7 +22,7 @@ public class ProjectHelper {
 		return p;
 		
 	}
-	private Project getProject() {
+	public Project getProject() {
 		if (project == null) {
 			project = exampleProject();
 		}

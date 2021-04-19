@@ -76,4 +76,15 @@ public class ProjectSteps {
 	public void noOtherProjectHasTheSameID() {
 		assertFalse(timeManagement.isUniqueProjectID(project.getID()));
 	}
+	
+	@Given("an employee is not registered as project manager of the project")
+	public void anEmployeeIsNotRegisteredAsProjectManagerOfTheProject() {
+	    assertFalse(employeeHelper.getEmployee().equals(projectHelper.getProject().getProjectManager()));
+	}
+	
+	@When("another employee is logged in who is not project manager")
+	public void anotherEmployeeIsLoggedInWhoIsNotProjectManager() throws Exception {
+	    employeeHelper.registerNewExampleEmployee();
+	    assertFalse(employeeHelper.getEmployee().getID() == timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
+	}
 }

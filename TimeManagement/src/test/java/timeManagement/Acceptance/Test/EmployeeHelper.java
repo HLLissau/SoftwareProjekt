@@ -22,6 +22,17 @@ public class EmployeeHelper {
 		return e;
 	}
 	
+	public Employee registerNewExampleEmployee() throws Exception {
+		if(!timeManagement.adminLoggedIn()) {
+			this.timeManagement.adminLogin("adminadmin");
+		}
+		this.employee = exampleEmployee();
+		this.timeManagement.addEmployee(this.employee);
+		this.timeManagement.adminlogout();
+		
+		return this.employee;
+	}
+	
 	public Employee getEmployee() {
 		if (employee == null) {
 			employee = exampleEmployee();

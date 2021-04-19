@@ -10,7 +10,7 @@ public class TimeManagement {
 	private ArrayList<Employee> employeeList=new ArrayList<>();
 	private ArrayList<Project> projectList=new ArrayList<>();
 	private RegisterTime registerTime;
-	private Activity activity;;
+	private Activity activity;
 	
 	public TimeManagement() {
 			this.registerTime = new RegisterTime();
@@ -35,8 +35,6 @@ public class TimeManagement {
 			throw new OperationNotAllowedException("Employee is already registered");
 		}
 		employeeList.add(e);
-		
-		
 	}
 	private void checkIfAdminIsLoggedIn() throws OperationNotAllowedException {
 		if (!this.adminLoggedIn) {
@@ -79,8 +77,8 @@ public class TimeManagement {
 	public Project getProject(Project project) {
 		return projectList.stream().filter(p -> p.getID()==project.getID()).findAny().orElse(null);
 	}
-	public void addActivity(Activity a) {
-		this.activity=a;
+	public void createActivity(Activity a, Project p, Employee e) throws OperationNotAllowedException {
+		getProject(p).addActivity(a, e);
 		
 	}
 }
