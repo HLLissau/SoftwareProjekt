@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import timeManagement.Employee;
 import timeManagement.ErrorHandler;
 import timeManagement.OperationNotAllowedException;
 import timeManagement.Project;
@@ -41,7 +42,19 @@ public class ProjectSteps {
 	    timeManagement.getProject(project).setProjectManager(this.employeeHelper.getEmployee());
 	}
 
-	
+	@Given("the employee is not registered as project manager of the project")
+	public void theEmployeeIsNotRegisteredAsProjectManagerOfTheProject() throws Exception {
+		Employee manager = employeeHelper.getEmployee();
+		Employee employee = employeeHelper.registerNewExampleEmployee();
+		timeManagement.getProject(projectHelper.getProject()).setProjectManager(manager);
+		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
+	}
+	@When("the employee adds another employee to the project")
+	public void theEmployeeAddsAnotherEmployeeToTheProject() {
+		Employee manager = employeeHelper.getEmployee();
+		Employee employee = employeeHelper.getSecondEmployee();
+		addEmployeehelp(manager,employee);
+	}
 	
 	@When("a project named {string} is created")
 	public void aProjectNamedIsCreated(String name) {
@@ -85,6 +98,26 @@ public class ProjectSteps {
 	@When("another employee is logged in who is not project manager")
 	public void anotherEmployeeIsLoggedInWhoIsNotProjectManager() throws Exception {
 	    employeeHelper.registerNewExampleEmployee();
-	    assertFalse(employeeHelper.getEmployee().getID() == timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
+	    assertFalse(employeeHelper.getSecondEmployee().getID() == timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
+	}
+	@When("the project manager adds an employee to the project")
+	public void theProjectManagerAddsAnEmployeeToTheProject() throws Exception {
+	   Employee manager = employeeHelper.getEmployee();
+	   Employee employee = employeeHelper.getSecondEmployee();
+	   addEmployeehelp(employee,manager);
+	}	
+	public void addEmployeehelp(Employee employee1, Employee employee2) {
+		try {
+			timeManagement.addEmployeeToProject(employee1, projectHelper.getProject(),employee2);
+		} catch (OperationNotAllowedException e) {
+		
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+		
+	
+	@Then("the employee is added to the project")
+	public void theEmployeeIsAddedToTheProject() {
+	   assertTrue(employeeHelper.getSecondEmployee().equals(timeManagement.getEmployeeFromProject(employeeHelper.getSecondEmployee(), projectHelper.getProject())));
 	}
 }
