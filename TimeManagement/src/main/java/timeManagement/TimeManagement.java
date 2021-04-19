@@ -67,6 +67,7 @@ public class TimeManagement {
 		return id;
 	}
 	public void createProject(Project p) throws OperationNotAllowedException {
+		checkIfAdminIsLoggedIn();
 		Project project = getProject(p);
 		createProjectID(this.registerTime.getYear());
 		if(project!=null) {
