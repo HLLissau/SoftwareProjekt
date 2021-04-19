@@ -19,4 +19,5 @@ public class ActivityAndProjectParent {
 	public String getName() {
 		return this.name;
 	}
+	
 }

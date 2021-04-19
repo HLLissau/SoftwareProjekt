@@ -6,6 +6,7 @@ import timeManagement.TimeManagement;
 public class EmployeeHelper {
 	private TimeManagement timeManagement;
 	private Employee employee;
+	private Employee secondEmployee;
 
 	public EmployeeHelper(TimeManagement timeManagement) {
 		this.timeManagement= timeManagement;
@@ -26,11 +27,11 @@ public class EmployeeHelper {
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
 		}
-		this.employee = exampleEmployee();
-		this.timeManagement.addEmployee(this.employee);
+		this.secondEmployee = exampleEmployee();
+		this.timeManagement.addEmployee(this.secondEmployee);
 		this.timeManagement.adminlogout();
 		
-		return this.employee;
+		return this.secondEmployee;
 	}
 	
 	public Employee getEmployee() {
@@ -38,6 +39,12 @@ public class EmployeeHelper {
 			employee = exampleEmployee();
 		}
 		return employee;
+	}
+	public Employee getSecondEmployee() {
+		if (secondEmployee == null) {
+			secondEmployee = exampleEmployee();
+		}
+		return secondEmployee;
 	}
 	private Employee exampleEmployee() {
 		Employee e = new Employee("Jens Hansen","JHansen@awesomefirm.dk");

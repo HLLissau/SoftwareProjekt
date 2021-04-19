@@ -59,6 +59,14 @@ public class ActivitySteps {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("the second employee sets the time of the activity to {int}")
+	public void theSecondEmployeeSetsTheTimeOfTheActivityTo(Integer time) {
+		 try {
+				timeManagement.getProject(projectHelper.getProject()).setActivityTime(employeeHelper.getSecondEmployee(), activityHelper.getActivity(), time);
+			} catch (OperationNotAllowedException e) {
+				errorMessageHandler.setErrorMessage(e.getMessage());
+			}
+	}
 	
 	@Then("a activity with the name {string} is in TimeManagement")
 	public void aActivityWithTheNameIsInTimeManagement(String string) {

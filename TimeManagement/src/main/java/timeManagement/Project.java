@@ -8,6 +8,7 @@ public class Project extends ActivityAndProjectParent {
 		
 	private Employee projectManager;
 	private List<Activity> activityList = new ArrayList<Activity>();
+	private List<Employee> employeeList = new ArrayList<Employee>();
 	
 	public Project(String name) {
 		super(name);
@@ -47,4 +48,23 @@ public class Project extends ActivityAndProjectParent {
 		isProjectManager(employee);
 		getActivity(activity).setBudgettedTime(time);
 	}
-}
+
+
+
+	public void addEmployee(Employee employee, Employee manager) throws OperationNotAllowedException {
+		isProjectManager(manager);
+			
+		if ((getEmployee(employee)==null)) {
+			employeeList.add(employee);
+		} else {
+			throw new OperationNotAllowedException("Employee already added to project");
+		}
+	}
+
+
+
+	public Employee getEmployee(Employee employee) {
+		return employeeList.stream().filter(e -> e.getID()==employee.getID()).findAny().orElse(null);
+	}
+
+	}

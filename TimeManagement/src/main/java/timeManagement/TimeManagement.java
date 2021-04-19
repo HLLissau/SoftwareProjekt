@@ -81,4 +81,11 @@ public class TimeManagement {
 		getProject(p).addActivity(a, e);
 		
 	}
+	public void addEmployeeToProject(Employee employee, Project project, Employee manager) throws OperationNotAllowedException {
+		getProject(project).addEmployee(employee, manager);
+		
+	}
+	public Employee getEmployeeFromProject(Employee employee, Project project) {
+		return getProject(project).getEmployee(employee);
+	}
 }
