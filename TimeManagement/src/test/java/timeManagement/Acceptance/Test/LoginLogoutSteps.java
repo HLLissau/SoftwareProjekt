@@ -18,10 +18,12 @@ public class LoginLogoutSteps {
 	private ErrorHandler errorMessageHandler;
 	private EmployeeHelper employeeHelper;
 
-	public LoginLogoutSteps() {
-		this.timeManagement= new TimeManagement();
-		this.errorMessageHandler = new ErrorHandler();
-		this.employeeHelper = new EmployeeHelper(timeManagement);
+	public LoginLogoutSteps(TimeManagement timeManagement,
+							ErrorHandler errorHandler,
+							EmployeeHelper employeeHelper) {
+		this.timeManagement= timeManagement;
+		this.errorMessageHandler = errorHandler;
+		this.employeeHelper = employeeHelper;
 	
 	}
 	@Given("that the administrator is logged in")
@@ -55,7 +57,7 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is given a unique id")
 	public void theEmployeeIsGivenAUniqueId() {
-		assertFalse(timeManagement.isUniqueID(employee.getID()));
+		assertFalse(timeManagement.isUniqueEmployeeID(employee.getID()));
 		
 	}
 	@Given("that the administrator is not logged in")

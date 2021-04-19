@@ -7,10 +7,12 @@ public class TimeManagement {
 	
 	private	String adminPassword="adminadmin";
 	private boolean adminLoggedIn=false;
-	private ArrayList<Employee> employeeList=new ArrayList<>();;
+	private ArrayList<Employee> employeeList=new ArrayList<>();
+	private ArrayList<Project> projectList=new ArrayList<>();
+	private RegisterTime registerTime;;
 	
 	public TimeManagement() {
-			
+			this.registerTime = new RegisterTime();
 		}
 	public void adminLogin(String password) {
 		if (password.equals(this.adminPassword)) {
@@ -30,7 +32,6 @@ public class TimeManagement {
 		Employee employee = getEmployee(e);
 		if (employee!=null) {
 			throw new OperationNotAllowedException("Employee is already registered");
-			
 		}
 		employeeList.add(e);
 		
@@ -44,7 +45,7 @@ public class TimeManagement {
 	}
 	public int createID() {
 		int id= (int) (Math.random()*10000);
-		while(!isUniqueID(id)) {
+		while(!isUniqueEmployeeID(id)) {
 			id= (int) (Math.random()*10000);
 		}
 		return id;
@@ -52,7 +53,29 @@ public class TimeManagement {
 	public Employee getEmployee(Employee employee) {
 		return employeeList.stream().filter(e -> e.getID()==employee.getID()).findAny().orElse(null);
 	}
-	public boolean isUniqueID(int id) {
+	public boolean isUniqueEmployeeID(int id) {
 		return (!employeeList.stream().filter(e-> id==e.getID()).findAny().isPresent());
+	}
+	public boolean isUniqueProjectID(int id) {
+		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
+	}
+	public int createProjectID(int date) {
+		int id= (date*10000)+(int) (Math.random()*1000);
+		while(!isUniqueProjectID(id)) {
+			id= (date*10000) + (int) (Math.random()*10000);
+		}
+		return id;
+	}
+	public void createProject(Project p) throws OperationNotAllowedException {
+		checkIfAdminIsLoggedIn();
+		Project project = getProject(p);
+		createProjectID(this.registerTime.getYear());
+		if(project!=null) {
+			throw new OperationNotAllowedException("Project already exists");
+		}
+		projectList.add(p);
+	}
+	public Project getProject(Project project) {
+		return projectList.stream().filter(p -> p.getID()==project.getID()).findAny().orElse(null);
 	}
 }
