@@ -16,12 +16,21 @@ public class EmployeeHelper {
 			this.timeManagement.adminLogin("adminadmin");
 			
 		}
-		
 		this.timeManagement.addEmployee(e);
-		if(!this.timeManagement.adminLoggedIn()) {
-			this.timeManagement.adminlogout();
-		}
+		this.timeManagement.adminlogout();
+		
 		return e;
+	}
+	
+	public Employee registerNewExampleEmployee() throws Exception {
+		if(!timeManagement.adminLoggedIn()) {
+			this.timeManagement.adminLogin("adminadmin");
+		}
+		this.employee = exampleEmployee();
+		this.timeManagement.addEmployee(this.employee);
+		this.timeManagement.adminlogout();
+		
+		return this.employee;
 	}
 	
 	public Employee getEmployee() {
