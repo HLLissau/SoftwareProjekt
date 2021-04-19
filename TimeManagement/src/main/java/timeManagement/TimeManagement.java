@@ -9,7 +9,8 @@ public class TimeManagement {
 	private boolean adminLoggedIn=false;
 	private ArrayList<Employee> employeeList=new ArrayList<>();
 	private ArrayList<Project> projectList=new ArrayList<>();
-	private RegisterTime registerTime;;
+	private RegisterTime registerTime;
+	private Activity activity;;
 	
 	public TimeManagement() {
 			this.registerTime = new RegisterTime();
@@ -77,5 +78,9 @@ public class TimeManagement {
 	}
 	public Project getProject(Project project) {
 		return projectList.stream().filter(p -> p.getID()==project.getID()).findAny().orElse(null);
+	}
+	public void addActivity(Activity a) {
+		this.activity=a;
+		
 	}
 }

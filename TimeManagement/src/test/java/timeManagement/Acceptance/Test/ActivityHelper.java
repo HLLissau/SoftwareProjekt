@@ -6,8 +6,7 @@ import timeManagement.TimeManagement;
 
 public class ActivityHelper {
 	private TimeManagement timeManagement;
-	private Project project;
-	private Object activity;
+	private Activity activity;
 	public ActivityHelper(TimeManagement timeManagement) {
 		this.timeManagement= timeManagement;
 	}
@@ -16,7 +15,7 @@ public class ActivityHelper {
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
 		}
-		this.timeManagement.createProject(p);
+		this.timeManagement.addActivity(a);
 		this.timeManagement.adminlogout();
 		
 		return a;
@@ -27,7 +26,7 @@ public class ActivityHelper {
 		}
 		return activity;
 	}
-	private Activity exampleProject() {
+	private Activity exampleActivity() {
 		Activity a = new Activity("example");
 		return a;
 	}
