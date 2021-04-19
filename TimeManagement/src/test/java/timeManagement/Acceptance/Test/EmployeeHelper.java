@@ -16,11 +16,9 @@ public class EmployeeHelper {
 			this.timeManagement.adminLogin("adminadmin");
 			
 		}
-		
 		this.timeManagement.addEmployee(e);
-		if(!this.timeManagement.adminLoggedIn()) {
-			this.timeManagement.adminlogout();
-		}
+		this.timeManagement.adminlogout();
+		
 		return e;
 	}
 	

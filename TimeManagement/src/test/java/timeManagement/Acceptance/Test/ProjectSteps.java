@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import timeManagement.ErrorHandler;
@@ -17,14 +18,30 @@ public class ProjectSteps {
 	private Project project;
 	private RegisterTime registerTime;
 	private ErrorHandler errorMessageHandler;
+	private ProjectHelper projectHelper;
+	private EmployeeHelper employeeHelper;
 
 	public ProjectSteps(TimeManagement timeManagement,
 						RegisterTime registerTime,
-						ErrorHandler errorHandler) {
+						ErrorHandler errorHandler,
+						ProjectHelper projectHelper,
+						EmployeeHelper employeeHelper) {
 		this.timeManagement = timeManagement;
 		this.registerTime=registerTime;
 		this.errorMessageHandler = errorHandler;
+		this.projectHelper=projectHelper;
+		this.employeeHelper=employeeHelper;
 	}
+	@Given("a project is in TimeManagement")
+	public void aProjectIsInTimeManagement() throws Exception {
+	    this.project= this.projectHelper.registerExampleProject();
+	}
+	@Given("an employee is registered as project manager of the project")
+	public void anEmployeeIsRegisteredAsProjectManagerOfTheProject() {
+	    timeManagement.getProject(project).setProjectManager(this.employeeHelper.getEmployee());
+	}
+
+	
 	
 	@When("a project named {string} is created")
 	public void aProjectNamedIsCreated(String name) {
@@ -58,6 +75,5 @@ public class ProjectSteps {
 	@Then("no other project has the same ID")
 	public void noOtherProjectHasTheSameID() {
 		assertFalse(timeManagement.isUniqueProjectID(project.getID()));
-		
 	}
 }

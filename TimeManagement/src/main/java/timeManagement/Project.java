@@ -1,19 +1,17 @@
 package timeManagement;
 
-public class Project {
+public class Project extends ActivityAndProjectParent {
 
-	private String name;
-	private int id;
+		
+	private Employee projectManager;
 
 	public Project(String name) {
-		this.name = name;
-	}
-	public void setID(int id) {
-		this.id=id;
+		super(name);
 	}
 	
 	
-	public int getID() {
-		return this.id;
+	
+	public void setProjectManager(Employee manager) {
+		this.projectManager=manager;
 	}
 }
