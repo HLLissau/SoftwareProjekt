@@ -1,5 +1,8 @@
 package timeManagement;
 
-public class Activity {
-
+public class Activity extends ActivityAndProjectParent {
+	public Activity(String name) {
+		super(name);
+	}
+	
 }
