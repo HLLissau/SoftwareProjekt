@@ -102,4 +102,21 @@ public class TimeManagement {
 		getProject(project).removeEmployee(employee, projectManager);
 		
 	}
+	public void removeEmployeeFromTimeManagement(Employee e) throws Exception {
+		checkIfAdminIsLoggedIn();
+		Employee employeeToRemove = getEmployee(e);
+		
+		if (employeeToRemove!=null && employeeNotWorkingOnActivities(employeeToRemove)) {
+			employeeList.remove(employeeToRemove);
+		} else {
+			throw new Exception("Employee not found in project");
+		}
+		
+	}
+	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
+		for(Project project: projectList) {
+			project.getActivity(activity)
+		}
+		return true;
+	}
 }

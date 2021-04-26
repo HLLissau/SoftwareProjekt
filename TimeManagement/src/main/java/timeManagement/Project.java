@@ -13,9 +13,6 @@ public class Project extends ActivityAndProjectParent {
 	public Project(String name) {
 		super(name);
 	}
-	
-	
-	
 	public void setProjectManager(Employee manager) {
 		this.projectManager=manager;
 	}
