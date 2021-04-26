@@ -21,17 +21,20 @@ public class ProjectSteps {
 	private ErrorHandler errorMessageHandler;
 	private ProjectHelper projectHelper;
 	private EmployeeHelper employeeHelper;
+	private ActivityHelper activityHelper;
 
 	public ProjectSteps(TimeManagement timeManagement,
 						RegisterTime registerTime,
 						ErrorHandler errorHandler,
 						ProjectHelper projectHelper,
-						EmployeeHelper employeeHelper) {
+						EmployeeHelper employeeHelper,
+						ActivityHelper activityHelper) {
 		this.timeManagement = timeManagement;
 		this.registerTime=registerTime;
 		this.errorMessageHandler = errorHandler;
 		this.projectHelper=projectHelper;
 		this.employeeHelper=employeeHelper;
+		this.activityHelper=activityHelper;
 	}
 	@Given("a project is in TimeManagement")
 	public void aProjectIsInTimeManagement() throws Exception {
@@ -39,14 +42,14 @@ public class ProjectSteps {
 	}
 	@Given("an employee is registered as project manager of the project")
 	public void anEmployeeIsRegisteredAsProjectManagerOfTheProject() {
-	    timeManagement.getProject(project).setProjectManager(this.employeeHelper.getEmployee());
+	    timeManagement.setProjectManager(projectHelper.getProject(),this.employeeHelper.getEmployee());
 	}
 
 	@Given("the employee is not registered as project manager of the project")
 	public void theEmployeeIsNotRegisteredAsProjectManagerOfTheProject() throws Exception {
 		Employee manager = employeeHelper.getEmployee();
-		Employee employee = employeeHelper.registerNewExampleEmployee();
-		timeManagement.getProject(projectHelper.getProject()).setProjectManager(manager);
+		Employee employee = employeeHelper.registerSecondExampleEmployee();
+		timeManagement.setProjectManager(projectHelper.getProject(),manager);
 		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
 	}
 	@When("the employee adds another employee to the project")
@@ -56,23 +59,24 @@ public class ProjectSteps {
 		addEmployeehelp(manager,employee);
 	}
 	
-	@When("a project named {string} is created")
+	@Given("a project named {string} is created")
 	public void aProjectNamedIsCreated(String name) {
-	    this.project= new Project(name);
-	    project.setID(timeManagement.createProjectID(registerTime.getYear()));
-	    try {
-	    	timeManagement.createProject(project);
-	    	
-		} catch (OperationNotAllowedException e) {
-			//System.out.print("fejl");
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
-	    
+		this.project= new Project(name);
+	}
+	@When("the project is added to TimeManagement")
+	public void theProjectIsAddedToTimeManagement() {
+		 try {
+		    	timeManagement.createProject(project);
+		    	
+			} catch (OperationNotAllowedException e) {
+				errorMessageHandler.setErrorMessage(e.getMessage());
+			}
 	}
 
 	@Then("a project named {string} exists in TimeManagement")
 	public void aProjectNamedExistsInTimeManagement(String name) {
 		assertTrue(timeManagement.getProject(project).equals(project));
+		assertTrue(name.equals(timeManagement.getProject(project).getName()));
 	}
 	@Then("a project named {string} does not exist in TimeManagement")
 	public void aProjectNamedDoesNotExistInTimeManagement(String string) {
@@ -119,5 +123,33 @@ public class ProjectSteps {
 	@Then("the employee is added to the project")
 	public void theEmployeeIsAddedToTheProject() {
 	   assertTrue(employeeHelper.getSecondEmployee().equals(timeManagement.getEmployeeFromProject(employeeHelper.getSecondEmployee(), projectHelper.getProject())));
+	}
+	@When("the employee adds the activity to the project")
+	public void theEmployeeAddsTheActivityToTheProject() {
+	 try {
+			timeManagement.addActivityToProject(activityHelper.getActivity(), project, employeeHelper.getEmployee());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the activity is added to the project")
+	public void theActivityIsAddedToTheProject() {
+		assertTrue(activityHelper.getActivity().equals(timeManagement.getProject(project).getActivity(activityHelper.getActivity())));
+	}
+	@When("the employee removes the activity from the project")
+	public void theEmployeeRemovesTheActivityFromTheProject() {
+		try {
+			timeManagement.removeActivity(activityHelper.getActivity(),project,employeeHelper.getEmployee());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e.getMessage());
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+	
+	@Then("the activity is not in the project")
+	public void theActivityIsNotAddedToTheProject() {
+		assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(project).getActivity(activityHelper.getActivity())));
+
 	}
 }

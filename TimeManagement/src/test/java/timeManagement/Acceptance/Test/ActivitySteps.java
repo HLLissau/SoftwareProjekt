@@ -85,6 +85,6 @@ public class ActivitySteps {
 	
 	@Then("the time of the activity is not set to {int}")
 	public void theTimeOfTheActivityIsNotSetTo(Integer time) {
-	    assertFalse(time == timeManagement.getProject(projectHelper.getProject()).getActivity(activityHelper.getActivity()).getTime());
+	    assertFalse(time.equals(timeManagement.getProject(projectHelper.getProject()).getActivity(activityHelper.getActivity()).getTime()));
 	}
 }

@@ -35,13 +35,13 @@ public class LoginLogoutSteps {
 	@Given("there is a user with name {string}, email {string}")
 	public void thereIsAUserWithNameEmail(String name, String email) {
 		this.employee=new Employee(name,email);
-		employee.setID(timeManagement.createID());
+		
 	}
 
 	@When("the administrator registers the employee in TimeManagement")
 	public void theAdministratorRegistersTheEmployeeInTimeManagement() {
 			try {
-				timeManagement.addEmployee(employee);
+				timeManagement.createEmployee(employee);
 			} catch (OperationNotAllowedException e) {
 				errorMessageHandler.setErrorMessage(e.getMessage());
 			}
@@ -51,12 +51,13 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is registered in TimeManagement")
 	public void theEmployeeIsRegisteredInTimeManagement() {
-	    assertTrue(timeManagement.getEmployee(employee).equals(employee));
+	    assertTrue(employee.equals(timeManagement.getEmployee(employee)));
 	}
 
 
 	@Then("the employee is given a unique id")
 	public void theEmployeeIsGivenAUniqueId() {
+		//must return false, because the employee is in the system.
 		assertFalse(timeManagement.isUniqueEmployeeID(employee.getID()));
 		
 	}
@@ -80,9 +81,18 @@ public class LoginLogoutSteps {
 	@When("the administrator registers the employee again")
 	public void theAdministratorRegistersTheEmployeeAgain() {
 	    try {
-			this.timeManagement.addEmployee(employee);
+			this.timeManagement.createEmployee(employee);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("another employee is logged in")
+	public void anotherEmployeeIsLoggedIn() {
+	    try {
+			this.employeeHelper.registerNewExampleEmployee();
+		} catch (Exception e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
 }

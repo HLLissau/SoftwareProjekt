@@ -12,7 +12,5 @@ public class RegisterTime {
 	public int getYear() {
 		return this.calendar.get(calendar.YEAR);
 	}
-	public int getMonth() {
-		return this.calendar.MONTH;
-	}
+	
 }

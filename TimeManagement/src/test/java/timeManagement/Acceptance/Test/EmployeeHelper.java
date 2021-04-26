@@ -17,7 +17,7 @@ public class EmployeeHelper {
 			this.timeManagement.adminLogin("adminadmin");
 			
 		}
-		this.timeManagement.addEmployee(e);
+		this.timeManagement.createEmployee(e);
 		this.timeManagement.adminlogout();
 		
 		return e;
@@ -27,8 +27,18 @@ public class EmployeeHelper {
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
 		}
+		this.employee = exampleEmployee();
+		this.timeManagement.createEmployee(this.secondEmployee);
+		this.timeManagement.adminlogout();
+		
+		return this.secondEmployee;
+	}
+	public Employee registerSecondExampleEmployee() throws Exception {
+		if(!timeManagement.adminLoggedIn()) {
+			this.timeManagement.adminLogin("adminadmin");
+		}
 		this.secondEmployee = exampleEmployee();
-		this.timeManagement.addEmployee(this.secondEmployee);
+		this.timeManagement.createEmployee(this.secondEmployee);
 		this.timeManagement.adminlogout();
 		
 		return this.secondEmployee;
@@ -48,7 +58,6 @@ public class EmployeeHelper {
 	}
 	private Employee exampleEmployee() {
 		Employee e = new Employee("Jens Hansen","JHansen@awesomefirm.dk");
-		e.setID(timeManagement.createID());
 		return e;
 	}
 }

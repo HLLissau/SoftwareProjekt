@@ -32,8 +32,12 @@ public class Project extends ActivityAndProjectParent {
 
 	public void addActivity(Activity a, Employee e) throws OperationNotAllowedException {
 		isProjectManager(e);
-		activityList.add(a);
-		
+		Activity activityexists = getActivity(a);
+		if (activityexists ==null) {
+			activityList.add(a);
+		}else {
+			throw new OperationNotAllowedException("Activity already added to project");
+		}
 	}
 
 
@@ -67,4 +71,16 @@ public class Project extends ActivityAndProjectParent {
 		return employeeList.stream().filter(e -> e.getID()==employee.getID()).findAny().orElse(null);
 	}
 
+
+
+	public void removeActivity(Activity activity, Employee employee) throws OperationNotAllowedException {
+		isProjectManager(employee);
+		Activity activityToRemove =getActivity(activity);
+		
+		if (activityToRemove !=null) {
+			activityList.remove(activityToRemove);
+		}else {
+			throw new OperationNotAllowedException("Activity is not in project");
+		}	
 	}
+}
