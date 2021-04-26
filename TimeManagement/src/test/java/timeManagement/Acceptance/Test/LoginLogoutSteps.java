@@ -89,7 +89,7 @@ public class LoginLogoutSteps {
 	@When("another employee is logged in")
 	public void anotherEmployeeIsLoggedIn() {
 	    try {
-			this.employeeHelper.registerExampleEmployee();
+			this.employeeHelper.registerNewExampleEmployee();
 		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}

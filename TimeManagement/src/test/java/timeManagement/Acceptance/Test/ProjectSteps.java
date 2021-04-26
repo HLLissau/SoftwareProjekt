@@ -48,7 +48,7 @@ public class ProjectSteps {
 	@Given("the employee is not registered as project manager of the project")
 	public void theEmployeeIsNotRegisteredAsProjectManagerOfTheProject() throws Exception {
 		Employee manager = employeeHelper.getEmployee();
-		Employee employee = employeeHelper.registerNewExampleEmployee();
+		Employee employee = employeeHelper.registerSecondExampleEmployee();
 		timeManagement.setProjectManager(projectHelper.getProject(),manager);
 		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
 	}
