@@ -19,7 +19,7 @@ public class ActivityHelper {
 			this.timeManagement.adminLogin("adminadmin");
 		}
 		// p.setProjectManager(e);
-		this.timeManagement.createActivity(a, p, e);
+		this.timeManagement.addActivityToProject(a, p, e);
 		this.timeManagement.adminlogout();
 		
 		return a;

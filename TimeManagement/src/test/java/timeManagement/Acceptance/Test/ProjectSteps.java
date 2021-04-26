@@ -59,7 +59,6 @@ public class ProjectSteps {
 	@When("a project named {string} is created")
 	public void aProjectNamedIsCreated(String name) {
 	    this.project= new Project(name);
-	    project.setID(timeManagement.createProjectID(registerTime.getYear()));
 	    try {
 	    	timeManagement.createProject(project);
 	    	
