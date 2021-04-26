@@ -83,4 +83,16 @@ public class Project extends ActivityAndProjectParent {
 			throw new OperationNotAllowedException("Activity is not in project");
 		}	
 	}
+
+
+
+	public void removeEmployee(Employee employee, Employee projectManager2) throws OperationNotAllowedException {
+		isProjectManager(projectManager2);
+		if ((getEmployee(employee)!=null)) {
+			employeeList.remove(employee);
+		} else {
+			throw new OperationNotAllowedException("Employee not found in project");
+		}
+	}
+	
 }

@@ -98,4 +98,8 @@ public class TimeManagement {
 	public void removeActivity(Activity activity, Project project, Employee employee) throws OperationNotAllowedException {
 		getProject(project).removeActivity(activity,employee);
 	}
+	public void removeEmployeeFromProject(Employee employee, Project project, Employee projectManager) throws OperationNotAllowedException {
+		getProject(project).removeEmployee(employee, projectManager);
+		
+	}
 }

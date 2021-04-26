@@ -142,7 +142,6 @@ public class ProjectSteps {
 		try {
 			timeManagement.removeActivity(activityHelper.getActivity(),project,employeeHelper.getEmployee());
 		} catch (OperationNotAllowedException e) {
-			System.out.println(e.getMessage());
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
@@ -151,5 +150,18 @@ public class ProjectSteps {
 	public void theActivityIsNotAddedToTheProject() {
 		assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(project).getActivity(activityHelper.getActivity())));
 
+	}
+	@When("the project manager removes the employee from the project")
+	public void theProjectManagerRemovesTheEmployeeFromTheProject() {
+	    try {
+			timeManagement.removeEmployeeFromProject(employeeHelper.getEmployee(),projectHelper.getProject(),employeeHelper.getSecondEmployee());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the employee is no longer in the project")
+	public void theEmployeeIsNoLongerInTheProject() {
+	    assertFalse(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject()).getEmployee(employeeHelper.getEmployee())));
 	}
 }
