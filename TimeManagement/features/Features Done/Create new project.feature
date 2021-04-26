@@ -4,20 +4,32 @@ Description: A new project is created
 
 Scenario: Administrator creates new project
     Given that the administrator is logged in
-    When a project named "some project" is created
+    And a project named "some project" is created
+    When the project is added to TimeManagement
     Then a project named "some project" exists in TimeManagement
 
 Scenario: Non-administrator creates new project
     Given that the administrator is not logged in
-    When a project named "some project" is created
+    And a project named "some project" is created
+    When the project is added to TimeManagement
     Then the error message "Administrator login required" is given
     And a project named "some project" does not exist in TimeManagement
 
 Scenario: Project is assigned unique ID on creation
     Given that the administrator is logged in
-    When a project named "some project" is created
+    And a project named "some project" is created
+    When the project is added to TimeManagement
     Then an ID is assigned to the project
     And no other project has the same ID
+    
+Scenario: Administrator tries to add the same project twice    
+    Given that the administrator is logged in
+    And a project named "some project" is created
+    When the project is added to TimeManagement
+    Then a project named "some project" exists in TimeManagement
+    When the project is added to TimeManagement
+    Then the error message "Project already exists" is given
+    
 
 # The following feature is not implemented, since we already catch the error
 #Scenario: Project is not assigned unique ID on creation

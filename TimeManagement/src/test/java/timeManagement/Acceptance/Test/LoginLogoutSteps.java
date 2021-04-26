@@ -86,4 +86,13 @@ public class LoginLogoutSteps {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("another employee is logged in")
+	public void anotherEmployeeIsLoggedIn() {
+	    try {
+			this.employeeHelper.registerExampleEmployee();
+		} catch (Exception e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
 }

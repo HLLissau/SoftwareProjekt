@@ -1,6 +1,5 @@
 package timeManagement.Acceptance.Test;
 
-import timeManagement.Employee;
 import timeManagement.Project;
 import timeManagement.TimeManagement;
 
@@ -29,7 +28,7 @@ public class ProjectHelper {
 		return project;
 	}
 	private Project exampleProject() {
-		Project p = new Project("example");
+		Project p = new Project("some project");
 		return p;
 	}
 }

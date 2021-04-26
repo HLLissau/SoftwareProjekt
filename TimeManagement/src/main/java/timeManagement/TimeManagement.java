@@ -91,4 +91,11 @@ public class TimeManagement {
 	public Employee getEmployeeFromProject(Employee employee, Project project) {
 		return getProject(project).getEmployee(employee);
 	}
+	public void setProjectManager(Project project, Employee employee) {
+		getProject(project).setProjectManager(employee);
+		
+	}
+	public void removeActivity(Activity activity, Project project, Employee employee) throws OperationNotAllowedException {
+		getProject(project).removeActivity(activity,employee);
+	}
 }
