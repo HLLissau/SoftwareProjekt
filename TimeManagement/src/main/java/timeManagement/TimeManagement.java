@@ -61,7 +61,7 @@ public class TimeManagement {
 		return initials;
 	}
 
-	public Employee getEmployee(int employeeID) {
+	public Employee getEmployee(String employeeID) {
 		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
 	}
 	public boolean isUniqueEmployeeID(String id) {
@@ -90,40 +90,39 @@ public class TimeManagement {
 	public Project getProject(int projectID) {
 		return projectList.stream().filter(p -> p.getID()==projectID).findAny().orElse(null);
 	}
-	public void addActivityToProject(Activity a, int pID, int managerID) throws OperationNotAllowedException {
+	public void addActivityToProject(Activity a, int pID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
-		
 	}
-	public void addEmployeeToProject(int employeeID, int projectID, int managerID) throws OperationNotAllowedException {
+	public void addEmployeeToProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		Employee manager = getEmployee(managerID);
 		Project p = getProject(projectID);
 		p.addEmployee(employee, manager);
 	}
-	public Employee getEmployeeFromProject(int employeeID, int projectID) {
+	public Employee getEmployeeFromProject(String employeeID, int projectID) {
 		Employee employee = getEmployee(employeeID);
 		
 			return getProject(projectID).getEmployee(employee);
 		
 	}
-	public void setProjectManager(int projectID, int employeeID) throws OperationNotAllowedException {
+	public void setProjectManager(int projectID, String employeeID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		
 		getProject(projectID).setProjectManager(employee,employee);
 		
 	}
-	public void removeActivity(Activity activity, int projectID, int employeeID) throws OperationNotAllowedException {
+	public void removeActivity(Activity activity, int projectID, String employeeID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		getProject(projectID).removeActivity(activity,employee);
 	}
-	public void removeEmployeeFromProject(int employeeID, int projectID, int managerID) throws OperationNotAllowedException {
+	public void removeEmployeeFromProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		Employee employee = getEmployee(employeeID);
 		getProject(projectID).removeEmployee(employee, manager);
 		
 	}
-	public void removeEmployeeFromTimeManagement(int eID) throws Exception {
+	public void removeEmployeeFromTimeManagement(String eID) throws Exception {
 		checkIfAdminIsLoggedIn();
 		Employee employeeToRemove = getEmployee(eID);
 		
@@ -144,14 +143,14 @@ public class TimeManagement {
 		}
 		return true;
 	}
-	public void setProjectDescription(String description, int projectID, int managerID) throws OperationNotAllowedException {
+	public void setProjectDescription(String description, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(projectID).setDescription(manager, description);
 	}
 	public String getProjectDescription(int projectID) throws OperationNotAllowedException {
 		return getProject(projectID).getDescription();
 	}
-	public void setTimeOfProject(int time, int projectID, int managerID) throws OperationNotAllowedException {
+	public void setTimeOfProject(int time, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(projectID).setTime(manager, time);
 		
@@ -166,7 +165,7 @@ public class TimeManagement {
 		}
 			
 	}
-	public void removeProjectManagerFromProject(int projectID, int managerID) throws Exception {
+	public void removeProjectManagerFromProject(int projectID, String managerID) throws Exception {
 		Project p = getProject(projectID);
 		Employee manager = getEmployee(managerID);
 		if(p!=null) {
