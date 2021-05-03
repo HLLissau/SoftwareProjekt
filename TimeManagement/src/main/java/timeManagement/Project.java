@@ -11,7 +11,7 @@ public class Project extends ActivityAndProjectParent {
 	
 	public Project(String name) {
 		super(name);
-		setID(10000); // set template ID
+		
 	}
 	
 		
