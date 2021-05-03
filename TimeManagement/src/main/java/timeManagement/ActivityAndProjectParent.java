@@ -12,9 +12,9 @@ public class ActivityAndProjectParent {
 	public int getID() {
 		return this.id;
 	}
+
 	protected void setID(int id) {
 		this.id=id;
-		
 	}
 	
 	public String getName() {

@@ -4,28 +4,37 @@ import java.util.ArrayList;
 
 public class Employee {
 
-	private int iD;
-	private String name;
+	private String iD;
+	private String firstName;
+	private String lastName;
 	private String email;
 	private ArrayList<Activity> presentActivityList;
 	private ArrayList<Project> presentprojectList;
 
-	public Employee(String name, String email) {
-		this.name=name;
+	public Employee(String firstName, String lastName, String email) {
+		// firstname, lastname must not be less than 2 chars long
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email=email;
 		this.presentActivityList = new ArrayList<Activity>();
 		this.presentprojectList= new ArrayList<Project>();
-		
 	}
-	public void setID(int iD) {
+	public void setID(String iD) {
 		this.iD=iD;
 	}
 	
-	public int getID() {
+	public String getID() {
 		return this.iD;
 	}
 	
+	protected String getFirstName() {
+		return firstName;
+	}
 	
+	protected String getLastName() {
+		return lastName;
+	}
+
 	public int canBeAssigned() {
 		return presentActivityList.size();
 	}
@@ -36,5 +45,4 @@ public class Employee {
 		this.presentprojectList.add(project);
 		
 	}
-
 }

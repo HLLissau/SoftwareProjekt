@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project extends ActivityAndProjectParent {
-
-		
+	
 	private Employee projectManager;
 	private List<Activity> activityList = new ArrayList<Activity>();
 	private List<Employee> employeeList = new ArrayList<Employee>();
 	
 	public Project(String name) {
 		super(name);
+		setID(10000); // set template ID
 	}
 	
 		
