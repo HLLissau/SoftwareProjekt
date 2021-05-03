@@ -1,10 +1,10 @@
 package timeManagement;
 
 public class ActivityAndProjectParent {
-	private String name;
-	private String description;
+	protected String name;
+	protected String description;
 	private int id;
-	
+	protected int time;
 	public ActivityAndProjectParent(String name){
 		this.name = name;
 	}
@@ -12,13 +12,18 @@ public class ActivityAndProjectParent {
 	public int getID() {
 		return this.id;
 	}
-	
-	public void setID(int id) {
-		this.id = id;
+
+	protected void setID(int id) {
+		this.id=id;
 	}
 	
 	public String getName() {
 		return this.name;
 	}
-	
+	public String getDescription() {
+		return this.description;
+	}
+	protected void setExpectedTime(int time) {
+		this.time=time;
+	}
 }

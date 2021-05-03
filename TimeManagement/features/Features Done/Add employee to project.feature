@@ -1,4 +1,4 @@
-Feature: Add employee from project
+Feature: Add employee to project
 
 Description: Employees can add  employees from projects that they are project managers on; 
     trying to add employees from projects they are not project 
@@ -8,6 +8,7 @@ Scenario: Project manager adds employee to project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
     And an employee is registered as project manager of the project
+    And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project
     Then the employee is added to the project
 
@@ -21,6 +22,7 @@ Scenario: Employee adds employee to project
 Scenario: Project manager adds employee to project that employee is already in
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
+    And a second employee is registered with TimeManagement 
     And an employee is registered as project manager of the project
     When the project manager adds an employee to the project
     Then the employee is added to the project

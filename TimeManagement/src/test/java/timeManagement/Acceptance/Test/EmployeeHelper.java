@@ -28,16 +28,16 @@ public class EmployeeHelper {
 			this.timeManagement.adminLogin("adminadmin");
 		}
 		this.employee = exampleEmployee();
-		this.timeManagement.createEmployee(this.secondEmployee);
+		this.timeManagement.createEmployee(this.employee);
 		this.timeManagement.adminlogout();
 		
-		return this.secondEmployee;
+		return this.employee;
 	}
 	public Employee registerSecondExampleEmployee() throws Exception {
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
 		}
-		this.secondEmployee = exampleEmployee();
+		this.secondEmployee = getSecondEmployee();
 		this.timeManagement.createEmployee(this.secondEmployee);
 		this.timeManagement.adminlogout();
 		
