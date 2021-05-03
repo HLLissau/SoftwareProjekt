@@ -18,9 +18,10 @@ Scenario: Need to be administrator to remove employees from TimeManagement
     And the error message "Administrator login required" is given
 
 #Scenario: delete employee who is working on activities
-    #Given that the administrator is logged in
-    #And an employee is registered with TimeManagement
+    #Given a project exists and a project manager is logged in
+    #And a second employee is registered with TimeManagement
     #And the employee is assigned to an activity
+    #And that the administrator is logged in
     #When the administrator deletes the employee from TimeManagement
     #Then the employee is still registered with TimeManagement
     #And the error message "Employee is working on activity" is given

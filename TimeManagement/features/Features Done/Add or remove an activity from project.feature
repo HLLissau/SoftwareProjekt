@@ -38,6 +38,7 @@ Scenario: Project manager removes activity that doesn't exist from project
     And an employee is registered as project manager of the project
     And an activity with the name "new activity" is in TimeManagement
     And the employee removes the activity from the project
+    And the employee removes the activity from the project  
     Then the error message "Activity is not in project" is given
     
 Scenario: Employee adds activity to project

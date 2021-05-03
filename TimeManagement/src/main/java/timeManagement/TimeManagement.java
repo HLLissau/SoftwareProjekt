@@ -184,4 +184,8 @@ public class TimeManagement {
 		return returnlist;
 		
 	}
+	public ArrayList<Employee> listEmployeesOnProject(int projectID) {
+		Project p = getProject(projectID);
+		 return p.listEmployees();
+	}
 }

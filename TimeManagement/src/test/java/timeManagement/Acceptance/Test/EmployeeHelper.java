@@ -43,6 +43,16 @@ public class EmployeeHelper {
 		
 		return this.secondEmployee;
 	}
+	public Employee registerNewSecondExampleEmployee() throws Exception {
+		if(!timeManagement.adminLoggedIn()) {
+			this.timeManagement.adminLogin("adminadmin");
+		}
+		this.secondEmployee = exampleEmployee();
+		this.timeManagement.createEmployee(this.secondEmployee);
+		this.timeManagement.adminlogout();
+		
+		return this.secondEmployee;
+	}
 	
 	public Employee getEmployee() {
 		if (employee == null) {

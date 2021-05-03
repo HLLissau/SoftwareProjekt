@@ -25,6 +25,7 @@ public class ProjectSteps {
 	private EmployeeHelper employeeHelper;
 	private ActivityHelper activityHelper;
 	private ArrayList<Employee> avaiableList;
+	private int listSize;
 
 	public ProjectSteps(TimeManagement timeManagement,
 						RegisterTime registerTime,
@@ -255,4 +256,22 @@ public class ProjectSteps {
 	    }
 		assertTrue(checkint);
 	}
+	@Given("a project have {int} employees added")
+	public void aProjectHaveEmployeesAdded(int int1) throws Exception {
+	    this.listSize= timeManagement.listEmployeesOnProject(projectHelper.getProject().getID()).size();
+		for (int i = 0; i<int1; i++) {
+	    	Employee e =employeeHelper.registerNewSecondExampleEmployee();
+	    	timeManagement.addEmployeeToProject(e.getID(), projectHelper.getProject().getID(), employeeHelper.getEmployee().getID());
+	    }
+	}
+	@When("the project manager requests  a list of employees on the specific project")
+	public void theProjectManagerRequestsAListOfEmployeesOnTheSpecificProject() {
+	    this.avaiableList = timeManagement.listEmployeesOnProject(projectHelper.getProject().getID());
+	}
+	@Then("system returns a list of employees with the {int} added employees")
+	public void systemReturnsAListOfEmployeesWithTheAddedEmployees(int int1) {
+		assertTrue(this.listSize +int1 ==timeManagement.listEmployeesOnProject(projectHelper.getProject().getID()).size());
+	}
+
+	
 }

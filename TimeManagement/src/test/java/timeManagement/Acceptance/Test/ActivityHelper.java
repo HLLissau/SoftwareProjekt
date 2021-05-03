@@ -12,14 +12,14 @@ public class ActivityHelper {
 	public ActivityHelper(TimeManagement timeManagement) {
 		this.timeManagement= timeManagement;
 	}
-	public Activity registerExampleActivity(String name, Project p, Employee e) throws Exception{
+	public Activity registerExampleActivity(String name, int pID, String eID) throws Exception{
 		this.name = name;
 		Activity a = getActivity();
 		if(!timeManagement.adminLoggedIn()) {
 			this.timeManagement.adminLogin("adminadmin");
 		}
-		// p.setProjectManager(e);
-		//this.timeManagement.addActivityToProject(a, p, e);
+		
+		this.timeManagement.addActivityToProject(a, pID, eID);
 		this.timeManagement.adminlogout();
 		
 		return a;

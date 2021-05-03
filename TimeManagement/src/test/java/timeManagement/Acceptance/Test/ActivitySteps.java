@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import timeManagement.Activity;
+import timeManagement.Employee;
 import timeManagement.ErrorHandler;
 import timeManagement.OperationNotAllowedException;
 import timeManagement.Project;
@@ -45,7 +46,7 @@ public class ActivitySteps {
 	@When("a new activity with name {string} is created")
 	public void aNewActivityWithNameIsCreated(String name) {
 		try {
-			activity=this.activityHelper.registerExampleActivity(name, projectHelper.getProject(), employeeHelper.getEmployee());
+			activity=this.activityHelper.registerExampleActivity(name, projectHelper.getProject().getID(), employeeHelper.getEmployee().getID());
 		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
@@ -86,5 +87,13 @@ public class ActivitySteps {
 	@Then("the time of the activity is not set to {int}")
 	public void theTimeOfTheActivityIsNotSetTo(Integer time) {
 	    assertFalse(time.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity()).getTime()));
+	}
+	@Given("the employee is assigned to an activity")
+	public void theEmployeeIsAssignedToAnActivity() throws Exception {
+		Employee e = employeeHelper.getSecondEmployee();
+		Employee m = employeeHelper.getEmployee();
+		Project p = projectHelper.getProject();
+		Activity a = activityHelper.registerExampleActivity("name", p.getID(), e.getID());
+		
 	}
 }
