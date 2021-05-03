@@ -57,7 +57,7 @@ public class EmployeeHelper {
 		return secondEmployee;
 	}
 	private Employee exampleEmployee() {
-		Employee e = new Employee("Jens Hansen","JHansen@awesomefirm.dk");
+		Employee e = new Employee("Jens", "Hansen", "JHansen@awesomefirm.dk");
 		return e;
 	}
 }

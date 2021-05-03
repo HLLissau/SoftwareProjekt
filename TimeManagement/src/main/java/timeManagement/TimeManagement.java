@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class TimeManagement {
 	
 	
+	private static final Employee Null = null;
 	private	String adminPassword="adminadmin";
 	private boolean adminLoggedIn=false;
 	private ArrayList<Employee> employeeList=new ArrayList<>();
@@ -34,7 +35,7 @@ public class TimeManagement {
 		if (employee!=null) {
 			throw new OperationNotAllowedException("Employee is already registered");
 		}
-		int id=createID();
+		String id=createID(e.getFirstName(), e.getLastName());
 		e.setID(id);
 		employeeList.add(e);
 	}
@@ -44,17 +45,28 @@ public class TimeManagement {
 		}
 		
 	}
-	private int createID() {
-		int id= (int) (Math.random()*10000);
-		while(!isUniqueEmployeeID(id)) {
-			id= (int) (Math.random()*10000);
+	private String createID(String firstName, String lastName) {
+		String initials = firstName.substring(0,1) + lastName.substring(0,1);
+		if (!isUniqueEmployeeID(initials)) {
+			for (char c0 = 'a'; c0 <= 'z'; c0++) {
+				for (char c1 = 'a'; c1 <= 'z'; c1++) {
+					for (char c2 = 'a'; c2 <= 'z'; c2++) {
+						for (char c3 = 'a'; c3 <= 'z'; c3++) {
+							initials = "" + c0 + c1 + c2 + c3;
+						}
+					}
+				}
+			}
 		}
-		return id;
+		return initials;
 	}
-	public Employee getEmployee(Employee employee) {
+	
+	
+	public Employee getEmployee(Employee employee) throws OperationNotAllowedException {
+		checkIfAdminIsLoggedIn();
 		return employeeList.stream().filter(e -> e.getID()==employee.getID()).findAny().orElse(null);
 	}
-	public boolean isUniqueEmployeeID(int id) {
+	public boolean isUniqueEmployeeID(String id) {
 		return (!employeeList.stream().filter(e-> id==e.getID()).findAny().isPresent());
 	}
 	public boolean isUniqueProjectID(int id) {
