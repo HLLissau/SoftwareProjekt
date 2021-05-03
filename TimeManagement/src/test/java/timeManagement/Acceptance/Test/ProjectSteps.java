@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,6 +24,7 @@ public class ProjectSteps {
 	private ProjectHelper projectHelper;
 	private EmployeeHelper employeeHelper;
 	private ActivityHelper activityHelper;
+	private ArrayList<Employee> avaiableList;
 
 	public ProjectSteps(TimeManagement timeManagement,
 						RegisterTime registerTime,
@@ -240,7 +243,16 @@ public class ProjectSteps {
 
 	@When("the project manager requests a list of employees with under {int} activitties")
 	public void theProjectManagerRequestsAListOfEmployeesWithUnderActivitties(int number) {
-	    timeManagement.listAvailableEmployees(number);
+	    this.avaiableList = timeManagement.listAvailableEmployees(number);
 	}
-	
+	@Then("system returns a list of  employees with less than {int} activities.")
+	public void systemReturnsAListOfEmployeesWithLessThanActivities(Integer int1) {
+	    boolean checkint = true;
+		for (Employee e : this.avaiableList) {
+	    	if (e.canBeAssigned() > int1) {
+	    		checkint=false;
+	    	}
+	    }
+		assertTrue(checkint);
+	}
 }

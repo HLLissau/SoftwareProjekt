@@ -68,7 +68,7 @@ public class Project extends ActivityAndProjectParent {
 			
 		if ((getEmployee(employee)==null)) {
 			employeeList.add(employee);
-			//employee.setProject(this);
+			employee.setProject(this);
 		} else {
 			throw new OperationNotAllowedException("Employee already added to project");
 		}
