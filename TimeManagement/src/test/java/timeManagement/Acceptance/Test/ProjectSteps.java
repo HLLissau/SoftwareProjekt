@@ -47,15 +47,15 @@ public class ProjectSteps {
 
 	@Given("the employee is not registered as project manager of the project")
 	public void theEmployeeIsNotRegisteredAsProjectManagerOfTheProject() throws Exception {
-		Employee manager = employeeHelper.getEmployee();
-		Employee employee = employeeHelper.registerSecondExampleEmployee();
+		Employee employee = employeeHelper.getEmployee();
+		Employee manager = employeeHelper.registerSecondExampleEmployee();
 		timeManagement.setProjectManager(projectHelper.getProject(),manager);
 		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject()).getProjectManager().getID());
 	}
 	@When("the employee adds another employee to the project")
 	public void theEmployeeAddsAnotherEmployeeToTheProject() {
-		Employee manager = employeeHelper.getEmployee();
-		Employee employee = employeeHelper.getSecondEmployee();
+		Employee employee = employeeHelper.getEmployee();
+		Employee manager = employeeHelper.getSecondEmployee();
 		addEmployeehelp(manager,employee);
 	}
 	
@@ -164,4 +164,59 @@ public class ProjectSteps {
 	public void theEmployeeIsNoLongerInTheProject() {
 	    assertFalse(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject()).getEmployee(employeeHelper.getEmployee())));
 	}
+	@When("the project manager edits the description to {string}")
+	public void theProjectManagerEditsTheDescriptionTo(String description) {
+	    try {
+			timeManagement.setProjectDescription(description,projectHelper.getProject(),employeeHelper.getEmployee());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+	@Then("the project description is {string}")
+	public void theProjectDescriptionIs(String description) {
+	    try {
+			assertTrue(description.equals(timeManagement.getProjectDescription(project)));
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}    		
+	}
+	@When("the project manager sets the project time to {int}")
+	public void theProjectManagerSetsTheProjectTimeTo(Integer time) {
+    try {
+			timeManagement.setTimeOfProject(time,projectHelper.getProject(),employeeHelper.getEmployee());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the activity time is set to {int}")
+	public void theActivityTimeIsSetTo(int time) {
+		try {
+			assertTrue(time ==(timeManagement.getProjectTime(project)));
+		} catch (Exception e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+	@When("the employee is registered as project manager")
+	public void theEmployeeIsRegisteredAsProjectManager() {
+	    timeManagement.setProjectManager(projectHelper.getProject(), employeeHelper.getEmployee());
+	}
+	@Then("the employee is registered as the project manager")
+	public void theEmployeeIsRegisteredAsTheProjectManager() {
+	  assertTrue(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject()).getProjectManager()));
+	}
+	@When("the Employee is unregistered as project manager")
+	public void theEmployeeIsUnregisteredAsProjectManager() {
+	    try {
+			timeManagement.removeProjectManagerFromProject(projectHelper.getProject(),employeeHelper.getEmployee());
+		} catch (Exception e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+			
+		}
+	}
+	@Then("the Employee is no longer project manager")
+	public void theEmployeeIsNoLongerProjectManager() {
+	    assertFalse(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject()).getProjectManager()));
+	}
+	
 }

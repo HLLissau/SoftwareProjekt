@@ -71,7 +71,7 @@ public class LoginLogoutSteps {
 
 	@Then("the error message {string} is given")
 	public void theErrorMessageIsGiven(String string) {
-	    assertTrue(string.equals(errorMessageHandler.getErrorMessage()));
+	   assertTrue(string.equals(errorMessageHandler.getErrorMessage()));
 	}
 	@Given("an employee is registered with TimeManagement")
 	public void anEmployeeIsRegisteredWithTimeManagement() throws Exception {

@@ -1,4 +1,4 @@
-Feature: Add employee from project
+Feature: Add employee to project
 
 Description: Employees can add  employees from projects that they are project managers on; 
     trying to add employees from projects they are not project 
