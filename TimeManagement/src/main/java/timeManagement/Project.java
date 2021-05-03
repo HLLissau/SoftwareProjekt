@@ -14,10 +14,23 @@ public class Project extends ActivityAndProjectParent {
 		super(name);
 	}
 	
-	
-	
 	public void setProjectManager(Employee manager) {
-		this.projectManager=manager;
+		if (this.projectManager==null){
+			this.projectManager=manager;
+		}
+		
+	}
+	
+	/*
+	 * Set a new project manager
+	 */
+	public void setProjectManager(Employee newManager , Employee manager) throws OperationNotAllowedException {
+		if (this.projectManager==null){
+			this.projectManager=newManager;
+		} else {
+			isProjectManager(manager);
+			this.projectManager=newManager;
+		}
 	}
 
 	public void isProjectManager(Employee e) throws OperationNotAllowedException {
@@ -86,13 +99,35 @@ public class Project extends ActivityAndProjectParent {
 
 
 
-	public void removeEmployee(Employee employee, Employee projectManager2) throws OperationNotAllowedException {
-		isProjectManager(projectManager2);
+	public void removeEmployee(Employee employee, Employee projectManager) throws OperationNotAllowedException {
+		isProjectManager(projectManager);
 		if ((getEmployee(employee)!=null)) {
 			employeeList.remove(employee);
 		} else {
 			throw new OperationNotAllowedException("Employee not found in project");
 		}
+	}
+	public void setDescription(Employee projectManager, String description) throws OperationNotAllowedException {
+		isProjectManager(projectManager);
+		this.description=description;
+		
+	}
+
+	public void setTime(Employee projectManager, int time) throws OperationNotAllowedException {
+		isProjectManager(projectManager);
+		assert time>0 : "precondition not met, must be positive time";
+		setExpectedTime(time);
+		assert this.time==time: "postcondition not met";
+	}
+
+	public int getTime() {
+		
+		return this.time;
+	}
+
+	public void removeProjectManager(Employee projectManager) throws OperationNotAllowedException  {
+		isProjectManager(projectManager);
+		this.projectManager=null;
 	}
 	
 }

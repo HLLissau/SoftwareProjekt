@@ -102,4 +102,52 @@ public class TimeManagement {
 		getProject(project).removeEmployee(employee, projectManager);
 		
 	}
+	public void removeEmployeeFromTimeManagement(Employee e) throws Exception {
+		checkIfAdminIsLoggedIn();
+		Employee employeeToRemove = getEmployee(e);
+		
+		if (employeeToRemove!=null) { // check if Employee is found in project
+			if (employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
+				employeeList.remove(employeeToRemove);
+			} else {
+				throw new Exception("Employee is working on activity");
+			}
+		} else {
+			throw new Exception("Employee not found in project");
+		}
+		
+	}
+	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
+		for(Project project: projectList) {
+			project.getActivity(activity);
+		}
+		return true;
+	}
+	public void setProjectDescription(String description, Project project, Employee employee) throws OperationNotAllowedException {
+		getProject(project).setDescription(employee, description);
+	}
+	public String getProjectDescription(Project project) throws OperationNotAllowedException {
+		return getProject(project).getDescription();
+	}
+	public void setTimeOfProject(int time, Project project, Employee employee) throws OperationNotAllowedException {
+		getProject(project).setTime(employee, time);
+		
+	}
+	public int getProjectTime(Project project) throws Exception {
+		Project p= getProject(project);
+		if (p!=null) {
+			return p.getTime();
+		} else {
+			throw new Exception("project not found");
+		}
+			
+	}
+	public void removeProjectManagerFromProject(Project project, Employee employee) throws Exception {
+		Project p = getProject(project);
+		if(p!=null) {
+			p.removeProjectManager(employee);
+		}else {
+			throw new Exception("project not found");
+		}
+	}
 }
