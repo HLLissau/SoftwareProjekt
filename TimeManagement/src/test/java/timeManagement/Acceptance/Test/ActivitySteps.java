@@ -54,7 +54,7 @@ public class ActivitySteps {
 	@When("the employee sets the time of the activity to {int}")
 	public void theProjectManagerSetsTheTimeOfTheActivityTo(int time) {
 	    try {
-			timeManagement.getProject(projectHelper.getProject()).setActivityTime(employeeHelper.getEmployee(), activityHelper.getActivity(), time);
+			timeManagement.getProject(projectHelper.getProject().getID()).setActivityTime(employeeHelper.getEmployee(), activityHelper.getActivity(), time);
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
@@ -62,7 +62,7 @@ public class ActivitySteps {
 	@When("the second employee sets the time of the activity to {int}")
 	public void theSecondEmployeeSetsTheTimeOfTheActivityTo(Integer time) {
 		 try {
-				timeManagement.getProject(projectHelper.getProject()).setActivityTime(employeeHelper.getSecondEmployee(), activityHelper.getActivity(), time);
+				timeManagement.getProject(projectHelper.getProject().getID()).setActivityTime(employeeHelper.getSecondEmployee(), activityHelper.getActivity(), time);
 			} catch (OperationNotAllowedException e) {
 				errorMessageHandler.setErrorMessage(e.getMessage());
 			}
@@ -70,21 +70,21 @@ public class ActivitySteps {
 	
 	@Then("a activity with the name {string} is in TimeManagement")
 	public void aActivityWithTheNameIsInTimeManagement(String string) {
-	    assertTrue(activity.equals(timeManagement.getProject(projectHelper.getProject()).getActivity(activity)));
+	    assertTrue(activity.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activity)));
 	}
 	
 	@Then("a activity with the name {string} is not in TimeManagement")
 	public void aActivityWithTheNameIsNotInTimeManagement(String string) {
-	    assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(projectHelper.getProject()).getActivity(activity)));
+	    assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activity)));
 	}
 	
 	@Then("the time of the activity is set to {int}")
 	public void theTimeOfTheActivityIsSetTo(Integer time) {
-		assertTrue(time.equals(timeManagement.getProject(projectHelper.getProject()).getActivity(activityHelper.getActivity()).getTime()));
+		assertTrue(time.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity()).getTime()));
 	}
 	
 	@Then("the time of the activity is not set to {int}")
 	public void theTimeOfTheActivityIsNotSetTo(Integer time) {
-	    assertFalse(time.equals(timeManagement.getProject(projectHelper.getProject()).getActivity(activityHelper.getActivity()).getTime()));
+	    assertFalse(time.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity()).getTime()));
 	}
 }

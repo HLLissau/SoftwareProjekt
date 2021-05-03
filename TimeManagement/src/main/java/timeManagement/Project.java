@@ -14,13 +14,7 @@ public class Project extends ActivityAndProjectParent {
 		super(name);
 	}
 	
-	public void setProjectManager(Employee manager) {
-		if (this.projectManager==null){
-			this.projectManager=manager;
-		}
 		
-	}
-	
 	/*
 	 * Set a new project manager
 	 */
@@ -48,6 +42,7 @@ public class Project extends ActivityAndProjectParent {
 		Activity activityexists = getActivity(a);
 		if (activityexists ==null) {
 			activityList.add(a);
+			e.setActivity(activityexists);
 		}else {
 			throw new OperationNotAllowedException("Activity already added to project");
 		}
@@ -73,6 +68,7 @@ public class Project extends ActivityAndProjectParent {
 			
 		if ((getEmployee(employee)==null)) {
 			employeeList.add(employee);
+			//employee.setProject(this);
 		} else {
 			throw new OperationNotAllowedException("Employee already added to project");
 		}

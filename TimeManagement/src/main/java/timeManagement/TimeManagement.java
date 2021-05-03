@@ -30,7 +30,7 @@ public class TimeManagement {
 
 	public void createEmployee(Employee e) throws OperationNotAllowedException {
 		checkIfAdminIsLoggedIn();
-		Employee employee = getEmployee(e);
+		Employee employee = getEmployee(e.getID());
 		if (employee!=null) {
 			throw new OperationNotAllowedException("Employee is already registered");
 		}
@@ -51,8 +51,8 @@ public class TimeManagement {
 		}
 		return id;
 	}
-	public Employee getEmployee(Employee employee) {
-		return employeeList.stream().filter(e -> e.getID()==employee.getID()).findAny().orElse(null);
+	public Employee getEmployee(int employeeID) {
+		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
 	}
 	public boolean isUniqueEmployeeID(int id) {
 		return (!employeeList.stream().filter(e-> id==e.getID()).findAny().isPresent());
@@ -69,7 +69,7 @@ public class TimeManagement {
 	}
 	public void createProject(Project p) throws OperationNotAllowedException {
 		checkIfAdminIsLoggedIn();
-		Project project = getProject(p);
+		Project project = getProject(p.getID());
 		if(project!=null) {
 			throw new OperationNotAllowedException("Project already exists");
 		}
@@ -77,34 +77,45 @@ public class TimeManagement {
 		p.setID(id);
 		projectList.add(p);
 	}
-	public Project getProject(Project project) {
-		return projectList.stream().filter(p -> p.getID()==project.getID()).findAny().orElse(null);
+	public Project getProject(int projectID) {
+		return projectList.stream().filter(p -> p.getID()==projectID).findAny().orElse(null);
 	}
-	public void addActivityToProject(Activity a, Project p, Employee manager) throws OperationNotAllowedException {
-		getProject(p).addActivity(a, manager);
+	public void addActivityToProject(Activity a, int pID, int managerID) throws OperationNotAllowedException {
+		Employee manager = getEmployee(managerID);
+		getProject(pID).addActivity(a, manager);
 		
 	}
-	public void addEmployeeToProject(Employee employee, Project project, Employee manager) throws OperationNotAllowedException {
-		getProject(project).addEmployee(employee, manager);
+	public void addEmployeeToProject(int employeeID, int projectID, int managerID) throws OperationNotAllowedException {
+		Employee employee = getEmployee(employeeID);
+		Employee manager = getEmployee(managerID);
+		Project p = getProject(projectID);
+		p.addEmployee(employee, manager);
+	}
+	public Employee getEmployeeFromProject(int employeeID, int projectID) {
+		Employee employee = getEmployee(employeeID);
+		
+			return getProject(projectID).getEmployee(employee);
 		
 	}
-	public Employee getEmployeeFromProject(Employee employee, Project project) {
-		return getProject(project).getEmployee(employee);
-	}
-	public void setProjectManager(Project project, Employee employee) {
-		getProject(project).setProjectManager(employee);
+	public void setProjectManager(int projectID, int employeeID) throws OperationNotAllowedException {
+		Employee employee = getEmployee(employeeID);
+		
+		getProject(projectID).setProjectManager(employee,employee);
 		
 	}
-	public void removeActivity(Activity activity, Project project, Employee employee) throws OperationNotAllowedException {
-		getProject(project).removeActivity(activity,employee);
+	public void removeActivity(Activity activity, int projectID, int employeeID) throws OperationNotAllowedException {
+		Employee employee = getEmployee(employeeID);
+		getProject(projectID).removeActivity(activity,employee);
 	}
-	public void removeEmployeeFromProject(Employee employee, Project project, Employee projectManager) throws OperationNotAllowedException {
-		getProject(project).removeEmployee(employee, projectManager);
+	public void removeEmployeeFromProject(int employeeID, int projectID, int managerID) throws OperationNotAllowedException {
+		Employee manager = getEmployee(managerID);
+		Employee employee = getEmployee(employeeID);
+		getProject(projectID).removeEmployee(employee, manager);
 		
 	}
-	public void removeEmployeeFromTimeManagement(Employee e) throws Exception {
+	public void removeEmployeeFromTimeManagement(int eID) throws Exception {
 		checkIfAdminIsLoggedIn();
-		Employee employeeToRemove = getEmployee(e);
+		Employee employeeToRemove = getEmployee(eID);
 		
 		if (employeeToRemove!=null) { // check if Employee is found in project
 			if (employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
@@ -123,18 +134,21 @@ public class TimeManagement {
 		}
 		return true;
 	}
-	public void setProjectDescription(String description, Project project, Employee employee) throws OperationNotAllowedException {
-		getProject(project).setDescription(employee, description);
+	public void setProjectDescription(String description, int projectID, int managerID) throws OperationNotAllowedException {
+		Employee manager = getEmployee(managerID);
+		getProject(projectID).setDescription(manager, description);
 	}
-	public String getProjectDescription(Project project) throws OperationNotAllowedException {
-		return getProject(project).getDescription();
+	public String getProjectDescription(int projectID) throws OperationNotAllowedException {
+		return getProject(projectID).getDescription();
 	}
-	public void setTimeOfProject(int time, Project project, Employee employee) throws OperationNotAllowedException {
-		getProject(project).setTime(employee, time);
+	public void setTimeOfProject(int time, int projectID, int managerID) throws OperationNotAllowedException {
+		Employee manager = getEmployee(managerID);
+		getProject(projectID).setTime(manager, time);
+		
 		
 	}
-	public int getProjectTime(Project project) throws Exception {
-		Project p= getProject(project);
+	public int getProjectTime(int projectID) throws Exception {
+		Project p= getProject(projectID);
 		if (p!=null) {
 			return p.getTime();
 		} else {
@@ -142,12 +156,23 @@ public class TimeManagement {
 		}
 			
 	}
-	public void removeProjectManagerFromProject(Project project, Employee employee) throws Exception {
-		Project p = getProject(project);
+	public void removeProjectManagerFromProject(int projectID, int managerID) throws Exception {
+		Project p = getProject(projectID);
+		Employee manager = getEmployee(managerID);
 		if(p!=null) {
-			p.removeProjectManager(employee);
+			p.removeProjectManager(manager);
 		}else {
 			throw new Exception("project not found");
 		}
+	}
+	public  ArrayList<Employee> listAvailableEmployees(int number) {
+		ArrayList<Employee> returnlist = new ArrayList<>();
+		for (Employee e: employeeList) {
+			if (e.canBeAssigned() < number) {
+				returnlist.add(e);
+			}
+		}
+		return returnlist;
+		
 	}
 }

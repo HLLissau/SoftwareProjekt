@@ -51,7 +51,7 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is registered in TimeManagement")
 	public void theEmployeeIsRegisteredInTimeManagement() {
-	    assertTrue(employee.equals(timeManagement.getEmployee(employee)));
+	    assertTrue(employee.equals(timeManagement.getEmployee(employee.getID())));
 	}
 
 
@@ -97,7 +97,7 @@ public class LoginLogoutSteps {
 	@When("the administrator deletes the employee from TimeManagement")
 	public void theAdministratorDeletesTheEmployeeFromTimeManagement() {
 	    try {
-	    	timeManagement.removeEmployeeFromTimeManagement(employeeHelper.getEmployee());
+	    	timeManagement.removeEmployeeFromTimeManagement(employeeHelper.getEmployee().getID());
 		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
@@ -105,11 +105,11 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is not registered in TimeManagement")
 	public void theEmployeeIsNotRegisteredInTimeManagement() {
-		assertFalse(employeeHelper.getEmployee().equals(timeManagement.getEmployee(employeeHelper.getEmployee())));
+		assertFalse(employeeHelper.getEmployee().equals(timeManagement.getEmployee(employeeHelper.getEmployee().getID())));
 	}
 	@Then("the employee is still registered with TimeManagement")
 	public void theEmployeeIsStillRegisteredWithTimeManagement() {
-		assertTrue(employeeHelper.getEmployee().equals(timeManagement.getEmployee(employeeHelper.getEmployee())));
+		assertTrue(employeeHelper.getEmployee().equals(timeManagement.getEmployee(employeeHelper.getEmployee().getID())));
 	}
 
 }
