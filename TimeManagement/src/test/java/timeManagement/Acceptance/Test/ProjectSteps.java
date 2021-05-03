@@ -171,7 +171,7 @@ public class ProjectSteps {
 	@When("the project manager removes the employee from the project")
 	public void theProjectManagerRemovesTheEmployeeFromTheProject() {
 	    try {
-			timeManagement.removeEmployeeFromProject(employeeHelper.getEmployee().getID(),projectHelper.getProject().getID(),employeeHelper.getSecondEmployee().getID());
+			timeManagement.removeEmployeeFromProject(employeeHelper.getSecondEmployee().getID(),projectHelper.getProject().getID(),employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}

@@ -84,6 +84,7 @@ public class Project extends ActivityAndProjectParent {
 
 	public void removeActivity(int activityID, Employee employee) throws OperationNotAllowedException {
 		isProjectManager(employee);
+		
 		Activity activityToRemove =getActivity(activityID);
 		
 		if (activityToRemove !=null) {
@@ -98,11 +99,24 @@ public class Project extends ActivityAndProjectParent {
 	public void removeEmployee(Employee employee, Employee projectManager) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
 		if ((getEmployee(employee)!=null)) {
+			canRemoveEmployee(employee);
 			employeeList.remove(employee);
 		} else {
 			throw new OperationNotAllowedException("Employee not found in project");
 		}
 	}
+	private void canRemoveEmployee(Employee employee) throws OperationNotAllowedException {
+		for (Activity activity: activityList) {
+			
+			if (activity.employeeList.contains(employee)) {
+				
+				throw new OperationNotAllowedException("Employee is working on project");
+			}
+		}
+		
+	}
+
+
 	public void setDescription(Employee projectManager, String description) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
 		this.description=description;

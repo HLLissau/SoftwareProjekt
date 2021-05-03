@@ -18,6 +18,7 @@ public class Activity extends ActivityAndProjectParent {
 	public void addEmployee(Employee employee) throws Exception {
 		if (!employeeList.contains(employee)) {
 			employeeList.add(employee);
+			employee.setActivity(this);
 		} else {
 			throw new Exception("Employee already added to the activity");
 		}

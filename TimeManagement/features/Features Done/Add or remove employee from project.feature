@@ -34,8 +34,22 @@ Scenario: Project manager removes employee from project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
     And an employee is registered as project manager of the project
+    And a activity is in the project
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project
     Then the employee is added to the project
     When the project manager removes the employee from the project
     Then the employee is no longer in the project
+    
+Scenario: Project manager removes employee from project who is working on activity
+    Given a project is in TimeManagement
+    And an employee is registered with TimeManagement
+    And an employee is registered as project manager of the project
+    And a activity is in the project
+    And a second employee is registered with TimeManagement 
+    When the project manager adds an employee to the project
+    Then the employee is added to the project
+    When the project manager adds an employee to an activity
+    Then the employee is added to the activity
+    When the project manager removes the employee from the project
+    Then the error message "Employee is working on project" is given
