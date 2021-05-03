@@ -32,9 +32,9 @@ public class LoginLogoutSteps {
 	   assertTrue(timeManagement.adminLoggedIn());
 	}
 
-	@Given("there is a user with name {string}, email {string}")
-	public void thereIsAUserWithNameEmail(String name, String email) {
-		this.employee=new Employee(name,email);
+	@Given("there is a user with first name {string} , last name {string} , email {string}")
+	public void thereIsAUserWithFirstNameLastNameEmail(String firstName, String lastName, String email) {
+		this.employee=new Employee(firstName, lastName, email);
 		
 	}
 
