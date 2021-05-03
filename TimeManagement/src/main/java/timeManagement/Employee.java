@@ -51,4 +51,8 @@ public class Employee {
 			return false;
 		}
 	}
+	public  ArrayList<Activity> getActivityList() {
+		
+		return this.presentActivityList;
+	}
 }

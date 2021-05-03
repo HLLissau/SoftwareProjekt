@@ -152,12 +152,12 @@ public class ProjectSteps {
 
 	@Then("the activity is added to the project")
 	public void theActivityIsAddedToTheProject() {
-		assertTrue(activityHelper.getActivity().equals(timeManagement.getProject(project.getID()).getActivity(activityHelper.getActivity())));
+		assertTrue(activityHelper.getActivity().equals(timeManagement.getProject(project.getID()).getActivity(activityHelper.getActivity().getID())));
 	}
 	@When("the employee removes the activity from the project")
 	public void theEmployeeRemovesTheActivityFromTheProject() {
 		try {
-			timeManagement.removeActivity(activityHelper.getActivity(),project.getID(),employeeHelper.getEmployee().getID());
+			timeManagement.removeActivity(activityHelper.getActivity().getID(),project.getID(),employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
@@ -165,7 +165,7 @@ public class ProjectSteps {
 	
 	@Then("the activity is not in the project")
 	public void theActivityIsNotAddedToTheProject() {
-		assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(project.getID()).getActivity(activityHelper.getActivity())));
+		assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(project.getID()).getActivity(activityHelper.getActivity().getID())));
 
 	}
 	@When("the project manager removes the employee from the project")

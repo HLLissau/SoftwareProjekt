@@ -39,7 +39,7 @@ public class Project extends ActivityAndProjectParent {
 
 	public void addActivity(Activity a, Employee e) throws OperationNotAllowedException {
 		isProjectManager(e);
-		Activity activityexists = getActivity(a);
+		Activity activityexists = getActivity(a.getID());
 		if (activityexists ==null) {
 			activityList.add(a);
 			e.setActivity(activityexists);
@@ -50,15 +50,15 @@ public class Project extends ActivityAndProjectParent {
 
 
 
-	public Activity getActivity(Activity activity) {
-		return activityList.stream().filter(a -> a.getID()==activity.getID()).findAny().orElse(null);
+	public Activity getActivity(int activity) {
+		return activityList.stream().filter(a -> a.getID()==activity).findAny().orElse(null);
 	}
 
 
 
-	public void setActivityTime(Employee employee, Activity activity, int time) throws OperationNotAllowedException {
+	public void setActivityTime(Employee employee, int activityID, int time) throws OperationNotAllowedException {
 		isProjectManager(employee);
-		getActivity(activity).setBudgettedTime(time);
+		getActivity(activityID).setBudgettedTime(time);
 	}
 
 
@@ -82,9 +82,9 @@ public class Project extends ActivityAndProjectParent {
 
 
 
-	public void removeActivity(Activity activity, Employee employee) throws OperationNotAllowedException {
+	public void removeActivity(int activityID, Employee employee) throws OperationNotAllowedException {
 		isProjectManager(employee);
-		Activity activityToRemove =getActivity(activity);
+		Activity activityToRemove =getActivity(activityID);
 		
 		if (activityToRemove !=null) {
 			activityList.remove(activityToRemove);
@@ -124,6 +124,19 @@ public class Project extends ActivityAndProjectParent {
 	public void removeProjectManager(Employee projectManager) throws OperationNotAllowedException  {
 		isProjectManager(projectManager);
 		this.projectManager=null;
+	}
+
+
+	public void addEmployeeToActivity(Employee employee, int activityID, Employee manager) throws Exception {
+		
+		isProjectManager(manager);
+		Activity a = getActivity(activityID);
+		if(a!=null) {
+			a.addEmployee(employee);
+		}else {
+			throw new Exception("Activity not found in project");
+		}
+		
 	}
 	
 }

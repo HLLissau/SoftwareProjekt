@@ -49,15 +49,15 @@ Scenario: Employee adds activity to project
     Then the error message "Not logged in as project manager" is given
     And the activity is not in the project
 
-Scenario: Employee removes activity from project
-    Given a project is in TimeManagement
-    And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
-    And an activity with the name "new activity" is in TimeManagement
-    When the employee adds the activity to the project
-    Then the activity is added to the project
-    When another employee is logged in
-    And the employee removes the activity from the project
-    Then the error message "Not logged in as project manager" is given
-    Then the activity is added to the project
+#Scenario: Employee removes activity from project
+    #Given a project is in TimeManagement
+    #And an employee is registered with TimeManagement
+    #And an employee is registered as project manager of the project
+    #And an activity with the name "new activity" is in TimeManagement
+    #When the employee adds the activity to the project
+    #Then the activity is added to the project
+    #When another employee is logged in
+    #And the employee removes the activity from the project
+    #Then the error message "Not logged in as project manager" is given
+    #Then the activity is added to the project
 

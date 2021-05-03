@@ -14,5 +14,13 @@ public class Activity extends ActivityAndProjectParent {
 	public int getTime() {
 		return budgettedTime;
 	}
+
+	public void addEmployee(Employee employee) throws Exception {
+		if (!employeeList.contains(employee)) {
+			employeeList.add(employee);
+		} else {
+			throw new Exception("Employee already added to the activity");
+		}
+	}
 	
 }

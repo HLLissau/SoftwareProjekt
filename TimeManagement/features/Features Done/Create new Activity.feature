@@ -4,19 +4,26 @@ Description: a new activity is created in TimeManagement
 Actor: Project manager
 
 Scenario: Create a new activity
+    Given an employee is registered with TimeManagement
+    When a new activity with name "new activity" is created
+    And the employee adds the activity to timeManagement
+    Then a activity with the name "new activity" is in TimeManagement
+
+
+Scenario: set a new activity in project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
     And an employee is registered as project manager of the project
-    When a new activity with name "new activity" is created
-    And the employee adds the activity to the project
+    And an activity with the name "new activity" is in TimeManagement
+    When the employee adds the activity to the project
     Then a activity with the name "new activity" is in TimeManagement
 
-Scenario: Create a new activity when not project manager
+Scenario: set a new activity when not project manager
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
     And an employee is not registered as project manager of the project
-    When a new activity with name "new activity" is created
-    And the employee adds the activity to the project
+    And an activity with the name "new activity" is in TimeManagement
+    When the employee adds the activity to the project
     And the error message "Not logged in as project manager" is given 
 
 Scenario: Set time of activity

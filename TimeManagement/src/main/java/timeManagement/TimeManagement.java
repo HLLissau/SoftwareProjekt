@@ -1,6 +1,7 @@
 package timeManagement;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class TimeManagement {
 	
@@ -11,7 +12,7 @@ public class TimeManagement {
 	private ArrayList<Employee> employeeList=new ArrayList<>();
 	private ArrayList<Project> projectList=new ArrayList<>();
 	private RegisterTime registerTime;
-	private Activity activity;
+	private Collection<Activity> activityList=new ArrayList<>();
 	
 	public TimeManagement() {
 			this.registerTime = new RegisterTime();
@@ -38,6 +39,24 @@ public class TimeManagement {
 		String id=createID(e.getFirstName(), e.getLastName());
 		e.setID(id);
 		employeeList.add(e);
+	}
+	public void createActivity(Activity a) throws OperationNotAllowedException {
+		
+		Activity activity = getActivity(a.getID());
+		
+		if (activity!=null) {
+			throw new OperationNotAllowedException("Activity is already registered");
+		}
+		int id =createActivityID();
+		a.setID(id);
+		activityList.add(a);
+	}
+	
+	public Activity getActivity(int activityID) {
+		return activityList.stream().filter(a -> a.getID()==activityID).findAny().orElse(null);
+	}
+	public Project getProject(int projectID) {
+		return projectList.stream().filter(p -> p.getID()==projectID).findAny().orElse(null);
 	}
 	private void checkIfAdminIsLoggedIn() throws OperationNotAllowedException {
 		if (!this.adminLoggedIn) {
@@ -77,6 +96,16 @@ public class TimeManagement {
 		}
 		return id;
 	}
+	private int createActivityID() {
+		int id= (10000)+(int) (Math.random()*1000);
+		while(!isUniqueActivityID(id)) {
+			id= (10000) + (int) (Math.random()*10000);
+		}
+		return id;
+	}
+	private boolean isUniqueActivityID(int id) {
+		return (!activityList.stream().filter(a-> id==a.getID()).findAny().isPresent());
+	}
 	public void createProject(Project p) throws OperationNotAllowedException {
 		checkIfAdminIsLoggedIn();
 		Project project = getProject(p.getID());
@@ -87,9 +116,7 @@ public class TimeManagement {
 		p.setID(id);
 		projectList.add(p);
 	}
-	public Project getProject(int projectID) {
-		return projectList.stream().filter(p -> p.getID()==projectID).findAny().orElse(null);
-	}
+	
 	public void addActivityToProject(Activity a, int pID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
@@ -112,9 +139,10 @@ public class TimeManagement {
 		getProject(projectID).setProjectManager(employee,employee);
 		
 	}
-	public void removeActivity(Activity activity, int projectID, String employeeID) throws OperationNotAllowedException {
+	public void removeActivity(int activityID, int projectID, String employeeID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
-		getProject(projectID).removeActivity(activity,employee);
+		Activity activity = getActivity(activityID);
+		getProject(projectID).removeActivity(activity.getID(),employee);
 	}
 	public void removeEmployeeFromProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
@@ -138,10 +166,7 @@ public class TimeManagement {
 		
 	}
 	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
-		for(Project project: projectList) {
-			project.getActivity(activity);
-		}
-		return true;
+		return employeeToRemove.getActivityList().isEmpty();
 	}
 	public void setProjectDescription(String description, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
@@ -187,5 +212,15 @@ public class TimeManagement {
 	public ArrayList<Employee> listEmployeesOnProject(int projectID) {
 		Project p = getProject(projectID);
 		 return p.listEmployees();
+	}
+	public void addEmployeeToActivity(String employeeID, int projectID, int activityID, String managerID) throws Exception {
+		Project p = getProject(projectID);
+		Employee manager = getEmployee(managerID);
+		Employee employee = getEmployee(employeeID);
+		if(p!=null) {
+			p.addEmployeeToActivity(employee,activityID,manager);
+		}else {
+			throw new Exception("project not found");
+		}
 	}
 }
