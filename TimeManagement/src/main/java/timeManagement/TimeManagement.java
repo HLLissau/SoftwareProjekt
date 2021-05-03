@@ -155,15 +155,13 @@ public class TimeManagement {
 		Employee employeeToRemove = getEmployee(eID);
 		
 		if (employeeToRemove!=null) { // check if Employee is found in project
-			if (employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
-				employeeList.remove(employeeToRemove);
-			} else {
+			if (!employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
 				throw new Exception("Employee is working on activity");
 			}
 		} else {
-			throw new Exception("Employee not found in project");
+			throw new Exception("Employee not found in TimeManagement");
 		}
-		
+		employeeList.remove(employeeToRemove);
 	}
 	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
 		return employeeToRemove.getActivityList().isEmpty();
