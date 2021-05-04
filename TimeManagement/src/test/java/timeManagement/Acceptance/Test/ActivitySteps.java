@@ -1,5 +1,6 @@
 package timeManagement.Acceptance.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -88,6 +89,11 @@ public class ActivitySteps {
 	@Then("the time of the activity is set to {int}")
 	public void theTimeOfTheActivityIsSetTo(int time) {
 		assertTrue(time ==(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
+	}
+	
+	@Then("the activity has a unique id")
+	public void theActivityHasAUniqueId() {
+	    assertEquals(1, timeManagement.amountOfActivitiesWithID(activity.getID()));
 	}
 	
 	@Then("the time of the activity is not set to {int}")
