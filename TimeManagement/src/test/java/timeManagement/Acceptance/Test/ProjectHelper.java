@@ -12,9 +12,8 @@ public class ProjectHelper {
 	}
 	public Project registerExampleProject() throws Exception{
 		Project p = getProject();
-		if(!timeManagement.adminLoggedIn()) {
-			this.timeManagement.adminLogin("adminadmin");
-		}
+		this.timeManagement.adminLogin("adminadmin");
+		
 		this.timeManagement.createProject(p);
 		this.timeManagement.adminlogout();
 		

@@ -78,21 +78,11 @@ public class LoginLogoutSteps {
 		this.employee= this.employeeHelper.registerExampleEmployee();
 		
 	}
-	@When("the administrator registers the employee again")
-	public void theAdministratorRegistersTheEmployeeAgain() {
-	    try {
-			this.timeManagement.createEmployee(employee);
-		} catch (OperationNotAllowedException e) {
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
-	}
+
 	@When("another employee is logged in")
-	public void anotherEmployeeIsLoggedIn() {
-	    try {
-			this.employeeHelper.registerNewExampleEmployee();
-		} catch (Exception e) {
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
+	public void anotherEmployeeIsLoggedIn() throws Exception {
+	    this.employeeHelper.registerNewExampleEmployee();
+		
 	}
 	@When("the administrator deletes the employee from TimeManagement")
 	public void theAdministratorDeletesTheEmployeeFromTimeManagement() {

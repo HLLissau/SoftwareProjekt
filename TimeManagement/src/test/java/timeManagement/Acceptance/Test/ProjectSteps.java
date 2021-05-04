@@ -106,12 +106,7 @@ public class ProjectSteps {
 	public void anEmployeeIsNotRegisteredAsProjectManagerOfTheProject() {
 	    assertFalse(employeeHelper.getEmployee().equals(projectHelper.getProject().getProjectManager()));
 	}
-	
-	@When("another employee is logged in who is not project manager")
-	public void anotherEmployeeIsLoggedInWhoIsNotProjectManager() throws Exception {
-	    employeeHelper.registerNewExampleEmployee();
-	    assertFalse(employeeHelper.getSecondEmployee().getID() == timeManagement.getProject(projectHelper.getProject().getID()).getProjectManager().getID());
-	}
+
 	@When("the project manager adds an employee to the project")
 	public void theProjectManagerAddsAnEmployeeToTheProject() throws Exception {
 	   Employee manager = employeeHelper.getEmployee();
@@ -181,8 +176,8 @@ public class ProjectSteps {
 	public void theEmployeeIsNoLongerInTheProject() {
 	    assertFalse(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject().getID()).getEmployee(employeeHelper.getEmployee())));
 	}
-	@When("the project manager edits the description to {string}")
-	public void theProjectManagerEditsTheDescriptionTo(String description) {
+	@When("the employee edits the description to {string}")
+	public void theEmployeeEditsTheDescriptionTo(String description) {
 	    try {
 			timeManagement.setProjectDescription(description,projectHelper.getProject().getID(),employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
@@ -191,14 +186,12 @@ public class ProjectSteps {
 	}
 	@Then("the project description is {string}")
 	public void theProjectDescriptionIs(String description) {
-	    try {
+	    
 			assertTrue(description.equals(timeManagement.getProjectDescription(project.getID())));
-		} catch (OperationNotAllowedException e) {
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}    		
+		  		
 	}
-	@When("the project manager sets the project time to {int}")
-	public void theProjectManagerSetsTheProjectTimeTo(Integer time) {
+	@When("the employee sets the project time to {int}")
+	public void theEmployeeSetsTheProjectTimeTo(Integer time) {
     try {
 			timeManagement.setTimeOfProject(time,projectHelper.getProject().getID(),employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
@@ -208,11 +201,8 @@ public class ProjectSteps {
 
 	@Then("the activity time is set to {int}")
 	public void theActivityTimeIsSetTo(int time) {
-		try {
-			assertTrue(time ==(timeManagement.getProjectTime(project.getID())));
-		} catch (Exception e) {
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
+		assertTrue(time ==(timeManagement.getProjectTime(project.getID())));
+		
 	}
 	@When("the employee is registered as project manager")
 	public void theEmployeeIsRegisteredAsProjectManager() {
@@ -248,13 +238,8 @@ public class ProjectSteps {
 	}
 	@Then("system returns a list of  employees with less than {int} activities.")
 	public void systemReturnsAListOfEmployeesWithLessThanActivities(Integer int1) {
-	    boolean checkint = true;
-		for (Employee e : this.avaiableList) {
-	    	if (e.canBeAssigned() > int1) {
-	    		checkint=false;
-	    	}
-	    }
-		assertTrue(checkint);
+		assertFalse(this.avaiableList.stream().filter(e-> e.canBeAssigned()>int1).findAny().isPresent());
+
 	}
 	@Given("a project have {int} employees added")
 	public void aProjectHaveEmployeesAdded(int int1) throws Exception {
