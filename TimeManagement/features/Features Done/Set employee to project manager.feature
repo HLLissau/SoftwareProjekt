@@ -16,6 +16,13 @@ Scenario: A project manager is unregistered from a project
     When the Employee is unregistered as project manager 
     Then the Employee is no longer project manager 
 
+Scenario: need to be project manager to set a new project manager
+    Given a project is in TimeManagement
+    And an employee is registered with TimeManagement
+    When the employee is registered as project manager
+    Then the employee is registered as the project manager
+    
+
 Scenario: need to be project manager to unregister a project manager
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement

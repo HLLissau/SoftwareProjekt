@@ -170,7 +170,7 @@ public class TimeManagement {
 		Employee manager = getEmployee(managerID);
 		getProject(projectID).setDescription(manager, description);
 	}
-	public String getProjectDescription(int projectID) throws OperationNotAllowedException {
+	public String getProjectDescription(int projectID)  {
 		return getProject(projectID).getDescription();
 	}
 	public void setTimeOfProject(int time, int projectID, String managerID) throws OperationNotAllowedException {
@@ -179,23 +179,17 @@ public class TimeManagement {
 		
 		
 	}
-	public int getProjectTime(int projectID) throws Exception {
+	public int getProjectTime(int projectID) {
 		Project p= getProject(projectID);
-		if (p!=null) {
-			return p.getTime();
-		} else {
-			throw new Exception("project not found");
-		}
+		return p.getTime();
+		
 			
 	}
 	public void removeProjectManagerFromProject(int projectID, String managerID) throws Exception {
 		Project p = getProject(projectID);
 		Employee manager = getEmployee(managerID);
-		if(p!=null) {
-			p.removeProjectManager(manager);
-		}else {
-			throw new Exception("project not found");
-		}
+		p.removeProjectManager(manager);
+		
 	}
 	public  ArrayList<Employee> listAvailableEmployees(int number) {
 		ArrayList<Employee> returnlist = new ArrayList<>();
@@ -215,10 +209,7 @@ public class TimeManagement {
 		Project p = getProject(projectID);
 		Employee manager = getEmployee(managerID);
 		Employee employee = getEmployee(employeeID);
-		if(p!=null) {
-			p.addEmployeeToActivity(employee,activityID,manager);
-		}else {
-			throw new Exception("project not found");
-		}
+		p.addEmployeeToActivity(employee,activityID,manager);
+		
 	}
 }

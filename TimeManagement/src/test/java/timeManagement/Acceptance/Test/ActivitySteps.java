@@ -67,14 +67,7 @@ public class ActivitySteps {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
-	@When("the second employee sets the time of the activity to {int}")
-	public void theSecondEmployeeSetsTheTimeOfTheActivityTo(Integer time) {
-		 try {
-				timeManagement.getProject(projectHelper.getProject().getID()).setActivityTime(employeeHelper.getSecondEmployee(), activityHelper.getActivity().getID(), time);
-			} catch (OperationNotAllowedException e) {
-				errorMessageHandler.setErrorMessage(e.getMessage());
-			}
-	}
+	
 	
 	@Then("a activity with the name {string} is in TimeManagement")
 	public void aActivityWithTheNameIsInTimeManagement(String name) {
@@ -82,13 +75,13 @@ public class ActivitySteps {
 		assertTrue(name.equals(timeManagement.getActivity(activity.getID()).getName()));
 	}
 	
-	@Then("a activity with the name {string} is not in TimeManagement")
-	public void aActivityWithTheNameIsNotInTimeManagement(String string) {
-	    assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activity.getID())));
-	}
+//	@Then("a activity with the name {string} is not in TimeManagement")
+//	public void aActivityWithTheNameIsNotInTimeManagement(String string) {
+//	    assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activity.getID())));
+//	}
 	
 	@Then("the time of the activity is set to {int}")
-	public void theTimeOfTheActivityIsSetTo(Integer time) {
+	public void theTimeOfTheActivityIsSetTo(int time) {
 		assertTrue(time ==(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTime()));
 	}
 	
@@ -99,20 +92,12 @@ public class ActivitySteps {
 	@Given("a activity is in the project")
 	public void aActivityIsInTheProject() throws Exception {
 		anActivityWithTheNameIsInTimeManagement("new activity");
-		try {
-			timeManagement.addActivityToProject(activityHelper.getActivity(), projectHelper.getProject().getID(), employeeHelper.getEmployee().getID());
-		} catch (OperationNotAllowedException e) {
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
+		timeManagement.addActivityToProject(activityHelper.getActivity(), projectHelper.getProject().getID(), employeeHelper.getEmployee().getID());
+		
 	}
 	@When("the project manager adds an employee to an activity")
 	public void theProjectManagerAddsAnEmployeeToAnActivity() {
-	    try {
-	    	timeManagement.addEmployeeToActivity(employeeHelper.getSecondEmployee().getID(), projectHelper.getProject().getID(), activityHelper.getActivity().getID(), employeeHelper.getEmployee().getID());
-		} catch (Exception e) {
-			
-			errorMessageHandler.setErrorMessage(e.getMessage());
-		}
+		addEmployeeToActivity(employeeHelper.getSecondEmployee(),employeeHelper.getEmployee());
 	}
 	@Then("the employee is added to the activity")
 	public void theEmployeeIsAddedToTheActivity() {
@@ -122,12 +107,16 @@ public class ActivitySteps {
 	}
 	@When("the second employee adds an employee to an activity")
 	public void theSecondEmployeeAddsAnEmployeeToAnActivity() {
-		 try {
-			  	timeManagement.addEmployeeToActivity(employeeHelper.getEmployee().getID(), projectHelper.getProject().getID(), activityHelper.getActivity().getID(), employeeHelper.getSecondEmployee().getID());
-			} catch (Exception e) {
-				
-				errorMessageHandler.setErrorMessage(e.getMessage());
-			}
+		 addEmployeeToActivity(employeeHelper.getEmployee(),employeeHelper.getSecondEmployee());
+	}
+	
+	public void addEmployeeToActivity(Employee employee, Employee manager) {
+		try {
+		  	timeManagement.addEmployeeToActivity(employee.getID(), projectHelper.getProject().getID(), activityHelper.getActivity().getID(), manager.getID());
+		} catch (Exception e) {
+			
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
 	}
 
 }
