@@ -8,6 +8,7 @@ Scenario: Create a new activity
     When a new activity with name "new activity" is created
     And the employee adds the activity to timeManagement
     Then a activity with the name "new activity" is in TimeManagement
+    And the activity has a unique id
 
 Scenario: Create a new activity that is already in timeManagement
     Given an employee is registered with TimeManagement
@@ -15,8 +16,7 @@ Scenario: Create a new activity that is already in timeManagement
     And the employee adds the activity to timeManagement
     Then a activity with the name "new activity" is in TimeManagement
     And the employee adds the activity to timeManagement
-    And the error message "Activity is already registered" is given 
-
+    And the error message "Activity is already registered" is given
 
 Scenario: set a new activity in project
     Given a project is in TimeManagement
