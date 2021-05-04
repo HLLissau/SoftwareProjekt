@@ -27,11 +27,11 @@ public class Employee {
 		return this.iD;
 	}
 	
-	protected String getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 	
-	protected String getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
