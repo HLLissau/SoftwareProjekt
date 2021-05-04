@@ -9,13 +9,17 @@ Scenario: Create a new activity
     And the employee adds the activity to timeManagement
     Then a activity with the name "new activity" is in TimeManagement
     And the activity has a unique id
+    When a new activity with name "some other new activity" is created
+    And the employee adds the activity to timeManagement
+	Then a activity with the name "some other new activity" is in TimeManagement
+	And the activity has a unique id
 
 Scenario: Create a new activity that is already in timeManagement
     Given an employee is registered with TimeManagement
     When a new activity with name "new activity" is created
     And the employee adds the activity to timeManagement
     Then a activity with the name "new activity" is in TimeManagement
-    And the employee adds the activity to timeManagement
+    When the employee adds the activity to timeManagement
     And the error message "Activity is already registered" is given
 
 Scenario: set a new activity in project
