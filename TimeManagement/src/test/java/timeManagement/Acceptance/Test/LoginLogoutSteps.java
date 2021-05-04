@@ -39,7 +39,7 @@ public class LoginLogoutSteps {
 	}
 
 	@When("the administrator registers the employee in TimeManagement")
-	public void theAdministratorRegistersTheEmployeeInTimeManagement() {
+	public void theAdministratorRegistersTheEmployeeInTimeManagement() throws Exception {
 			try {
 				timeManagement.createEmployee(employee);
 			} catch (OperationNotAllowedException e) {

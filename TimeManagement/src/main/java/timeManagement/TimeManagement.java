@@ -30,7 +30,7 @@ public class TimeManagement {
 		return this.adminLoggedIn;
 	}
 
-	public void createEmployee(Employee e) throws OperationNotAllowedException {
+	public void createEmployee(Employee e) throws Exception {
 		checkIfAdminIsLoggedIn();
 		Employee employee = getEmployee(e.getID());
 		if (employee!=null) {
@@ -64,27 +64,35 @@ public class TimeManagement {
 		}
 		
 	}
-	private String createID(String firstName, String lastName) {
-		String initials = firstName.substring(0,1) + lastName.substring(0,1);
+	
+	// public for testing
+	public String createID(String firstName, String lastName) throws Exception {
+		String initials = firstName.substring(0,2).toUpperCase() + lastName.substring(0,2).toUpperCase();
 		if (!isUniqueEmployeeID(initials)) {
-			for (char c0 = 'a'; c0 <= 'z'; c0++) {
-				for (char c1 = 'a'; c1 <= 'z'; c1++) {
-					for (char c2 = 'a'; c2 <= 'z'; c2++) {
-						for (char c3 = 'a'; c3 <= 'z'; c3++) {
-							initials = "" + c0 + c1 + c2 + c3;
-						}
+			initials = getAvailableID(initials);
+		}
+		return initials;
+	}
+	
+	private String getAvailableID(String initials) throws Exception {
+		for (char c0 = 'A'; c0 <= 'Z'; c0++) {
+			for (char c1 = 'A'; c1 <= 'Z'; c1++) {
+				for (char c2 = 'A'; c2 <= 'Z'; c2++) {
+					for (char c3 = 'A'; c3 <= 'Z'; c3++) {
+						initials = "" + c0 + c1 + c2 + c3;
+						if (isUniqueEmployeeID(initials)) return initials;
 					}
 				}
 			}
 		}
-		return initials;
+		throw new Exception("No available ID is left!");
 	}
 
 	public Employee getEmployee(String employeeID) {
 		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
 	}
 	public boolean isUniqueEmployeeID(String id) {
-		return (!employeeList.stream().filter(e-> id==e.getID()).findAny().isPresent());
+		return (!employeeList.stream().filter(e-> id.equals(e.getID())).findAny().isPresent());
 	}
 	public boolean isUniqueProjectID(int id) {
 		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
