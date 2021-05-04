@@ -116,7 +116,7 @@ public class TimeManagement {
 	private int createActivityID() {
 		int i=1;
 		int id= i;
-		while(!isUniqueActivityID(id)) {
+		while(!isUniqueActivityID(id)) { 
 			i++;
 			id=  i;
 			
@@ -242,7 +242,7 @@ public class TimeManagement {
 		if (a.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		registerTime.setBeginTime(a, e);
+		registerTime.setBeginTime(a, e,dateServer.getDate().getTime());
 		 
 	}
 	public void stopWorkOnActivity(String employeeID, int activityID) throws Exception {
@@ -255,12 +255,12 @@ public class TimeManagement {
 		if (a.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		registerTime.setFinishedTime(a, e);
+		registerTime.setFinishedTime(a, e, dateServer.getDate().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {
 		this.dateServer = dateServer;
-		registerTime.setDateServer(dateServer);
+		
 	}
 	
 }

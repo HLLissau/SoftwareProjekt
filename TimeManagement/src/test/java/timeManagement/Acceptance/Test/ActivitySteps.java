@@ -146,7 +146,12 @@ public class ActivitySteps {
 	
 	@When("the employee end work on the activity")
 	public void theEmployeeEndWorkOnTheActivity() {
-						
+		 timeManagement.adminLogin("adminadmin");
+			try {
+				 finished  = timeManagement.getRegisterTime().getBeginTimeOfActivityByEmployee(activityHelper.getActivity(),employeeHelper.getSecondEmployee());
+			} catch (OperationNotAllowedException e) {
+				errorMessageHandler.setErrorMessage(e.getMessage());
+			}			
 		try {
 			timeManagement.stopWorkOnActivity(employeeHelper.getSecondEmployee().getID(),activityHelper.getActivity().getID());
 			

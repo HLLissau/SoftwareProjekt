@@ -8,34 +8,37 @@ import java.util.GregorianCalendar;
 
 public class RegisterTime {
 	private ArrayList<BegunActivity> begunActivity;
-	private DateServer dateServer;
-
+	
 	public RegisterTime(DateServer dateServer) {
-		this.dateServer = dateServer;
+		
 		this.begunActivity = new ArrayList<BegunActivity>();
 	}
 	
 	
-	public void setBeginTime(Activity a, Employee e) throws OperationNotAllowedException {
+	public void setBeginTime(Activity a, Employee e, Date date) throws OperationNotAllowedException {
 		if(getBegunActivity(a,e)!=null) {
 			throw new OperationNotAllowedException("Employee already working on the activity");
 		}
 		
-		begunActivity.add(new BegunActivity(a,e,dateServer.getTime().getTime()));
+		begunActivity.add(new BegunActivity(a,e,date));
 	}
-	public void setFinishedTime(Activity a, Employee e) throws Exception {
+	public void setFinishedTime(Activity a, Employee e,Date date) throws Exception {
 		
 		BegunActivity ba = getBegunActivity(a,e);
 		if(ba.equals(null)) {
 			
 			throw new OperationNotAllowedException("Employee not working on the activity");
 		}
-		
+	
 		Long begintime =ba.endActivity().getTime();
-		Long endTime = dateServer.getTime().getTime().getTime();
+		
+		
+		
+		Long endTime = date.getTime();
+		//System.out.println("test4");
 		Long differenceInTIme =  endTime-begintime;
 		int diffInMinutes =  (int) (differenceInTIme / (1000 * 60));
-		System.out.println("begin" + begintime + ", end:" +endTime);
+		//System.out.println("begin" + begintime + ", end:" +endTime + ", diff: " +diffInMinutes); 
 		a.registerTimeSpent(diffInMinutes);
 		begunActivity.remove(ba);
 		a.removeEmployee(e);
@@ -54,13 +57,5 @@ public class RegisterTime {
 		}
 		return ba.getBegunTime();
 	}
-	
-
-	public void setDateServer(DateServer dateServer) {
-		this.dateServer = dateServer;
-	}
-	
-	
-
 	
 }
