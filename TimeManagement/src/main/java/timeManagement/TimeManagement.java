@@ -78,7 +78,7 @@ public class TimeManagement {
 	// public for testing
 	public String createID(String firstName, String lastName) throws Exception {
 		String initials = firstName.substring(0,2).toUpperCase() + lastName.substring(0,2).toUpperCase();
-		if (!isUniqueEmployeeID(initials)) {
+		if (amountOfEmployeesWithID(initials) > 0) { // > 0 => ID is not unique
 			initials = getAvailableID(initials);
 		}
 		return initials;
@@ -90,7 +90,7 @@ public class TimeManagement {
 				for (char c2 = 'A'; c2 <= 'Z'; c2++) {
 					for (char c3 = 'A'; c3 <= 'Z'; c3++) {
 						initials = "" + c0 + c1 + c2 + c3;
-						if (isUniqueEmployeeID(initials)) return initials;
+						if (amountOfEmployeesWithID(initials) == 0) return initials; // no initials in the list, means that the current initial is unique
 					}
 				}
 			}
@@ -102,19 +102,19 @@ public class TimeManagement {
 		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
 	}
 	
-	public boolean isUniqueEmployeeID(String id) {
-		return (!employeeList.stream().filter(e-> id.equals(e.getID())).findAny().isPresent());
+	public long amountOfEmployeesWithID(String id) {
+		return employeeList.stream().filter(e-> id.equals(e.getID())).count();
 	}
 	
-	public boolean isUniqueProjectID(int id) {
-		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
-	}
+	public long amountOfProjectsWithID(int id) {
+		return projectList.stream().filter(p-> id==p.getID()).count();
+	}	
 	
 	private int createProjectID() {
 		int date =dateServer.getYear();
 		int i=1;
 		int id= (date*10000)+i;
-		while(!isUniqueProjectID(id)) {
+		while(amountOfProjectsWithID(id) > 0) { // if there is more than 0 projects with the project ID, it is not unique
 			i++;
 			id= (date*10000) + i;
 		}
@@ -124,16 +124,16 @@ public class TimeManagement {
 	private int createActivityID() {
 		int i=1;
 		int id= i;
-		while(!isUniqueActivityID(id)) { 
+		while(amountOfActivitiesWithID(id) > 0) { // if amount of activities with that ID is NOT 0, then the ID is not unique 
 			i++;
 			id=  i;
-			
 		}
 		return id;
 	}
 	
-	private boolean isUniqueActivityID(int id) {
-		return (!activityList.stream().filter(a-> id==a.getID()).findAny().isPresent());
+	// if there is one (and ONLY one) activity with the ID id, it returns true
+	public long amountOfActivitiesWithID(int id) {
+		return activityList.stream().filter(a -> id == a.getID()).count();
 	}
 	
 	public void createProject(Project p) throws OperationNotAllowedException {

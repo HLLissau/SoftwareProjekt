@@ -1,5 +1,6 @@
 package timeManagement.Acceptance.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -108,7 +109,7 @@ public class ProjectSteps {
 
 	@Then("no other project has the same ID")
 	public void noOtherProjectHasTheSameID() {
-		assertFalse(timeManagement.isUniqueProjectID(project.getID()));
+		assertEquals(1, timeManagement.amountOfProjectsWithID(project.getID()));
 	}
 	
 	@Given("an employee is not registered as project manager of the project")
