@@ -22,7 +22,7 @@ public class RegisterTime {
 		
 		begunActivity.add(new BegunActivity(a,e,date));
 	}
-	public void setFinishedTime(Activity a, Employee e,Date date) throws Exception {
+	public  Date setFinishedTime(Activity a, Employee e,Date date) throws Exception {
 		
 		BegunActivity ba = getBegunActivity(a,e);
 		if(ba.equals(null)) {
@@ -42,6 +42,7 @@ public class RegisterTime {
 		a.registerTimeSpent(diffInMinutes);
 		begunActivity.remove(ba);
 		a.removeEmployee(e);
+		return date;
 	}
 	
 	

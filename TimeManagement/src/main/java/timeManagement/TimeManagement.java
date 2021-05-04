@@ -2,6 +2,7 @@ package timeManagement;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 
 public class TimeManagement {
@@ -245,7 +246,7 @@ public class TimeManagement {
 		registerTime.setBeginTime(a, e,dateServer.getDate().getTime());
 		 
 	}
-	public void stopWorkOnActivity(String employeeID, int activityID) throws Exception {
+	public Date  stopWorkOnActivity(String employeeID, int activityID) throws Exception {
 		Employee e = getEmployee(employeeID);
 		Activity a = e.getActivity(activityID);
 		
@@ -255,7 +256,7 @@ public class TimeManagement {
 		if (a.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		registerTime.setFinishedTime(a, e, dateServer.getDate().getTime());
+		return registerTime.setFinishedTime(a, e, dateServer.getDate().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {

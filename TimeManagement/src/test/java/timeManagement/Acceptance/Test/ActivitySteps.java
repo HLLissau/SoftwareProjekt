@@ -146,14 +146,9 @@ public class ActivitySteps {
 	
 	@When("the employee end work on the activity")
 	public void theEmployeeEndWorkOnTheActivity() {
-		 timeManagement.adminLogin("adminadmin");
-			try {
-				 finished  = timeManagement.getRegisterTime().getBeginTimeOfActivityByEmployee(activityHelper.getActivity(),employeeHelper.getSecondEmployee());
-			} catch (OperationNotAllowedException e) {
-				errorMessageHandler.setErrorMessage(e.getMessage());
-			}			
+		 		
 		try {
-			timeManagement.stopWorkOnActivity(employeeHelper.getSecondEmployee().getID(),activityHelper.getActivity().getID());
+			finished = timeManagement.stopWorkOnActivity(employeeHelper.getSecondEmployee().getID(),activityHelper.getActivity().getID());
 			
 		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
@@ -166,6 +161,7 @@ public class ActivitySteps {
 		
 		System.out.println(begin);
 		System.out.println(finished);
+		
 	}
 
 }
