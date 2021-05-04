@@ -32,7 +32,7 @@ public class ProjectSteps {
 						ErrorHandler errorHandler,
 						ProjectHelper projectHelper,
 						EmployeeHelper employeeHelper,
-						ActivityHelper activityHelper) {
+						ActivityHelper activityHelper) { 
 		this.timeManagement = timeManagement;
 		this.registerTime=registerTime;
 		this.errorMessageHandler = errorHandler;
@@ -152,7 +152,7 @@ public class ProjectSteps {
 	public void theEmployeeAddsTheActivityToTheProject() {
 	 try {
 			timeManagement.addActivityToProject(activityHelper.getActivity(), project.getID(), employeeHelper.getEmployee().getID());
-		} catch (OperationNotAllowedException e) {
+		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}

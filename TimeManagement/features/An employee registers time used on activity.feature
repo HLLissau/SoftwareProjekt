@@ -3,36 +3,18 @@ Description: Employees can add / remove employees from projects that they are pr
     trying to add / remove employees from projects they are not project 
     managers on will result in an error message. You cannot add an employee twice.
 
-#Scenario: Project manager adds employee to project
-    #Given a project is in TimeManagement
-    #And an employee is registered
-    #And the employee is registered as project manager of the project
-    #When the project manager adds an employee to the project
-    #Then the employee is added to the project
-
-#Scenario: Employee adds employee to project
-#    Given a project is in TimeManagement
-#    And an employee is registered
-#    And the employee is not registered as project manager of the project
-#    When the employee adds another employee to the project
-#    Then the error message "Only project managers can add employees to projects" is given
-#
-#Scenario: Project manager adds employee to project that employee is already in
-#    Given a project is in TimeManagement
-#    And an employee is registered
-#    And the employee is registered as project manager of the project
-#    And another employee with name "some name", email "some email" and ID "some ID" is 
-#    registered with the project
-#    When the project manager adds the employee to the project
-#    Then the error "Employee already added to project" is given
-#        And the employee is not added to the project
-#
-#Scenario: Project manager removes employee from project
-#    Given a project is in TimeManagement
-#    And an employee is registered
-#    And the employee is registered as project manager of the project
-#    And another employee with name "some name", email "some email" and ID "some ID" is
-#    registered with the project
-#    When the project manager removes the employee from the project
-#    Then the employee with name "some name", email "some email" and  ID "some ID" is not 
-#    registered with the project
+Scenario: an employee register time on activity
+    Given a project is in TimeManagement
+    And an employee is registered with TimeManagement
+    And the employee registers as project manager
+    And a activity is in the project
+    And a second employee is registered with TimeManagement 
+    When the project manager adds an employee to the project
+    And the project manager adds an employee to an activity
+    Then the employee is added to the activity
+    When the employee begin work on the activity
+    Then the begin time is set
+    Given 30 minutes have passed
+    When the employee end work on the activity
+    Then the activity consumed time is increased by 30
+    
