@@ -261,7 +261,7 @@ public class TimeManagement {
 		if (a.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		registerTime.setBeginTime(a, e,dateServer.getDate().getTime());
+		registerTime.setBeginTime(a, e,dateServer.getTime().getTime());
 	}
 	
 	public Date  stopWorkOnActivity(String employeeID, int activityID) throws Exception {
@@ -274,10 +274,19 @@ public class TimeManagement {
 		if (activity.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		return registerTime.setFinishedTime(activity, employee, dateServer.getDate().getTime());
+		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {
 		this.dateServer = dateServer;
+	}
+
+	public int getTimeSpentOnActivity(int activityID) throws OperationNotAllowedException {
+		Activity a = getActivity(activityID);
+		if (a.equals(null)) {
+			throw new OperationNotAllowedException("Activity not found");
+		}
+		
+		return a.getTimeSpent();
 	}
 }

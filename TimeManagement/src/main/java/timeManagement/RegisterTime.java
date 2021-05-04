@@ -27,12 +27,10 @@ public class RegisterTime {
 			throw new OperationNotAllowedException("Employee not working on the activity");
 		}
 	
-		Long begintime = begunActivity.endActivity().getTime();
+		Long beginTime = begunActivity.endActivity().getTime();
 		Long endTime = date.getTime();
-		Long timeDiff =  begintime-endTime;
+		Long timeDiff =  endTime-beginTime;
 		int diffInMinutes =  (int) (timeDiff / (1000 * 60));
-		System.out.println(diffInMinutes);
-		//System.out.println("begin" + begintime + ", end:" +endTime + ", diff: " +diffInMinutes); 
 		activity.registerTimeSpent(diffInMinutes);
 		begunActivities.remove(begunActivity);
 		activity.removeEmployee(employee);

@@ -155,8 +155,13 @@ public class ActivitySteps {
 
 	@Then("the activity consumed time is increased by {int}")
 	public void theActivityConsumedTimeIsIncreasedBy(int amount) {
-		System.out.println(begin);
-		System.out.println(finished);
+		int time=0;
+		try {
+			time = timeManagement.getTimeSpentOnActivity(activityHelper.getActivity().getID());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+		assertTrue(time == amount);
 	}
 
 }

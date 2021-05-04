@@ -29,6 +29,9 @@ public class Activity extends ActivityAndProjectParent {
 	public void registerTimeSpent(int diffInMinutes) {
 		this.registerTimeSpent += diffInMinutes;
 	}
+	public int getTimeSpent() {
+		return registerTimeSpent;
+	}
 
 	public void removeEmployee(Employee e) throws Exception {
 		if (!employeeList.contains(e)) {
