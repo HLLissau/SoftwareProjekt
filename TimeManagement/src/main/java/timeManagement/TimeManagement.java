@@ -3,6 +3,7 @@ package timeManagement;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
 public class TimeManagement {
 	
 	
@@ -13,10 +14,15 @@ public class TimeManagement {
 	private ArrayList<Project> projectList=new ArrayList<>();
 	private RegisterTime registerTime;
 	private Collection<Activity> activityList=new ArrayList<>();
+	private DateServer dateServer=new DateServer();
 	
 	public TimeManagement() {
-			this.registerTime = new RegisterTime();
+			this.registerTime = new RegisterTime(dateServer);
 		}
+	public RegisterTime getRegisterTime() throws OperationNotAllowedException {
+		checkIfAdminIsLoggedIn();
+		return this.registerTime;
+	}
 	public void adminLogin(String password) {
 		if (password.equals(this.adminPassword)) {
 			adminLoggedIn=true;
@@ -25,7 +31,7 @@ public class TimeManagement {
 	public void adminlogout() {
 		this.adminLoggedIn=false;
 	}
-
+	 
 	public boolean adminLoggedIn() {
 		return this.adminLoggedIn;
 	}
@@ -90,7 +96,7 @@ public class TimeManagement {
 		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
 	}
 	private int createProjectID() {
-		int date =this.registerTime.getYear();
+		int date =dateServer.getYear();
 		int i=1;
 		int id= (date*10000)+i;
 		while(!isUniqueProjectID(id)) {
@@ -123,7 +129,7 @@ public class TimeManagement {
 		projectList.add(p);
 	}
 	
-	public void addActivityToProject(Activity a, int pID, String managerID) throws OperationNotAllowedException {
+	public void addActivityToProject(Activity a, int pID, String managerID) throws Exception {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
 	}
@@ -219,4 +225,34 @@ public class TimeManagement {
 		p.addEmployeeToActivity(employee,activityID,manager);
 		
 	}
+	public void beginWorkOnActivity(String employeeID, int activityID) throws OperationNotAllowedException {
+		Employee e = getEmployee(employeeID);
+		Activity a = e.getActivity(activityID);
+		if (e.equals(null)) {
+			throw new OperationNotAllowedException("Employee not found");
+		}
+		if (a.equals(null)) {
+			throw new OperationNotAllowedException("Activity not found");
+		}
+		registerTime.setBeginTime(a, e);
+		 
+	}
+	public void stopWorkOnActivity(String employeeID, int activityID) throws Exception {
+		Employee e = getEmployee(employeeID);
+		Activity a = e.getActivity(activityID);
+		
+		if (e.equals(null)) {
+			throw new OperationNotAllowedException("Employee not found");
+		}
+		if (a.equals(null)) {
+			throw new OperationNotAllowedException("Activity not found");
+		}
+		registerTime.setFinishedTime(a, e);
+	}
+	
+	public void setDateServer(DateServer dateServer) {
+		this.dateServer = dateServer;
+		registerTime.setDateServer(dateServer);
+	}
+	
 }

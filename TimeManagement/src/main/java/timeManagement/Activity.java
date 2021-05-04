@@ -2,6 +2,7 @@ package timeManagement;
 
 public class Activity extends ActivityAndProjectParent {
 	private int budgettedTime;
+	private int registerTimeSpent;
 
 	public Activity(String name) {
 		super(name);
@@ -9,10 +10,11 @@ public class Activity extends ActivityAndProjectParent {
 
 	public void setBudgettedTime(int time) {
 		this.budgettedTime = time;
+		this.registerTimeSpent=0;
 	}
 	
-	public int getTime() {
-		return budgettedTime;
+	public int getTimeRemaining() {
+		return budgettedTime-registerTimeSpent;
 	}
 
 	public void addEmployee(Employee employee) throws Exception {
@@ -22,6 +24,18 @@ public class Activity extends ActivityAndProjectParent {
 		} else {
 			throw new Exception("Employee already added to the activity");
 		}
+	}
+
+	public void registerTimeSpent(int diffInMinutes) {
+		this.registerTimeSpent += diffInMinutes;
+	}
+
+	public void removeEmployee(Employee e) throws Exception {
+		if (!employeeList.contains(e)) {
+			throw new Exception("Employee already added to the activity");
+		}
+		employeeList.remove(e);
+		e.removeActivity(this);
 	}
 	
 }

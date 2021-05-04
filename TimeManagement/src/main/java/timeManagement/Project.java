@@ -39,7 +39,7 @@ public class Project extends ActivityAndProjectParent {
 		return projectManager;
 	}
 
-	public void addActivity(Activity a, Employee e) throws OperationNotAllowedException {
+	public void addActivity(Activity a, Employee e) throws Exception {
 		isProjectManager(e);
 		Activity activityexists = getActivity(a.getID());
 		if (activityexists ==null) {
