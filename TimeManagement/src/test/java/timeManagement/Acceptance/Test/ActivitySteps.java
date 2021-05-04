@@ -2,6 +2,7 @@ package timeManagement.Acceptance.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class ActivitySteps {
 	private Activity activity;
 	private Date begin;
 	private Date finished;
+	private int time;
 	
 	public ActivitySteps(TimeManagement timeManagement,
 			RegisterTime registerTime,
@@ -88,7 +90,7 @@ public class ActivitySteps {
 	
 	@Then("the time of the activity is set to {int}")
 	public void theTimeOfTheActivityIsSetTo(int time) {
-		assertTrue(time ==(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
+		assertEquals(time,(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
 	}
 	
 	@Then("the activity has a unique id")
@@ -98,7 +100,7 @@ public class ActivitySteps {
 	
 	@Then("the time of the activity is not set to {int}")
 	public void theTimeOfTheActivityIsNotSetTo(int time) {
-	    assertFalse(time ==(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
+		assertNotEquals(time,(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
 	}
 	@Given("a activity is in the project")
 	public void aActivityIsInTheProject() throws Exception {
@@ -138,16 +140,16 @@ public class ActivitySteps {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	} 
-	@Then("the begin time is set")
-	public void theBeginTimeIsSet() {
-		
+	@Then("the begin time is set and the begun activity is in begun activity List")
+	public void theBeginTimeIsSetAndTheBegunActivityIsInBegunActivityList() {
+	
 	    timeManagement.adminLogin("adminadmin");
 		try {
 			 begin  = timeManagement.getRegisterTime().getBeginTimeOfActivityByEmployee(activityHelper.getActivity(),employeeHelper.getSecondEmployee());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
-		assertTrue(!begin.equals(null));
+		assertFalse(begin.equals(null));
 	}
 	
 	@When("the employee end work on the activity")
@@ -160,14 +162,36 @@ public class ActivitySteps {
 	}
 
 	@Then("the activity consumed time is increased by {int}")
-	public void theActivityConsumedTimeIsIncreasedBy(int amount) {
-		int time=0;
+	public void theActivityConsumedTimeIsIncreasedBy(int amount) throws OperationNotAllowedException {
+		
+		assertEquals(this.time,amount);
+	}
+	@When("the Employee check the time of the activity")
+	public void theEmployeeCheckTheTimeOfTheActivity() {
 		try {
-			time = timeManagement.getTimeSpentOnActivity(activityHelper.getActivity().getID());
+			 this.time =timeManagement.getTimeSpentOnActivity(activityHelper.getActivity().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
-		assertTrue(time == amount);
+	}
+	@When("the project manager removes the employee from the activity")
+	public void theProjectManagerRemovesTheEmployeeFromTheActivity() {
+		removeEmployeeFromActivity(employeeHelper.getSecondEmployee(),employeeHelper.getEmployee());
 	}
 
+	private void removeEmployeeFromActivity(Employee employee, Employee manager) {
+		try {
+			timeManagement.removeEmployeeToActivity(employee.getID(), activityHelper.getActivity().getID());
+		} catch (Exception e) {
+			
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the employee is removed from the activity")
+	public void theEmployeeIsRemovedFromTheActivity() {
+		ArrayList<Employee> activitylist =timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).listEmployees();
+		
+		assertFalse(activitylist.contains(employeeHelper.getSecondEmployee()));
+	}
 }

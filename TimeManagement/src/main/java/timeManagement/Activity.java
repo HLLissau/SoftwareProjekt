@@ -35,7 +35,7 @@ public class Activity extends ActivityAndProjectParent {
 
 	public void removeEmployee(Employee e) throws Exception {
 		if (!employeeList.contains(e)) {
-			throw new Exception("Employee already added to the activity");
+			throw new Exception("Employee not found in activity");
 		}
 		employeeList.remove(e);
 		e.removeActivity(this);

@@ -255,10 +255,8 @@ public class TimeManagement {
 	public void beginWorkOnActivity(String employeeID, int activityID) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeID);
 		Activity a = e.getActivity(activityID);
-		if (e.equals(null)) {
-			throw new OperationNotAllowedException("Employee not found");
-		}
-		if (a.equals(null)) {
+		
+		if (a == (null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
 		registerTime.setBeginTime(a, e,dateServer.getTime().getTime());
@@ -268,12 +266,7 @@ public class TimeManagement {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = employee.getActivity(activityID);
 		
-		if (employee.equals(null)) {
-			throw new OperationNotAllowedException("Employee not found");
-		}
-		if (activity.equals(null)) {
-			throw new OperationNotAllowedException("Activity not found");
-		}
+		
 		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
 	
@@ -283,10 +276,17 @@ public class TimeManagement {
 
 	public int getTimeSpentOnActivity(int activityID) throws OperationNotAllowedException {
 		Activity a = getActivity(activityID);
-		if (a.equals(null)) {
+		if (a ==null) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
 		
 		return a.getTimeSpent();
+	}
+
+	public void removeEmployeeToActivity(String employeeID, int activityID) throws Exception {
+		Activity a = getActivity(activityID);
+		Employee employee = getEmployee(employeeID);
+		a.removeEmployee(employee);
+		
 	}
 }

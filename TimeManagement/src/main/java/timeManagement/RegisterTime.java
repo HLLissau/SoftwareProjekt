@@ -23,7 +23,7 @@ public class RegisterTime {
 	
 	public  Date setFinishedTime(Activity activity, Employee employee, Date date) throws Exception {
 		BegunActivity begunActivity = getBegunActivity(activity,employee);
-		if(begunActivity.equals(null)) {
+		if(begunActivity ==null) {
 			throw new OperationNotAllowedException("Employee not working on the activity");
 		}
 	
@@ -33,7 +33,6 @@ public class RegisterTime {
 		int diffInMinutes =  (int) (timeDiff / (1000 * 60));
 		activity.registerTimeSpent(diffInMinutes);
 		begunActivities.remove(begunActivity);
-		activity.removeEmployee(employee);
 		return date;
 	}
 	

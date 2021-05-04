@@ -2,7 +2,9 @@ package timeManagement.Acceptance.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -68,7 +70,7 @@ public class ProjectSteps {
 		Employee employee = employeeHelper.getEmployee();
 		Employee manager = employeeHelper.registerSecondExampleEmployee();
 		timeManagement.setProjectManager(projectHelper.getProject().getID(),manager.getID(),manager.getID());
-		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject().getID()).getProjectManager().getID());
+		assertNotEquals(employee.getID(),timeManagement.getProject(projectHelper.getProject().getID()).getProjectManager().getID());
 	}
 	@When("the employee adds another employee to the project")
 	public void theEmployeeAddsAnotherEmployeeToTheProject() {
@@ -214,7 +216,7 @@ public class ProjectSteps {
 
 	@Then("the activity time is set to {int}")
 	public void theActivityTimeIsSetTo(int time) {
-		assertTrue(time ==(timeManagement.getProjectTime(project.getID())));
+		assertEquals(time,(timeManagement.getProjectTime(project.getID())));
 		
 	}
 
@@ -248,6 +250,7 @@ public class ProjectSteps {
 	}
 	@Then("system returns a list of  employees with less than {int} activities.")
 	public void systemReturnsAListOfEmployeesWithLessThanActivities(Integer int1) {
+		
 		assertFalse(this.avaiableList.stream().filter(e-> e.canBeAssigned()>int1).findAny().isPresent());
 
 	}
@@ -265,7 +268,7 @@ public class ProjectSteps {
 	}
 	@Then("system returns a list of employees with the {int} added employees")
 	public void systemReturnsAListOfEmployeesWithTheAddedEmployees(int int1) {
-		assertTrue(this.listSize +int1 ==timeManagement.listEmployeesOnProject(projectHelper.getProject().getID()).size());
+		assertEquals(this.listSize +int1,timeManagement.listEmployeesOnProject(projectHelper.getProject().getID()).size());
 	}
 
 	

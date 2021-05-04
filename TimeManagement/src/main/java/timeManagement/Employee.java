@@ -58,9 +58,6 @@ public class Employee {
 		return presentActivityList.stream().filter(a -> a.getID()==activityID).findAny().orElse(null);
 	}
 	public void removeActivity(Activity activity) throws Exception {
-		if (!presentActivityList.contains(activity)) {
-			throw new Exception("Employeenot working on activity");
-		}
 		this.presentActivityList.remove(activity);
 	}
 }

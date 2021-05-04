@@ -5,14 +5,17 @@ import java.util.List;
 
 public class Project extends ActivityAndProjectParent {
 	
+	
 	private Employee projectManager;
 	private List<Activity> activityList = new ArrayList<Activity>();
-	
 	
 	public Project(String name) {
 		super(name);
 		
 	}
+
+
+	
 	
 		
 	/*
