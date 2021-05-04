@@ -47,17 +47,26 @@ public class ProjectSteps {
 	@When("the employee registers as project manager")
 	public void theEmployeeRegistersAsProjectManager() {
     try {
-			timeManagement.setProjectManager(projectHelper.getProject().getID(),this.employeeHelper.getEmployee().getID());
+			timeManagement.setProjectManager(projectHelper.getProject().getID(),this.employeeHelper.getEmployee().getID(),this.employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
+	@When("the employee registers a new project manager")
+	public void theEmployeeRegistersANewProjectManager() {
+		
+		try {
+			timeManagement.setProjectManager(projectHelper.getProject().getID(),this.employeeHelper.getSecondEmployee().getID(),this.employeeHelper.getEmployee().getID());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}  
 
 	@Given("the employee is not registered as project manager of the project")
 	public void theEmployeeIsNotRegisteredAsProjectManagerOfTheProject() throws Exception {
 		Employee employee = employeeHelper.getEmployee();
 		Employee manager = employeeHelper.registerSecondExampleEmployee();
-		timeManagement.setProjectManager(projectHelper.getProject().getID(),manager.getID());
+		timeManagement.setProjectManager(projectHelper.getProject().getID(),manager.getID(),manager.getID());
 		assertFalse(employee.getID()==timeManagement.getProject(projectHelper.getProject().getID()).getProjectManager().getID());
 	}
 	@When("the employee adds another employee to the project")
@@ -108,7 +117,7 @@ public class ProjectSteps {
 	}
 
 	@When("the project manager adds an employee to the project")
-	public void theProjectManagerAddsAnEmployeeToTheProject() throws Exception {
+	public void theProjectManagerAddsAnEmployeeToTheProject() {
 	   Employee manager = employeeHelper.getEmployee();
 	   Employee employee = employeeHelper.getSecondEmployee();
 	   addEmployeehelp(employee,manager);
@@ -131,7 +140,10 @@ public class ProjectSteps {
 		}
 	}
 		
-	
+	@Then("the project manager is added to the project")
+	public void theProjectManagerIsAddedToTheProject() {
+		assertTrue(employeeHelper.getEmployee().equals(timeManagement.getEmployeeFromProject(employeeHelper.getEmployee().getID(), projectHelper.getProject().getID())));
+	}
 	@Then("the employee is added to the project")
 	public void theEmployeeIsAddedToTheProject() {
 	   assertTrue(employeeHelper.getSecondEmployee().equals(timeManagement.getEmployeeFromProject(employeeHelper.getSecondEmployee().getID(), projectHelper.getProject().getID())));
@@ -174,7 +186,7 @@ public class ProjectSteps {
 
 	@Then("the employee is no longer in the project")
 	public void theEmployeeIsNoLongerInTheProject() {
-	    assertFalse(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject().getID()).getEmployee(employeeHelper.getEmployee())));
+	    assertFalse(employeeHelper.getSecondEmployee().equals(timeManagement.getProject(projectHelper.getProject().getID()).getEmployee(employeeHelper.getSecondEmployee())));
 	}
 	@When("the employee edits the description to {string}")
 	public void theEmployeeEditsTheDescriptionTo(String description) {
@@ -204,10 +216,7 @@ public class ProjectSteps {
 		assertTrue(time ==(timeManagement.getProjectTime(project.getID())));
 		
 	}
-	@When("the employee is registered as project manager")
-	public void theEmployeeIsRegisteredAsProjectManager() {
-		theEmployeeRegistersAsProjectManager();
-	}
+
 	@Then("the employee is registered as the project manager")
 	public void theEmployeeIsRegisteredAsTheProjectManager() {
 	  assertTrue(employeeHelper.getEmployee().equals(timeManagement.getProject(projectHelper.getProject().getID()).getProjectManager()));
@@ -229,7 +238,7 @@ public class ProjectSteps {
 	public void aProjectExistsAndAProjectManagerIsLoggedIn() throws Exception {
 		employeeHelper.registerExampleEmployee();
 		aProjectIsInTimeManagement();
-		theEmployeeRegistersAsProjectManager();
+		theEmployeeRegistersAsProjectManager(); 
 	}
 
 	@When("the project manager requests a list of employees with under {int} activitties")

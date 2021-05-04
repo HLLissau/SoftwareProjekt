@@ -6,7 +6,7 @@ import java.util.Collection;
 public class TimeManagement {
 	
 	
-	private static final Employee Null = null;
+
 	private	String adminPassword="adminadmin";
 	private boolean adminLoggedIn=false;
 	private ArrayList<Employee> employeeList=new ArrayList<>();
@@ -133,10 +133,11 @@ public class TimeManagement {
 			return getProject(projectID).getEmployee(employee);
 		
 	}
-	public void setProjectManager(int projectID, String employeeID) throws OperationNotAllowedException {
+	public void setProjectManager(int projectID, String employeeID,String managerID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
+		Employee manager = getEmployee(managerID); 
 		
-		getProject(projectID).setProjectManager(employee,employee);
+		getProject(projectID).setProjectManager(employee,manager);
 		
 	}
 	public void removeActivity(int activityID, int projectID, String employeeID) throws OperationNotAllowedException {
@@ -164,7 +165,7 @@ public class TimeManagement {
 		employeeList.remove(employeeToRemove);
 	}
 	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
-		return employeeToRemove.getActivityList().isEmpty();
+		return employeeToRemove.canBeRemoved();
 	}
 	public void setProjectDescription(String description, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);

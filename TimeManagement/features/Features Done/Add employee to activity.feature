@@ -34,3 +34,12 @@ Scenario: Project manager adds employee to activity that employee is already in
     When the project manager adds an employee to an activity
     Then the error message "Employee already added to the activity" is given
     
+Scenario: Project manager adds employee to activity that is not in project
+    Given a project is in TimeManagement
+    And an employee is registered with TimeManagement
+    And the employee registers as project manager
+    And a second employee is registered with TimeManagement 
+    When the project manager adds an employee to the project
+    And the project manager adds an employee to an activity
+    Then the error message "Activity not found in project" is given
+    

@@ -18,12 +18,14 @@ public class Project extends ActivityAndProjectParent {
 	/*
 	 * Set a new project manager
 	 */
-	public void setProjectManager(Employee newManager , Employee manager) throws OperationNotAllowedException {
+	public void setProjectManager(Employee employee , Employee manager) throws OperationNotAllowedException {
+		Employee e = getEmployee(employee);
 		if (this.projectManager==null){
-			this.projectManager=newManager;
+			this.projectManager=employee;
+			addEmployee(employee,employee);
 		} else {
 			isProjectManager(manager);
-			this.projectManager=newManager;
+			this.projectManager=e;
 		}
 	}
 
@@ -65,8 +67,9 @@ public class Project extends ActivityAndProjectParent {
 
 	public void addEmployee(Employee employee, Employee manager) throws OperationNotAllowedException {
 		isProjectManager(manager);
-			
+		
 		if ((getEmployee(employee)==null)) {
+			
 			employeeList.add(employee);
 			employee.setProject(this);
 		} else {
@@ -84,14 +87,12 @@ public class Project extends ActivityAndProjectParent {
 
 	public void removeActivity(int activityID, Employee employee) throws OperationNotAllowedException {
 		isProjectManager(employee);
-		
 		Activity activityToRemove =getActivity(activityID);
 		
-		if (activityToRemove !=null) {
-			activityList.remove(activityToRemove);
-		}else {
+		if (activityToRemove ==null) {
 			throw new OperationNotAllowedException("Activity is not in project");
-		}	
+		}
+		activityList.remove(activityToRemove);
 	}
 
 

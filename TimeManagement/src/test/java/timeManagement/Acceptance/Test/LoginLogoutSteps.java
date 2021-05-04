@@ -27,7 +27,7 @@ public class LoginLogoutSteps {
 	
 	}
 	@Given("that the administrator is logged in")
-	public void thatTheAdministratorIsLoggedIn() {
+	public void thatTheAdministratorIsLoggedIn() { 
 	   timeManagement.adminLogin("adminadmin");
 	   assertTrue(timeManagement.adminLoggedIn());
 	}
