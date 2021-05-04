@@ -1,15 +1,15 @@
-#Feature : Add / remove employee from project
-#Description: Employees can add / remove employees from projects that they are project managers on; 
-#    trying to add / remove employees from projects they are not project 
-#    managers on will result in an error message. You cannot add an employee twice.
-#
+Feature: Add / remove employee from project
+Description: Employees can add / remove employees from projects that they are project managers on; 
+    trying to add / remove employees from projects they are not project 
+    managers on will result in an error message. You cannot add an employee twice.
+
 #Scenario: Project manager adds employee to project
-#    Given a project is in TimeManagement
-#    And an employee is registered
-#    And the employee is registered as project manager of the project
-#    When the project manager adds an employee to the project
-#    Then the employee is added to the project
-#
+    #Given a project is in TimeManagement
+    #And an employee is registered
+    #And the employee is registered as project manager of the project
+    #When the project manager adds an employee to the project
+    #Then the employee is added to the project
+
 #Scenario: Employee adds employee to project
 #    Given a project is in TimeManagement
 #    And an employee is registered

@@ -7,7 +7,7 @@ public class TimeManagement {
 	
 	
 
-	private	String adminPassword="adminadmin";
+	private	String adminPassword="adminadmin"; 
 	private boolean adminLoggedIn=false;
 	private ArrayList<Employee> employeeList=new ArrayList<>();
 	private ArrayList<Project> projectList=new ArrayList<>();
@@ -89,17 +89,23 @@ public class TimeManagement {
 	public boolean isUniqueProjectID(int id) {
 		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
 	}
-	private int createProjectID(int date) {
-		int id= (date*10000)+(int) (Math.random()*1000);
+	private int createProjectID() {
+		int date =this.registerTime.getYear();
+		int i=1;
+		int id= (date*10000)+i;
 		while(!isUniqueProjectID(id)) {
-			id= (date*10000) + (int) (Math.random()*10000);
+			i++;
+			id= (date*10000) + i;
 		}
 		return id;
 	}
 	private int createActivityID() {
-		int id= (10000)+(int) (Math.random()*1000);
+		int i=1;
+		int id= i;
 		while(!isUniqueActivityID(id)) {
-			id= (10000) + (int) (Math.random()*10000);
+			i++;
+			id=  i;
+			
 		}
 		return id;
 	}
@@ -112,7 +118,7 @@ public class TimeManagement {
 		if(project!=null) {
 			throw new OperationNotAllowedException("Project already exists");
 		}
-		int id =createProjectID(this.registerTime.getYear());
+		int id =createProjectID();
 		p.setID(id);
 		projectList.add(p);
 	}
