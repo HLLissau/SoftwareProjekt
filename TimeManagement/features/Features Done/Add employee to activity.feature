@@ -5,7 +5,7 @@ Description: A project manager can add an employee to an activity
 Scenario: Project manager adds employee to activity
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And a activity is in the project
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project
@@ -15,7 +15,7 @@ Scenario: Project manager adds employee to activity
 Scenario: Employee adds employee to activity
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And a activity is in the project
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project
@@ -25,7 +25,7 @@ Scenario: Employee adds employee to activity
 Scenario: Project manager adds employee to activity that employee is already in
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And a activity is in the project
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project

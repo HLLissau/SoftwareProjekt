@@ -44,9 +44,9 @@ public class ProjectSteps {
 	public void aProjectIsInTimeManagement() throws Exception {
 	    this.project= this.projectHelper.registerExampleProject();
 	}
-	@Given("an employee is registered as project manager of the project")
-	public void anEmployeeIsRegisteredAsProjectManagerOfTheProject() {
-	    try {
+	@When("the employee registers as project manager")
+	public void theEmployeeRegistersAsProjectManager() {
+    try {
 			timeManagement.setProjectManager(projectHelper.getProject().getID(),this.employeeHelper.getEmployee().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
@@ -206,7 +206,7 @@ public class ProjectSteps {
 	}
 	@When("the employee is registered as project manager")
 	public void theEmployeeIsRegisteredAsProjectManager() {
-		anEmployeeIsRegisteredAsProjectManagerOfTheProject();
+		theEmployeeRegistersAsProjectManager();
 	}
 	@Then("the employee is registered as the project manager")
 	public void theEmployeeIsRegisteredAsTheProjectManager() {
@@ -229,7 +229,7 @@ public class ProjectSteps {
 	public void aProjectExistsAndAProjectManagerIsLoggedIn() throws Exception {
 		employeeHelper.registerExampleEmployee();
 		aProjectIsInTimeManagement();
-		anEmployeeIsRegisteredAsProjectManagerOfTheProject();
+		theEmployeeRegistersAsProjectManager();
 	}
 
 	@When("the project manager requests a list of employees with under {int} activitties")

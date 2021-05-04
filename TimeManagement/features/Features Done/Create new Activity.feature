@@ -21,7 +21,7 @@ Scenario: Create a new activity that is already in timeManagement
 Scenario: set a new activity in project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And an activity with the name "new activity" is in TimeManagement
     When the employee adds the activity to the project
     Then a activity with the name "new activity" is in TimeManagement
@@ -37,7 +37,7 @@ Scenario: set a new activity when not project manager
 Scenario: Set time of activity
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And an activity with the name "new activity" is in TimeManagement
     And the employee adds the activity to the project
     When the employee sets the time of the activity to 10
@@ -46,7 +46,7 @@ Scenario: Set time of activity
 Scenario: Set time of activity when not project manager
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And an activity with the name "new activity" is in TimeManagement
     When the employee adds the activity to the project
     And another employee is logged in

@@ -28,7 +28,7 @@ Scenario: delete employee not in TimeManagement
 Scenario: delete employee who is working on activities
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And a activity is in the project
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project

@@ -7,7 +7,7 @@ Description: Employees can add  employees from projects that they are project ma
 Scenario: Project manager adds employee to project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     And a second employee is registered with TimeManagement 
     When the project manager adds an employee to the project
     Then the employee is added to the project
@@ -23,7 +23,7 @@ Scenario: Project manager adds employee to project that employee is already in
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement
     And a second employee is registered with TimeManagement 
-    And an employee is registered as project manager of the project
+    And the employee registers as project manager
     When the project manager adds an employee to the project
     Then the employee is added to the project
     When the project manager adds an employee to the project
