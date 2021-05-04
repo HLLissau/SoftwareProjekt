@@ -29,7 +29,7 @@ public class MockDateHolder {
 		when(this.dateServer.getDate()).thenReturn(c);
 	}
 	
-	public void advanceTimeByMinutes(int days) {
+	public void advanceTimeByMinutes(int minutes) {
 		Calendar currentDate = dateServer.getDate();
 		// Important: we need to create a new object,
 		// otherwise, the old calendar object gets changed,
@@ -37,7 +37,7 @@ public class MockDateHolder {
 		// using that old calendar object
 		Calendar nextDate = new GregorianCalendar();
 		nextDate.setTime(currentDate.getTime());
-		nextDate.add(Calendar.DAY_OF_YEAR, days);
+		nextDate.add(Calendar.MINUTE, minutes);
 		setDate(nextDate);
 	}
 }

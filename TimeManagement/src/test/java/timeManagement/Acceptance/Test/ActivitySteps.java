@@ -145,23 +145,18 @@ public class ActivitySteps {
 	}
 	
 	@When("the employee end work on the activity")
-	public void theEmployeeEndWorkOnTheActivity() {
-		 		
+	public void theEmployeeEndWorkOnTheActivity() {	
 		try {
 			finished = timeManagement.stopWorkOnActivity(employeeHelper.getSecondEmployee().getID(),activityHelper.getActivity().getID());
-			
 		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
-		
 	}
 
 	@Then("the activity consumed time is increased by {int}")
 	public void theActivityConsumedTimeIsIncreasedBy(int amount) {
-		
 		System.out.println(begin);
 		System.out.println(finished);
-		
 	}
 
 }
