@@ -6,29 +6,29 @@ import java.util.Date;
 
 
 public class TimeManagement {
-	
-	
-
-	private	String adminPassword="adminadmin"; 
-	private boolean adminLoggedIn=false;
-	private ArrayList<Employee> employeeList=new ArrayList<>();
-	private ArrayList<Project> projectList=new ArrayList<>();
+	private	String adminPassword = "adminadmin"; 
+	private boolean adminLoggedIn = false;
+	private ArrayList<Employee> employeeList = new ArrayList<>();
+	private ArrayList<Project> projectList = new ArrayList<>();
 	private RegisterTime registerTime;
-	private Collection<Activity> activityList=new ArrayList<>();
-	private DateServer dateServer=new DateServer();
+	private Collection<Activity> activityList = new ArrayList<>();
+	private DateServer dateServer = new DateServer();
 	
 	public TimeManagement() {
-			this.registerTime = new RegisterTime(dateServer);
-		}
+		this.registerTime = new RegisterTime(dateServer);
+	}
+	
 	public RegisterTime getRegisterTime() throws OperationNotAllowedException {
 		checkIfAdminIsLoggedIn();
 		return this.registerTime;
 	}
+	
 	public void adminLogin(String password) {
 		if (password.equals(this.adminPassword)) {
 			adminLoggedIn=true;
 		}
 	}
+	
 	public void adminlogout() {
 		this.adminLoggedIn=false;
 	}
@@ -47,6 +47,7 @@ public class TimeManagement {
 		e.setID(id);
 		employeeList.add(e);
 	}
+	
 	public void createActivity(Activity a) throws OperationNotAllowedException {
 		
 		Activity activity = getActivity(a.getID());
@@ -62,9 +63,11 @@ public class TimeManagement {
 	public Activity getActivity(int activityID) {
 		return activityList.stream().filter(a -> a.getID()==activityID).findAny().orElse(null);
 	}
+	
 	public Project getProject(int projectID) {
 		return projectList.stream().filter(p -> p.getID()==projectID).findAny().orElse(null);
 	}
+	
 	private void checkIfAdminIsLoggedIn() throws OperationNotAllowedException {
 		if (!this.adminLoggedIn) {
 			throw new OperationNotAllowedException("Administrator login required");
@@ -98,12 +101,15 @@ public class TimeManagement {
 	public Employee getEmployee(String employeeID) {
 		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
 	}
+	
 	public boolean isUniqueEmployeeID(String id) {
 		return (!employeeList.stream().filter(e-> id.equals(e.getID())).findAny().isPresent());
 	}
+	
 	public boolean isUniqueProjectID(int id) {
 		return (!projectList.stream().filter(p-> id==p.getID()).findAny().isPresent());
 	}
+	
 	private int createProjectID() {
 		int date =dateServer.getYear();
 		int i=1;
@@ -114,6 +120,7 @@ public class TimeManagement {
 		}
 		return id;
 	}
+	
 	private int createActivityID() {
 		int i=1;
 		int id= i;
@@ -124,9 +131,11 @@ public class TimeManagement {
 		}
 		return id;
 	}
+	
 	private boolean isUniqueActivityID(int id) {
 		return (!activityList.stream().filter(a-> id==a.getID()).findAny().isPresent());
 	}
+	
 	public void createProject(Project p) throws OperationNotAllowedException {
 		checkIfAdminIsLoggedIn();
 		Project project = getProject(p.getID());
@@ -142,18 +151,21 @@ public class TimeManagement {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
 	}
+	
 	public void addEmployeeToProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		Employee manager = getEmployee(managerID);
 		Project p = getProject(projectID);
 		p.addEmployee(employee, manager);
 	}
+	
 	public Employee getEmployeeFromProject(String employeeID, int projectID) {
 		Employee employee = getEmployee(employeeID);
 		
 			return getProject(projectID).getEmployee(employee);
 		
 	}
+	
 	public void setProjectManager(int projectID, String employeeID,String managerID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		Employee manager = getEmployee(managerID); 
@@ -161,17 +173,20 @@ public class TimeManagement {
 		getProject(projectID).setProjectManager(employee,manager);
 		
 	}
+	
 	public void removeActivity(int activityID, int projectID, String employeeID) throws OperationNotAllowedException {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = getActivity(activityID);
 		getProject(projectID).removeActivity(activity.getID(),employee);
 	}
+	
 	public void removeEmployeeFromProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		Employee employee = getEmployee(employeeID);
 		getProject(projectID).removeEmployee(employee, manager);
 		
 	}
+	
 	public void removeEmployeeFromTimeManagement(String eID) throws Exception {
 		checkIfAdminIsLoggedIn();
 		Employee employeeToRemove = getEmployee(eID);
@@ -185,34 +200,36 @@ public class TimeManagement {
 		}
 		employeeList.remove(employeeToRemove);
 	}
+	
 	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
 		return employeeToRemove.canBeRemoved();
 	}
+	
 	public void setProjectDescription(String description, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(projectID).setDescription(manager, description);
 	}
+	
 	public String getProjectDescription(int projectID)  {
 		return getProject(projectID).getDescription();
 	}
+	
 	public void setTimeOfProject(int time, int projectID, String managerID) throws OperationNotAllowedException {
 		Employee manager = getEmployee(managerID);
 		getProject(projectID).setTime(manager, time);
-		
-		
 	}
+	
 	public int getProjectTime(int projectID) {
 		Project p= getProject(projectID);
 		return p.getTime();
-		
-			
 	}
+	
 	public void removeProjectManagerFromProject(int projectID, String managerID) throws Exception {
 		Project p = getProject(projectID);
 		Employee manager = getEmployee(managerID);
 		p.removeProjectManager(manager);
-		
 	}
+	
 	public  ArrayList<Employee> listAvailableEmployees(int number) {
 		ArrayList<Employee> returnlist = new ArrayList<>();
 		for (Employee e: employeeList) {
@@ -221,19 +238,20 @@ public class TimeManagement {
 			}
 		}
 		return returnlist;
-		
 	}
+	
 	public ArrayList<Employee> listEmployeesOnProject(int projectID) {
 		Project p = getProject(projectID);
 		 return p.listEmployees();
 	}
+	
 	public void addEmployeeToActivity(String employeeID, int projectID, int activityID, String managerID) throws Exception {
 		Project p = getProject(projectID);
 		Employee manager = getEmployee(managerID);
 		Employee employee = getEmployee(employeeID);
 		p.addEmployeeToActivity(employee,activityID,manager);
-		
 	}
+	
 	public void beginWorkOnActivity(String employeeID, int activityID) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeID);
 		Activity a = e.getActivity(activityID);
@@ -244,24 +262,22 @@ public class TimeManagement {
 			throw new OperationNotAllowedException("Activity not found");
 		}
 		registerTime.setBeginTime(a, e,dateServer.getDate().getTime());
-		 
 	}
+	
 	public Date  stopWorkOnActivity(String employeeID, int activityID) throws Exception {
-		Employee e = getEmployee(employeeID);
-		Activity a = e.getActivity(activityID);
+		Employee employee = getEmployee(employeeID);
+		Activity activity = employee.getActivity(activityID);
 		
-		if (e.equals(null)) {
+		if (employee.equals(null)) {
 			throw new OperationNotAllowedException("Employee not found");
 		}
-		if (a.equals(null)) {
+		if (activity.equals(null)) {
 			throw new OperationNotAllowedException("Activity not found");
 		}
-		return registerTime.setFinishedTime(a, e, dateServer.getDate().getTime());
+		return registerTime.setFinishedTime(activity, employee, dateServer.getDate().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {
 		this.dateServer = dateServer;
-		
 	}
-	
 }

@@ -7,56 +7,50 @@ import java.util.GregorianCalendar;
 
 
 public class RegisterTime {
-	private ArrayList<BegunActivity> begunActivity;
+	private ArrayList<BegunActivity> begunActivities;
 	
 	public RegisterTime(DateServer dateServer) {
-		
-		this.begunActivity = new ArrayList<BegunActivity>();
+		this.begunActivities = new ArrayList<BegunActivity>();
 	}
 	
 	
-	public void setBeginTime(Activity a, Employee e, Date date) throws OperationNotAllowedException {
-		if(getBegunActivity(a,e)!=null) {
+	public void setBeginTime(Activity activity, Employee employee, Date date) throws OperationNotAllowedException {
+		if(getBegunActivity(activity,employee) != null) {
 			throw new OperationNotAllowedException("Employee already working on the activity");
 		}
-		
-		begunActivity.add(new BegunActivity(a,e,date));
+		begunActivities.add(new BegunActivity (activity,employee,date));
 	}
-	public  Date setFinishedTime(Activity a, Employee e,Date date) throws Exception {
-		
-		BegunActivity ba = getBegunActivity(a,e);
-		if(ba.equals(null)) {
-			
+	
+	public  Date setFinishedTime(Activity activity, Employee employee, Date date) throws Exception {
+		BegunActivity begunActivity = getBegunActivity(activity,employee);
+		if(begunActivity.equals(null)) {
 			throw new OperationNotAllowedException("Employee not working on the activity");
 		}
 	
-		Long begintime =ba.endActivity().getTime();
-		
-		
-		
+		Long begintime = begunActivity.endActivity().getTime();
 		Long endTime = date.getTime();
-		//System.out.println("test4");
-		Long differenceInTIme =  endTime-begintime;
-		int diffInMinutes =  (int) (differenceInTIme / (1000 * 60));
+		Long timeDiff =  begintime-endTime;
+		int diffInMinutes =  (int) (timeDiff / (1000 * 60));
+		System.out.println(diffInMinutes);
 		//System.out.println("begin" + begintime + ", end:" +endTime + ", diff: " +diffInMinutes); 
-		a.registerTimeSpent(diffInMinutes);
-		begunActivity.remove(ba);
-		a.removeEmployee(e);
+		activity.registerTimeSpent(diffInMinutes);
+		begunActivities.remove(begunActivity);
+		activity.removeEmployee(employee);
 		return date;
 	}
 	
 	
 	private BegunActivity getBegunActivity(Activity a, Employee e) {
-		return begunActivity.stream().filter(ba -> (ba.getA().equals(a) && ba.getE().equals(e))).findAny().orElse(null);
+		return begunActivities.stream().filter(ba -> (ba.getActivity().equals(a) && ba.getEmployee().equals(e))).findAny().orElse(null);
 	}
-
-	public Date getBeginTimeOfActivityByEmployee(Activity a, Employee e) throws OperationNotAllowedException {
-		BegunActivity ba = getBegunActivity(a,e);
+	
+	public Date getBeginTimeOfActivityByEmployee(Activity activity, Employee employee) throws OperationNotAllowedException {
+		BegunActivity begunActivity = getBegunActivity(activity,employee);
 		
-		if(ba==null) {
+		if(begunActivity == null) {
 			throw new OperationNotAllowedException("Employee not working on the activity");
 		}
-		return ba.getBegunTime();
+		return begunActivity.getBegunTime();
 	}
 	
 }
