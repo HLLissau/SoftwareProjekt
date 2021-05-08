@@ -64,4 +64,12 @@ public class Employee {
 	public void removeActivity(Activity activity) throws Exception {
 		this.presentActivityList.remove(activity);
 	}
+	public ArrayList<Activity> getActivityList() {
+		
+		return this.presentActivityList;
+	}
+	public ArrayList<Project> getProjectList() {
+		
+		return this.presentprojectList;
+	}
 }

@@ -2,7 +2,9 @@ package timeManagement;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import java.util.Date;
+
 
 
 public class TimeManagement {
@@ -99,7 +101,7 @@ public class TimeManagement {
 	}
 
 	public Employee getEmployee(String employeeID) {
-		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
+		return employeeList.stream().filter(e -> e.getID().equals(employeeID)).findAny().orElse(null);
 	}
 	
 	public long amountOfEmployeesWithID(String id) {
@@ -287,4 +289,12 @@ public class TimeManagement {
 		a.removeEmployee(e);
 		e.removeActivity(a);
 	}
+	public ArrayList<Employee> getAllEmployees() {
+		adminLoggedIn();
+		return this.employeeList;
+	}
+	public ArrayList<Project> getAllProjects() {
+		return this.projectList;
+	}
+	
 }
