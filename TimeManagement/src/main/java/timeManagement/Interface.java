@@ -1,8 +1,6 @@
 package timeManagement;
 
-import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +10,8 @@ public class Interface {
 	private static Employee e;
 	private static ArrayList<Activity> al;
 	private static Project project;
+	private static ArrayList<Project> pl;
+	private static Activity activity;
 
 	public static void main(String[] args) {
 		timeManagement = new TimeManagement();
@@ -172,6 +172,7 @@ public class Interface {
 		System.out.println("4: Se alle projecter");
 		System.out.println("5: Tildel projektleder på projekt");
 		
+		
 		while (true) {
 			int valg = scannerInt(1,5);
 					
@@ -198,7 +199,9 @@ public class Interface {
 					System.out.println();
 					break;
 			case 5: setProjectLeaderOnProject();
+					employeeMenu();		
 					break;
+					
 					
 			}
 		}
@@ -272,20 +275,37 @@ public class Interface {
 
 	private static void startWorkOnActivity() {
 		al= e.getActivityList();
-		if(al.size()==0) {
+		pl= e.getProjectList();
+		if(al.size()==0 && pl.size()==0) {
 			System.out.println("Du har ingen aktiviter endnu");
 			employeeMenu();
 		}
 		
-		System.out.println("Vælg en aktivitet at arbejde på");
+		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
 		for (int i=1; i<al.size();i++) {
 			System.out.print(i+ ": " );
 			printActivity(al.get(i));
 			System.out.println();
 		}
-				
-		int aktivitet = scannerInt(1, e.getActivityList().size());
+		for (int i=al.size()+1; i<al.size()+pl.size();i++) {
+			System.out.print(i+ ": " );
+			printActivity(pl.get(i));
+			System.out.println();
+		}	
+		int max= al.size()+pl.size();
+		int aktivitet = scannerInt(1, max);
+		if (aktivitet<=al.size()) {
+			activity =al.get(aktivitet);
+			beginwork(activity);
+		}
 		
+		
+	}
+
+
+
+	private static void beginwork(ActivityAndProjectParent app) {
+		timeManagement.
 		
 	}
 

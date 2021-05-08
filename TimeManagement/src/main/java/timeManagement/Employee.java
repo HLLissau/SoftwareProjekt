@@ -9,7 +9,7 @@ public class Employee {
 	private String lastName;
 	private String email;
 	private ArrayList<Activity> presentActivityList;
-	private ArrayList<Project> presentProjectList;
+	private ArrayList<Project> presentprojectList;
 
 	public Employee(String firstName, String lastName, String email) {
 		// firstname, lastname must not be less than 2 chars long
@@ -17,7 +17,7 @@ public class Employee {
 		this.lastName = lastName;
 		this.email=email;
 		this.presentActivityList = new ArrayList<Activity>();
-		this.presentProjectList= new ArrayList<Project>();
+		this.presentprojectList= new ArrayList<Project>();
 	}
 	public void setID(String iD) {
 		this.iD=iD;
@@ -41,11 +41,8 @@ public class Employee {
 	public void setActivity(Activity activity) {
 		this.presentActivityList.add(activity);
 	}
-	public ArrayList<Activity> getActivityList() {
-		return this.presentActivityList;
-	}
 	public void setProject(Project project) {
-		this.presentProjectList.add(project);
+		this.presentprojectList.add(project);
 	}
 	public boolean canBeRemoved() {
 		if (this.presentActivityList.size()==0) {
@@ -54,8 +51,12 @@ public class Employee {
 			return false;
 		}
 	}
+	public ArrayList<Activity> getActivityList() {
+		
+		return this.presentActivityList;
+	}
 	public ArrayList<Project> getProjectList() {
 		
-		return this.presentProjectList;
+		return this.presentprojectList;
 	}
 }
