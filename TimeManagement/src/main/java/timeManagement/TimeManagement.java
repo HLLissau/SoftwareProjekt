@@ -28,7 +28,7 @@ public class TimeManagement {
 	public void adminLogin(String password) {
 		if (password.equals(this.adminPassword)) {
 			adminLoggedIn=true;
-		}
+		} 
 	} 
 	
 	public void adminlogout() {
@@ -175,10 +175,15 @@ public class TimeManagement {
 		
 	}
 	
-	public void removeActivity(int activityID, int projectID, String employeeID) throws OperationNotAllowedException {
+	public void removeActivity(int activityID, int projectID, String employeeID) throws Exception {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = getActivity(activityID);
-		getProject(projectID).removeActivity(activity.getID(),employee);
+		Project project =getProject(projectID);
+		if (project!=null) {
+			project.removeActivity(activity.getID(),employee);
+		} else {
+			throw new Exception("project not found");
+		}
 	}
 	
 	public void removeEmployeeFromProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {

@@ -7,7 +7,7 @@ public class Project extends ActivityAndProjectParent {
 	
 	
 	private Employee projectManager;
-	private List<Activity> activityList = new ArrayList<Activity>();
+	private ArrayList<Activity> activityList = new ArrayList<Activity>();
 	
 	public Project(String name) {
 		super(name);
@@ -157,6 +157,15 @@ public class Project extends ActivityAndProjectParent {
 			throw new Exception("Activity not found in project");
 		}
 		
+	}
+
+
+
+
+
+	public ArrayList<Activity> getActivityList() {
+		
+		return this.activityList;
 	}
 	
 }

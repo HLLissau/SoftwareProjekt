@@ -168,7 +168,7 @@ public class ProjectSteps {
 	public void theEmployeeRemovesTheActivityFromTheProject() {
 		try {
 			timeManagement.removeActivity(activityHelper.getActivity().getID(),project.getID(),employeeHelper.getEmployee().getID());
-		} catch (OperationNotAllowedException e) {
+		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}

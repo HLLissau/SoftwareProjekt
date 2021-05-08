@@ -19,7 +19,7 @@ public class Interface {
 	private static Project project;
 	private static ArrayList<Project> pl;
 	private static Activity activity;
-	private static ActivityAndProjectParent workingonapp;
+
 
 	public static void main(String[] args) {
 		timeManagement = new TimeManagement();
@@ -36,7 +36,7 @@ public class Interface {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		 e = new Employee("Anton","Engelbrecht","S200859@student.dtu.dk");
+		e = new Employee("Anton","Engelbrecht","S200859@student.dtu.dk");
 		try {
 			timeManagement.createEmployee(e);
 		} catch (Exception e1) {
@@ -63,14 +63,14 @@ public class Interface {
 		System.out.println("2: Login som medarbejder");
 		System.out.println("3: Exit");
 		System.out.println("Venligst skriv dit valg her: ");	
-		
+
 		/*
 		 * User input tracking selection
 		 */
 		int selection =scannerInt(1,3);
 
 		while (true) {
-			
+
 			switch (selection) {
 			case 1: 
 				loginAdmin();
@@ -86,11 +86,11 @@ public class Interface {
 				selection = scannerInt(1,3);
 				break;
 			}
-			
+
 		}
 
 	}
-	
+
 	public static void adminMenu() {
 		clearConsole();
 		System.out.println("Du er nu logget på som administrator, her er dine muligheder:");
@@ -102,33 +102,33 @@ public class Interface {
 		System.out.println("6: Logout");
 		while (true) {
 			int adminvalg = scannerInt(1,6);
-					
+
 			switch(adminvalg) {
-			
+
 			case 1: createNewUser();
-					break;
+			break;
 			case 2: getAllUsers();
-					System.out.println();
-					adminMenu();
-					break;
+			System.out.println();
+			adminMenu();
+			break;
 			case 3: deleteUser();
-					break;
+			break;
 			case 4: createNewProject();		
-					break;
+			break;
 			case 5: getAllProjects();
-					System.out.println();
-					adminMenu();
-					break;
-			
+			System.out.println();
+			adminMenu();
+			break;
+
 			case 6: timeManagement.adminlogout();
-					mainMenu();
-					break;
+			mainMenu();
+			break;
 			}
-			
+
 		}
 	}
-	
-	
+
+
 
 
 	private static void getAllProjects() {
@@ -149,7 +149,7 @@ public class Interface {
 
 		System.out.println("Bekræft det nye projektnavn: ");
 		System.out.println("Navn: " + name);
-		
+
 		System.out.println();
 		System.out.println("Er denne information korrekt?");
 		System.out.println("1: Ja");
@@ -167,7 +167,7 @@ public class Interface {
 					System.out.println("Det nye projekt findes som:");
 					printProject(test);
 				}
-				
+
 			} catch (OperationNotAllowedException e1) {
 				System.out.println(e1.getMessage());
 			}
@@ -185,12 +185,12 @@ public class Interface {
 		System.out.print("Navn: " +p.getName());
 		System.out.print(",   ID: " +p.getID());
 		if(p.getProjectManager()!=null) {
-			System.out.println(",   Projektleder-navn: " + p.getProjectManager().getFirstName());
+			System.out.print(",   Projektleder-navn: " + p.getProjectManager().getFirstName());
 			System.out.print(",   Projektleder-ID: " + p.getProjectManager().getID());
 		}else {
 			System.out.println(",   Projektleder: projektleder ikke tildelt.");
 		}
-		
+
 		System.out.println();
 	}
 
@@ -204,45 +204,45 @@ public class Interface {
 		System.out.println("4: Se alle projekter");
 		System.out.println("5: Tildel projektleder på projekt");
 		System.out.println("6: Logout");
-		
-		
+
+
 		while (true) {
 			int valg = scannerInt(1,6);
-					
+
 			switch(valg) {
-			
+
 			case 1: 
-					System.out.println("Dine aktiviteter: ");
-					printActivityList(e.getActivityList());
-					System.out.println();
-					employeeMenu();
-					break;
-					
+				System.out.println("Dine aktiviteter: ");
+				printActivityList(e.getActivityList());
+				System.out.println();
+				employeeMenu();
+				break;
+
 			case 2: 
-					System.out.println("Dine projekter: ");
-					printProjectList(e.getProjectList());
-					System.out.println();
-					employeeMenu();
-					break;
+				System.out.println("Dine projekter: ");
+				printProjectList(e.getProjectList());
+				System.out.println();
+				employeeMenu();
+				break;
 			case 3: startWorkOnActivity();
-					System.out.println();
-					break;
-			
+			System.out.println();
+			break;
+
 			case 4: getAllProjects();
-					System.out.println();
-					break;
+			System.out.println();
+			break;
 			case 5: setProjectLeaderOnProject();
-					employeeMenu();		
-					break;
+			employeeMenu();		
+			break;
 			case 6: mainMenu();
-					break;
-					
-					
+			break;
+
+
 			}
 		}
-		
+
 	}
-	
+
 	private static void setProjectLeaderOnProject() {
 		project = vælgProjekt(timeManagement.getAllProjects());
 		String newLeader= getUser();
@@ -272,7 +272,7 @@ public class Interface {
 			System.out.println("Der er ingen medarbejdere at vælge imellem.");
 			return null;
 		}
-		
+
 		System.out.println("Vælg en medarbejder.");
 		for (int i=1; i<=list.size();i++) {
 			System.out.print(i+ ": " );
@@ -280,20 +280,20 @@ public class Interface {
 			System.out.println();
 		}
 		int valg=scannerInt(1, list.size())-1;
-		
+
 		return list.get(valg).getID();
-		
+
 	}
 
 
 
 	private static Project vælgProjekt(ArrayList<Project> allProjects) {
-		
+
 		if(allProjects.size()==0) {
 			System.out.println("Der er ingen projekter at vælge imellem endnu.");
 			return null;
 		}
-		
+
 		System.out.println("Vælg et projekt:");
 		for (int i=1; i<=allProjects.size();i++) {
 			System.out.print(i+ ": " );
@@ -301,9 +301,9 @@ public class Interface {
 			System.out.println();
 		}
 		int valg=scannerInt(1, allProjects.size())-1;
-		
+
 		return allProjects.get(valg);
-		
+
 	}
 
 
@@ -315,7 +315,7 @@ public class Interface {
 			System.out.println("Du har ingen aktiviter endnu.");
 			employeeMenu();
 		}
-		
+
 
 		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
 		for (int i=0; i<al.size();i++) {
@@ -330,29 +330,168 @@ public class Interface {
 			System.out.println();
 		}	
 		int max= al.size()+pl.size();
-		int aktivitet = scannerInt(1, max);
-		if (aktivitet<=al.size()) {
-			activity =al.get(aktivitet);
-			beginwork(activity);
+		int userchoice = scannerInt(1, max);
+		if (userchoice<=al.size()) {
+			activity =al.get(userchoice-1);
+			beginWorkOnActivity(activity);
+		} else {
+			project = pl.get(userchoice-1-al.size());
+			beginWorkOnProject(project);
 		}
-		
-		
+
+
 	}
 
 
 
-	private static void beginwork(ActivityAndProjectParent app) {
-		workingonapp= app;
+	private static void beginWorkOnActivity(Activity activity) {
+
 		try {
-			timeManagement.beginWorkOnActivity(e.getID(), app.getID());
+			timeManagement.beginWorkOnActivity(e.getID(), activity.getID());
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e.getMessage());
 		}
-		
+		System.out.println("you are working activity :");
+		printActivity(activity);
+	}
+	private static void beginWorkOnProject(Project project) {
+
+		while (true) {
+			System.out.println("");
+			System.out.println("Du er logged på projekt: ");
+			printProject(project);
+
+			System.out.println("");
+			System.out.println("1: Tilføj bruger til projektet");
+			System.out.println("2: Fjern bruger fra projektet");
+			System.out.println("3: Tilføj aktivitet til projektet");
+			System.out.println("4: Fjern aktivitet fra projektet");
+			System.out.println("5: Se alle aktiviteter");
+			System.out.println("6: Rediger aktivitet");
+			System.out.println("7: Sæt budgeteret tid til projektet");
+			System.out.println("8: Se tilbageværende tid til projektet");
+			System.out.println("9: Logout");
+
+			int valg = scannerInt(1,9);
+
+			switch(valg) {
+
+			case 1: addEmployeeToProject();
+
+			break;
+			case 2: removeEmployeeFromProject();
+
+
+
+			break;
+			case 3: addActivityToProject();
+
+			break;
+
+			case 4: removeActivityFromProject();
+
+			break;
+			case 5: printActivityList(project.getActivityList());
+			break;
+			case 6: //editActivity();;
+				break;
+			case 7: setProjectTime();
+
+			break;
+			case 8: System.out.println("Tid tilbage på projektet :" + project.getTime());
+			break;
+			case 9: employeeMenu();
+			break;
+
+			}
+
+		}
+
 	}
 
 
 
+	private static void setProjectTime() {
+		int current = project.getTime();
+		System.out.println("nuværende tid:" +current);
+		System.out.println("Vælg ny tid til projektet: ");
+		try {
+			project.setTime(e, scannerInt(0, Integer.MAX_VALUE));
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	private static void removeActivityFromProject() {
+		if(project.getActivityList().size()!=0) {
+			System.out.println("Vælg en aktivitet fra listen: ");
+			int i=1;
+
+			for(Activity temp: project.getActivityList()) {
+				System.out.print(i+ ": " );
+				printActivity(temp);
+				System.out.println();
+				i++;
+			}
+			int number =scannerInt(1,project.getActivityList().size())-1;
+			Activity activity = project.getActivityList().get(number);
+			try {
+				timeManagement.removeActivity(activity.getID(), project.getID(), e.getID());
+				System.out.println("Aktivitet fjernet");
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		} else {
+			System.out.println("Ingen aktiviteter i projektet");
+		}
+	}
+	private static void addActivityToProject() {
+		System.out.println("Vælg navn på aktiviteten");
+		String navn = scannerString();
+		Activity a = new Activity(navn);
+		try {
+			timeManagement.addActivityToProject(a, project.getID(), e.getID());
+			System.out.println("Aktiviteten " + navn + " er tilføjet.");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	private static void removeEmployeeFromProject() {
+		if(project.getEmployeeList().size()!=0) {
+			System.out.println("Vælg en medarbejder fra listen: ");
+			int i=1;
+
+			for(Employee temp: project.getEmployeeList()) {
+				System.out.print(i+ ": " );
+				printEmployee(temp);
+				System.out.println();
+				i++;
+			}
+			int number =scannerInt(1,project.getEmployeeList().size())-1;
+			Employee employee1 = project.getEmployeeList().get(number);
+			try {
+				timeManagement.removeEmployeeFromProject(employee1.getID(), project.getID(), e.getID());
+				System.out.println("medarbejder fjernet");
+			} catch (OperationNotAllowedException e) {
+				System.out.println(e.getMessage());
+			}
+		} else {
+			System.out.println("Ingen medarbejdere i projektet");
+		}
+
+	}
+	private static void addEmployeeToProject() {
+		System.out.println("Vælg en medarbejder: ");
+		getAllUsers();
+		System.out.println();
+		int number =scannerInt(1,timeManagement.getAllEmployees().size())-1;
+		Employee employee1 = timeManagement.getAllEmployees().get(number);
+		try {
+			timeManagement.addEmployeeToProject(employee1.getID(), project.getID(), e.getID());
+			System.out.println("medarbejder tilføjet");
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	private static void printProjectList(ArrayList<Project> projectList) {
 		for(Project app : projectList) {
 			printProject(app);
@@ -366,7 +505,7 @@ public class Interface {
 	private static void printActivity(ActivityAndProjectParent app) {
 		System.out.print("Navn: "+ app.getName());
 		System.out.print(",   ID: " + app.getID() );
-		
+
 	}
 	private static void deleteUser() {
 		System.out.println("ADVARSEL:");
@@ -383,7 +522,7 @@ public class Interface {
 			System.out.println("Brugeren findes ikke i TimeManagement.");
 			deleteUser();
 		}
-		
+
 		System.out.println("Vil du slette denne bruger?");
 		System.out.println("1: Ja");
 		System.out.println("2: Nej");
@@ -397,9 +536,9 @@ public class Interface {
 				Employee test =timeManagement.getEmployee(e.getID());
 				if(test==null) {
 					System.out.println("Brugeren er slettet.");
-					
+
 				}
-				
+
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
@@ -409,19 +548,24 @@ public class Interface {
 		break;
 
 		}
-		
-		
-		
+
+
+
 	}
 
 
 
 	private static void getAllUsers() {
 		System.out.println("Liste over alle medarbejdere.");
+		int i=1;
 		for( Employee e: timeManagement.getAllEmployees()) {
+
+			System.out.print(i + ": ");
 			printEmployee(e);
+			System.out.println();
+			i++;
 		}
-		
+
 	}
 
 
@@ -459,7 +603,7 @@ public class Interface {
 					System.out.println("Den nye bruger findes i TimeManagement som:");
 					printEmployee(test);
 				}
-				
+
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
@@ -471,34 +615,33 @@ public class Interface {
 
 		}
 	}
-	
+
 	private static void printEmployee(Employee e) {
 		System.out.print("First name: " +e.getFirstName());
 		System.out.print(",   Last name: " +e.getLastName());
 		System.out.print(",   ID: " +e.getID());
-		System.out.println();
-		
+
+
 	}
 
 
 
 	public static void loginAdmin(){
-		System.out.println("Du er nu i admin-login. \nIndtast din adgangskode. Skriv 2 for at gå tilbage.");
+		System.out.println("Du er nu i admin-login. \nIndtast din adgangskode.");
 		System.out.println("Adgangskode: ");
 		String brugerID = scannerString();
-		while (!brugerID.equals("2")) {
 
-			timeManagement.adminLogin(brugerID);
+		timeManagement.adminLogin(brugerID);
 
-			if(timeManagement.adminLoggedIn()) {
-				adminMenu();
-			}else {
-				System.out.println();
-				System.out.println("Forkert kode, prøv igen.");
-			}
-			brugerID = scannerString();
+		if(timeManagement.adminLoggedIn()) {
+			adminMenu();
+		} else {
+			System.out.println("forkert adgangskode");
+			System.out.println();
 		}
 		mainMenu();
+
+
 	}
 	public static void loginEmployee(){
 		System.out.println("Du er nu i medarbejder-login. \nIndtast dit bruger-ID. Skriv 2 for at gå tilbage.");
@@ -515,7 +658,7 @@ public class Interface {
 			brugerID = scannerString();
 		}
 		mainMenu();
-		
+
 	}
 	/*
 	 * Check input is a number within the set limit
@@ -539,33 +682,33 @@ public class Interface {
 		if (scanner.hasNext()){
 			textOutput = scanner.next();
 		}
-		
+
 		return textOutput;
 	}
-	
+
 	public final static void clearConsole()  {
 		/*
 		 * clearscreen 
 		 */
 		try
-	    {
-	        final String os = System.getProperty("os.name");
+		{
+			final String os = System.getProperty("os.name");
 
-	        if (os.contains("Windows"))
-	        {
-	            Runtime.getRuntime().exec("cls");
-	        }
-	        else
-	        {
-	            Runtime.getRuntime().exec("clear");
-	        }
-	    }
-	    catch (final Exception e)
-	    {
-	        // System.out.println(e.getMessage());
-	    }
-		    
-		
+			if (os.contains("Windows"))
+			{
+				Runtime.getRuntime().exec("cls");
+			}
+			else
+			{
+				Runtime.getRuntime().exec("clear");
+			}
+		}
+		catch (final Exception e)
+		{
+			// System.out.println(e.getMessage());
+		}
+
+
 	}
-	
+
 }
