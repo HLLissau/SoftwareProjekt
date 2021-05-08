@@ -150,6 +150,7 @@ public class Project extends ActivityAndProjectParent {
 		Activity a = getActivity(activityID);
 		if(a!=null) {
 			a.addEmployee(employee);
+			employee.setActivity(a);
 		}else {
 			throw new Exception("Activity not found in project");
 		}

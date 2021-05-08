@@ -151,6 +151,7 @@ public class TimeManagement {
 	public void addActivityToProject(Activity a, int pID, String managerID) throws Exception {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
+		this.activityList.add(a);
 	}
 	
 	public void addEmployeeToProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
@@ -259,7 +260,7 @@ public class TimeManagement {
 	
 	public void beginWorkOnActivity(String employeeID, int activityID) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeID);
-		Activity a = e.getActivity(activityID);
+		Activity a = getActivity(activityID);
 		
 		if (a == (null)) {
 			throw new OperationNotAllowedException("Activity not found");
@@ -267,12 +268,12 @@ public class TimeManagement {
 		registerTime.setBeginTime(a, e,dateServer.getTime().getTime());
 	}
 	
-	public Date  stopWorkOnActivity(String employeeID, int activityID) throws Exception {
+	public void stopWorkOnActivity(String employeeID, int activityID) throws Exception {
 		Employee employee = getEmployee(employeeID);
-		Activity activity = employee.getActivity(activityID);
+		Activity activity = getActivity(activityID);
 		
 		
-		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
+		registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {
