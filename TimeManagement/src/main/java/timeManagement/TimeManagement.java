@@ -27,7 +27,7 @@ public class TimeManagement {
 		if (password.equals(this.adminPassword)) {
 			adminLoggedIn=true;
 		}
-	}
+	} 
 	
 	public void adminlogout() {
 		this.adminLoggedIn=false;
@@ -283,8 +283,8 @@ public class TimeManagement {
 
 	public void removeEmployeeToActivity(String employeeID, int activityID) throws Exception {
 		Activity a = getActivity(activityID);
-		Employee employee = getEmployee(employeeID);
-		a.removeEmployee(employee);
-		
+		Employee e = getEmployee(employeeID);
+		a.removeEmployee(e);
+		e.removeActivity(a);
 	}
 }

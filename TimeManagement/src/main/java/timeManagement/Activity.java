@@ -18,12 +18,12 @@ public class Activity extends ActivityAndProjectParent {
 	}
 
 	public void addEmployee(Employee employee) throws Exception {
-		if (!employeeList.contains(employee)) {
-			employeeList.add(employee);
-			employee.setActivity(this);
-		} else {
+		if (employeeList.contains(employee)) {
 			throw new Exception("Employee already added to the activity");
 		}
+		
+		employeeList.add(employee);
+		employee.setActivity(this);
 	}
 
 	public void registerTimeSpent(int diffInMinutes) {
@@ -38,7 +38,7 @@ public class Activity extends ActivityAndProjectParent {
 			throw new Exception("Employee not found in activity");
 		}
 		employeeList.remove(e);
-		e.removeActivity(this);
+		
 	}
 	
 }

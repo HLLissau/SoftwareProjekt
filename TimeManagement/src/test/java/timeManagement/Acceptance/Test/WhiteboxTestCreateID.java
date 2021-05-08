@@ -13,8 +13,25 @@ class WhiteboxTestCreateID {
 	TimeManagement timeManagement = new TimeManagement();
 	EmployeeHelper employeeHelper = new EmployeeHelper(timeManagement);
 	
-//	Employee employee_1 = employeeHelper.registerExampleEmployee();
-//	employee_1.setID("JEHA");
+	@Test //A1
+	void ifInputIsNull() {
+		try {
+			String id = timeManagement.createID(null, null);
+			fail("Exception not thrown!");
+		} catch (Exception e) {
+			assertTrue(true); // IF an exception is thrown, our test pass
+		}
+	}
+	
+	@Test //A2
+	void ifInputIsEmpty() {
+		try {
+			String id = timeManagement.createID("", "");
+			fail("Exception not thrown!");
+		} catch (Exception e) {
+			assertTrue(true);
+		}
+	}
 	
 	@Test //C1
 	void ifIdNotInTimeManagement() throws Exception {
