@@ -2,6 +2,7 @@ package timeManagement;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
 
 public class TimeManagement {
 	
@@ -81,7 +82,7 @@ public class TimeManagement {
 	}
 
 	public Employee getEmployee(String employeeID) {
-		return employeeList.stream().filter(e -> e.getID()==employeeID).findAny().orElse(null);
+		return employeeList.stream().filter(e -> e.getID().equals(employeeID)).findAny().orElse(null);
 	}
 	public boolean isUniqueEmployeeID(String id) {
 		return (!employeeList.stream().filter(e-> id==e.getID()).findAny().isPresent());
@@ -219,4 +220,12 @@ public class TimeManagement {
 		p.addEmployeeToActivity(employee,activityID,manager);
 		
 	}
+	public ArrayList<Employee> getAllEmployees() {
+		adminLoggedIn();
+		return this.employeeList;
+	}
+	public ArrayList<Project> getAllProjects() {
+		return this.projectList;
+	}
+	
 }
