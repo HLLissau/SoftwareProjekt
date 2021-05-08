@@ -268,12 +268,12 @@ public class TimeManagement {
 		registerTime.setBeginTime(a, e,dateServer.getTime().getTime());
 	}
 	
-	public void stopWorkOnActivity(String employeeID, int activityID) throws Exception {
+	public Date stopWorkOnActivity(String employeeID, int activityID) throws Exception {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = getActivity(activityID);
 		
 		
-		registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
+		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
 	
 	public void setDateServer(DateServer dateServer) {
