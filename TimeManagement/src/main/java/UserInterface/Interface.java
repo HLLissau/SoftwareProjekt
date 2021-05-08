@@ -23,9 +23,33 @@ public class Interface {
 	public static void main(String[] args) {
 		timeManagement = new TimeManagement();
 		scanner = new Scanner(System.in);
+		testsetting();
 		mainMenu();
 	}
-
+	public static void testsetting() {
+		timeManagement.adminLogin("adminadmin");
+		Employee e = new Employee("Harald","Lissau","S204436@student.dtu.dk");
+		try {
+			timeManagement.createEmployee(e);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		 e = new Employee("Anton","Engelbrecht","S200859@student.dtu.dk");
+		try {
+			timeManagement.createEmployee(e);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			timeManagement.createProject(new Project("TimeManagement"));
+		} catch (OperationNotAllowedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		timeManagement.adminlogout();
+	}
 
 
 	private static void mainMenu() {
@@ -291,12 +315,12 @@ public class Interface {
 		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
 		for (int i=1; i<al.size();i++) {
 			System.out.print(i+ ": " );
-			printActivity(al.get(i));
+			printActivity(al.get(i-1));
 			System.out.println();
 		}
 		for (int i=al.size()+1; i<al.size()+pl.size();i++) {
 			System.out.print(i+ ": " );
-			printActivity(pl.get(i));
+			printActivity(pl.get(i-al.size()-2));
 			System.out.println();
 		}	
 		int max= al.size()+pl.size();
