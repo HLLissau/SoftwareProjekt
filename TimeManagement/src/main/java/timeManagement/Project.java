@@ -135,11 +135,8 @@ public class Project extends ActivityAndProjectParent {
 		setExpectedTime(time);
 		assert this.time==time: "postcondition not met";
 	}
-
-	public int getTime() {
-		
-		return this.time;
-	}
+	
+	
 
 	public void removeProjectManager(Employee projectManager) throws OperationNotAllowedException  {
 		isProjectManager(projectManager);

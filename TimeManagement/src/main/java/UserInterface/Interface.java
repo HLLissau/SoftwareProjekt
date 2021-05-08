@@ -393,7 +393,8 @@ public class Interface {
 			break;
 			case 5: printActivityList(project.getActivityList());
 			break;
-			case 6: //editActivity();;
+			case 6: editActivity();
+			
 				break;
 			case 7: setProjectTime();
 
@@ -410,7 +411,49 @@ public class Interface {
 	}
 
 
+	
+	private static void editActivity() {
+		activitylogin();
+		Boolean inmenu=true;
+		while (inmenu) {
+			System.out.println("");
+			System.out.println("Du er logged på aktivitet: ");
+			printActivity(activity);
 
+			System.out.println("");
+			System.out.println("1: Tilføj bruger til aktiviteten");
+			System.out.println("2: Fjern bruger fra aktiviteten");
+			System.out.println("3: Se alle medarbejdere på aktiviteten");
+			System.out.println("4: Logout");
+
+			int valg = scannerInt(1,4);
+
+			switch(valg) {
+
+			case 1: addEmployeeToActivity();
+
+			break;
+			case 2: removeEmployeeFromActivity();
+
+
+
+			break;
+			
+			case 3: printAllEmployees(activity.getEmployeeList());
+			break;
+			
+			case 4: 
+					inmenu=false;
+					break;
+			break;
+
+			}
+		}
+	}
+	private static void activitylogin() {
+		// TODO Auto-generated method stub
+		
+	}
 	private static void setProjectTime() {
 		int current = project.getTime();
 		System.out.println("nuværende tid:" +current);
