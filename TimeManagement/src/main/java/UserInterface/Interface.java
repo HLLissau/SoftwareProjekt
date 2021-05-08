@@ -1,8 +1,15 @@
-package timeManagement;
+package UserInterface;
 
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import timeManagement.Activity;
+import timeManagement.ActivityAndProjectParent;
+import timeManagement.Employee;
+import timeManagement.OperationNotAllowedException;
+import timeManagement.Project;
+import timeManagement.TimeManagement;
 
 public class Interface {
 	private static Scanner scanner;
@@ -305,7 +312,7 @@ public class Interface {
 
 
 	private static void beginwork(ActivityAndProjectParent app) {
-		timeManagement.
+		
 		
 	}
 
@@ -418,7 +425,7 @@ public class Interface {
 					printEmployee(test);
 				}
 				
-			} catch (OperationNotAllowedException e1) {
+			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
 			adminMenu();
