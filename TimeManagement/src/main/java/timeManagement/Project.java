@@ -5,14 +5,17 @@ import java.util.List;
 
 public class Project extends ActivityAndProjectParent {
 	
+	
 	private Employee projectManager;
 	private List<Activity> activityList = new ArrayList<Activity>();
-	
 	
 	public Project(String name) {
 		super(name);
 		
 	}
+
+
+	
 	
 		
 	/*
@@ -39,7 +42,7 @@ public class Project extends ActivityAndProjectParent {
 		return projectManager;
 	}
 
-	public void addActivity(Activity a, Employee e) throws OperationNotAllowedException {
+	public void addActivity(Activity a, Employee e) throws Exception {
 		isProjectManager(e);
 		Activity activityexists = getActivity(a.getID());
 		if (activityexists ==null) {
@@ -66,16 +69,18 @@ public class Project extends ActivityAndProjectParent {
 
 
 	public void addEmployee(Employee employee, Employee manager) throws OperationNotAllowedException {
+		if (employee.getID() == null) {
+			throw new OperationNotAllowedException("Employees without an ID cannot be added");
+		}
 		isProjectManager(manager);
-		
 		if ((getEmployee(employee)==null)) {
-			
 			employeeList.add(employee);
 			employee.setProject(this);
 		} else {
 			throw new OperationNotAllowedException("Employee already added to project");
 		}
 	}
+
 
 
 

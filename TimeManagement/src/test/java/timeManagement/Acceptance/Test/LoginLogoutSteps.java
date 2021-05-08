@@ -1,5 +1,6 @@
 package timeManagement.Acceptance.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -39,7 +40,7 @@ public class LoginLogoutSteps {
 	}
 
 	@When("the administrator registers the employee in TimeManagement")
-	public void theAdministratorRegistersTheEmployeeInTimeManagement() {
+	public void theAdministratorRegistersTheEmployeeInTimeManagement() throws Exception {
 			try {
 				timeManagement.createEmployee(employee);
 			} catch (OperationNotAllowedException e) {
@@ -57,9 +58,8 @@ public class LoginLogoutSteps {
 
 	@Then("the employee is given a unique id")
 	public void theEmployeeIsGivenAUniqueId() {
-		//must return false, because the employee is in the system.
-		assertFalse(timeManagement.isUniqueEmployeeID(employee.getID()));
-		
+		// if there is one and ONLY one id in the system, and the employee has that ID, then the ID is unique
+		assertEquals(1, timeManagement.amountOfEmployeesWithID(employee.getID()));
 	}
 	@Given("that the administrator is not logged in")
 	public void thatTheAdministratorIsNotLoggedIn() {

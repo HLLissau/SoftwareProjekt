@@ -1,5 +1,7 @@
 package timeManagement.Acceptance.Test;
 
+import java.util.List;
+
 import timeManagement.Employee;
 import timeManagement.TimeManagement;
 
@@ -21,6 +23,17 @@ public class EmployeeHelper {
 		this.timeManagement.adminlogout();
 		
 		return e;
+	}
+	//overloading
+	public Employee registerExampleEmployee(Employee employee) throws Exception {
+		if(!timeManagement.adminLoggedIn()) {
+			this.timeManagement.adminLogin("adminadmin");
+			
+		}
+		this.timeManagement.createEmployee(employee);
+		this.timeManagement.adminlogout();
+		
+		return employee;
 	}
 	
 	public Employee registerNewExampleEmployee() throws Exception {
@@ -50,7 +63,6 @@ public class EmployeeHelper {
 		this.secondEmployee = exampleEmployee();
 		this.timeManagement.createEmployee(this.secondEmployee);
 		this.timeManagement.adminlogout();
-		
 		return this.secondEmployee;
 	}
 	
@@ -66,6 +78,7 @@ public class EmployeeHelper {
 		}
 		return secondEmployee;
 	}
+	
 	private Employee exampleEmployee() {
 		Employee e = new Employee("Jens", "Hansen", "JHansen@awesomefirm.dk");
 		return e;
