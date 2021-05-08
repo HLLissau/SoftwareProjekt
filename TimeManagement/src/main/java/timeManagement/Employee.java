@@ -47,6 +47,10 @@ public class Employee {
 	public void setProject(Project project) {
 		this.presentprojectList.add(project);
 	}
+	
+	public ArrayList<Project> getProjects() {
+		return presentprojectList;
+	}
 	public boolean canBeRemoved() {
 		if (this.presentActivityList.size()>0) {
 			return false;

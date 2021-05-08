@@ -131,7 +131,6 @@ public class TimeManagement {
 		return id;
 	}
 	
-	// if there is one (and ONLY one) activity with the ID id, it returns true
 	public long amountOfActivitiesWithID(int id) {
 		return activityList.stream().filter(a -> id == a.getID()).count();
 	}
@@ -190,7 +189,6 @@ public class TimeManagement {
 	public void removeEmployeeFromTimeManagement(String eID) throws Exception {
 		checkIfAdminIsLoggedIn();
 		Employee employeeToRemove = getEmployee(eID);
-		
 		if (employeeToRemove!=null) { // check if Employee is found in project
 			if (!employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
 				throw new Exception("Employee is working on activity");

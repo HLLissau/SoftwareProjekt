@@ -69,16 +69,18 @@ public class Project extends ActivityAndProjectParent {
 
 
 	public void addEmployee(Employee employee, Employee manager) throws OperationNotAllowedException {
+		if (employee.getID() == null) {
+			throw new OperationNotAllowedException("Employees without an ID cannot be added");
+		}
 		isProjectManager(manager);
-		
 		if ((getEmployee(employee)==null)) {
-			
 			employeeList.add(employee);
 			employee.setProject(this);
 		} else {
 			throw new OperationNotAllowedException("Employee already added to project");
 		}
 	}
+
 
 
 
