@@ -19,6 +19,7 @@ public class Interface {
 	private static Project project;
 	private static ArrayList<Project> pl;
 	private static Activity activity;
+	private static ActivityAndProjectParent workingonapp;
 
 	public static void main(String[] args) {
 		timeManagement = new TimeManagement();
@@ -316,14 +317,14 @@ public class Interface {
 		}
 		
 		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
-		for (int i=1; i<al.size();i++) {
-			System.out.print(i+ ": " );
-			printActivity(al.get(i-1));
+		for (int i=0; i<al.size();i++) {
+			System.out.print((i+1) + ": " );
+			printActivity(al.get(i));
 			System.out.println();
 		}
-		for (int i=al.size()+1; i<al.size()+pl.size();i++) {
-			System.out.print(i+ ": " );
-			printActivity(pl.get(i-al.size()-2));
+		for (int i=0; i<pl.size();i++) {
+			System.out.print((i+1+al.size()) + ": " );
+			printActivity(pl.get(i));
 			System.out.println();
 		}	
 		int max= al.size()+pl.size();
@@ -339,7 +340,12 @@ public class Interface {
 
 
 	private static void beginwork(ActivityAndProjectParent app) {
-		
+		workingonapp= app;
+		try {
+			timeManagement.beginWorkOnActivity(e.getID(), app.getID());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 
