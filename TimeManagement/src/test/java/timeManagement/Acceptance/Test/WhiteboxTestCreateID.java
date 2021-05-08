@@ -15,9 +15,8 @@ class WhiteboxTestCreateID {
 	
 	@Test //A1
 	void ifInputIsNull() {
-		String id;
 		try {
-			id = timeManagement.createID(null, null);
+			String id = timeManagement.createID(null, null);
 			fail("Exception not thrown!");
 		} catch (Exception e) {
 			assertTrue(true); // IF an exception is thrown, our test pass
