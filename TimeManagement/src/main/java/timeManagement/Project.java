@@ -131,9 +131,7 @@ public class Project extends ActivityAndProjectParent {
 
 	public void setTime(Employee projectManager, int time) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
-		assert time>0 : "precondition not met, must be positive time";
 		setExpectedTime(time);
-		assert this.time==time: "postcondition not met";
 	}
 	
 	
@@ -156,13 +154,7 @@ public class Project extends ActivityAndProjectParent {
 		}
 		
 	}
-
-
-
-
-
 	public ArrayList<Activity> getActivityList() {
-		
 		return this.activityList;
 	}
 	

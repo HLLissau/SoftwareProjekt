@@ -260,7 +260,7 @@ public class TimeManagement {
 	
 	public void beginWorkOnActivity(String employeeID, int activityID) throws OperationNotAllowedException {
 		Employee e = getEmployee(employeeID);
-		Activity a = getActivity(activityID);
+		Activity a = e.getActivity(activityID);
 		
 		if (a == (null)) {
 			throw new OperationNotAllowedException("Activity not found");
@@ -296,11 +296,19 @@ public class TimeManagement {
 		e.removeActivity(a);
 	}
 	public ArrayList<Employee> getAllEmployees() {
-		adminLoggedIn();
+		//adminLoggedIn();
 		return this.employeeList;
 	}
 	public ArrayList<Project> getAllProjects() {
 		return this.projectList;
+	}
+	public ArrayList<Activity> getEmployeeActivityList(String eID) {
+		Employee e = getEmployee(eID);
+		return e.getActivityList();
+	}
+	public ArrayList<Project> getEmployeeProjectList(String eID) {
+		Employee e = getEmployee(eID);
+		return e.getProjectList();
 	}
 	
 }

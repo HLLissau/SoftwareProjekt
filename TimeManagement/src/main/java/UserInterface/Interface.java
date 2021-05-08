@@ -213,14 +213,14 @@ public class Interface {
 				System.out.println("Dine aktiviteter: ");
 				printActivityList(e.getActivityList());
 				System.out.println();
-				employeeMenu();
+				
 				break;
 
 			case 2: 
 				System.out.println("Dine projekter: ");
 				printProjectList(e.getProjectList());
 				System.out.println();
-				employeeMenu();
+				
 				break;
 			case 3: 
 				startWorkOnActivity();
@@ -233,7 +233,7 @@ public class Interface {
 				break;
 			case 5: 
 				setProjectLeaderOnProject();
-				employeeMenu();		
+					
 				break;
 			case 6: 
 				inmenu=false;
