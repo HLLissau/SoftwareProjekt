@@ -164,7 +164,7 @@ public class Interface {
 				timeManagement.createProject(p);
 				Project test =timeManagement.getProject(p.getID());
 				if(test!=null) {
-					System.out.println("Det nye projekt findes som: ");
+					System.out.println("Det nye projekt findes som:");
 					printProject(test);
 				}
 				
@@ -188,7 +188,7 @@ public class Interface {
 			System.out.println(",   Projektleder-navn: " + p.getProjectManager().getFirstName());
 			System.out.print(",   Projektleder-ID: " + p.getProjectManager().getID());
 		}else {
-			System.out.println(",   Projektleder:   projektleder ikke tildelt");
+			System.out.println(",   Projektleder: projektleder ikke tildelt.");
 		}
 		
 		System.out.println();
@@ -219,7 +219,7 @@ public class Interface {
 					break;
 					
 			case 2: 
-					System.out.println("Dine Projekter: ");
+					System.out.println("Dine projekter: ");
 					printProjectList(e.getProjectList());
 					System.out.println();
 					employeeMenu();
@@ -247,8 +247,8 @@ public class Interface {
 		project = vælgProjekt(timeManagement.getAllProjects());
 		String newLeader= getUser();
 		if(newLeader==null) {
-			System.out.println("Der er ingen medarbejdere på Projektet endnu");
-			System.out.println("Du er blevet sat til projektleder");
+			System.out.println("Der er ingen medarbejdere på projektet endnu.");
+			System.out.println("Du er blevet sat til projektleder.");
 			try {
 				timeManagement.setProjectManager(project.getID(),e.getID(), e.getID());
 			} catch (OperationNotAllowedException e) {
@@ -269,11 +269,11 @@ public class Interface {
 	private static String getUser() {
 		ArrayList<Employee> list = timeManagement.getProject(project.getID()).getEmployeeList();
 		if(list.size()==0) {
-			System.out.println("Der er medarbejdere at vælge imellem");
+			System.out.println("Der er ingen medarbejdere at vælge imellem.");
 			return null;
 		}
 		
-		System.out.println("Vælg en medarbejder");
+		System.out.println("Vælg en medarbejder.");
 		for (int i=1; i<=list.size();i++) {
 			System.out.print(i+ ": " );
 			printEmployee(list.get(i-1));
@@ -290,11 +290,11 @@ public class Interface {
 	private static Project vælgProjekt(ArrayList<Project> allProjects) {
 		
 		if(allProjects.size()==0) {
-			System.out.println("Der er ingen projekter at vælge imellem endnu");
+			System.out.println("Der er ingen projekter at vælge imellem endnu.");
 			return null;
 		}
 		
-		System.out.println("Vælg et projekt");
+		System.out.println("Vælg et projekt:");
 		for (int i=1; i<=allProjects.size();i++) {
 			System.out.print(i+ ": " );
 			printActivity(allProjects.get(i-1));
@@ -312,14 +312,16 @@ public class Interface {
 		al= e.getActivityList();
 		pl= e.getProjectList();
 		if(al.size()==0 && pl.size()==0) {
-			System.out.println("Du har ingen aktiviter endnu");
+			System.out.println("Du har ingen aktiviter endnu.");
 			employeeMenu();
 		}
 		
+
 		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
 		for (int i=0; i<al.size();i++) {
 			System.out.print((i+1) + ": " );
 			printActivity(al.get(i));
+
 			System.out.println();
 		}
 		for (int i=0; i<pl.size();i++) {
@@ -368,23 +370,23 @@ public class Interface {
 	}
 	private static void deleteUser() {
 		System.out.println("ADVARSEL:");
-		System.out.println("Du er ved at slette en bruger fra systemet");
-		System.out.println("Skrive 0 for at returnere");
-		System.out.println("Indtast brugerID");
+		System.out.println("Du er ved at slette en bruger fra systemet.");
+		System.out.println("Skrive 0 for at vende tilbage.");
+		System.out.println("Indtast brugerID:");
 		String id = scannerString();
 		if (id.equals("0")) {
 			adminMenu();
 		}
 		Employee e =timeManagement.getEmployee(id);
 		if(e==null) {
-			System.out.println(e + "id : " + id);
-			System.out.println("Brugeren findes ikke i TimeManagement");
+			System.out.println(e + "ID : " + id);
+			System.out.println("Brugeren findes ikke i TimeManagement.");
 			deleteUser();
 		}
 		
 		System.out.println("Vil du slette denne bruger?");
-		System.out.println("1: ja");
-		System.out.println("2: nej");
+		System.out.println("1: Ja");
+		System.out.println("2: Nej");
 		printEmployee(e);
 		int i = scannerInt(1,2);
 		switch (i) {
@@ -394,7 +396,7 @@ public class Interface {
 				timeManagement.removeEmployeeFromTimeManagement(id);
 				Employee test =timeManagement.getEmployee(e.getID());
 				if(test==null) {
-					System.out.println("Brugeren er slettet");
+					System.out.println("Brugeren er slettet.");
 					
 				}
 				
@@ -415,7 +417,7 @@ public class Interface {
 
 
 	private static void getAllUsers() {
-		System.out.println("List of all employees.");
+		System.out.println("Liste over alle medarbejdere.");
 		for( Employee e: timeManagement.getAllEmployees()) {
 			printEmployee(e);
 		}
@@ -427,23 +429,23 @@ public class Interface {
 	public static void createNewUser() {
 		clearConsole();
 		System.out.println("Opret ny bruger.");
-		System.out.println("Indtast fornavn ");
+		System.out.println("Indtast fornavn: ");
 		String firstName = scannerString();
 
 		System.out.println("Indtast efternavn: ");
 		String lastName = scannerString();
-		System.out.println("indtast email");
+		System.out.println("Indtast email: ");
 		String email = scannerString();
 
 		System.out.println("Bekræft den nye bruger: ");
-		System.out.println("Fornavn:" + firstName);
+		System.out.println("Fornavn: " + firstName);
 		System.out.println("Efternavn: " + lastName);
 		System.out.println("Email: " + email);
 
 		System.out.println();
 		System.out.println("Er denne information korrekt?");
-		System.out.println("1: ja");
-		System.out.println("2: nej");
+		System.out.println("1: Ja");
+		System.out.println("2: Nej");
 		int i = scannerInt(1,2);
 		switch (i) {
 		case 1: 
@@ -492,7 +494,7 @@ public class Interface {
 				adminMenu();
 			}else {
 				System.out.println();
-				System.out.println("Forkert kode, prøv igen");
+				System.out.println("Forkert kode, prøv igen.");
 			}
 			brugerID = scannerString();
 		}
@@ -509,7 +511,7 @@ public class Interface {
 			if(e!=null) {
 				employeeMenu();
 			} 
-			System.out.println("Forkert brugerID, prøv igen");
+			System.out.println("Forkert brugerID, prøv igen.");
 			brugerID = scannerString();
 		}
 		mainMenu();
