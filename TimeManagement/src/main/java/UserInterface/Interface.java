@@ -72,7 +72,7 @@ public class Interface {
 		System.out.println("1: Opret ny bruger");
 		System.out.println("2: Se ledige medarbejdere");
 		System.out.println("3: Slet bruger");
-		System.out.println("4: Opret nyt Projekt");
+		System.out.println("4: Opret nyt projekt");
 		System.out.println("5: Se projekter");
 		System.out.println("6: Logout");
 		while (true) {
@@ -117,18 +117,18 @@ public class Interface {
 
 	private static void createNewProject() {
 		clearConsole();
-		System.out.println("Opret nyt Project.");
-		System.out.println("Indtast Navn");
+		System.out.println("Opret nyt projekt.");
+		System.out.println("Indtast navn");
 		String name = scannerString();
 
 
-		System.out.println("Bekræft den nye Projectnavn: ");
+		System.out.println("Bekræft det nye projektnavn: ");
 		System.out.println("Navn: " + name);
 		
 		System.out.println();
 		System.out.println("Er denne information korrekt?");
-		System.out.println("1: ja");
-		System.out.println("2: nej");
+		System.out.println("1: Ja");
+		System.out.println("2: Nej");
 		int i = scannerInt(1,2);
 		switch (i) {
 		case 1: 
@@ -139,7 +139,7 @@ public class Interface {
 				timeManagement.createProject(p);
 				Project test =timeManagement.getProject(p.getID());
 				if(test!=null) {
-					System.out.println("det nye project findes som: ");
+					System.out.println("Det nye projekt findes som: ");
 					printProject(test);
 				}
 				
@@ -157,13 +157,13 @@ public class Interface {
 
 
 	private static void printProject(Project p) {
-		System.out.print("name: " +p.getName());
+		System.out.print("Navn: " +p.getName());
 		System.out.print(",   ID: " +p.getID());
 		if(p.getProjectManager()!=null) {
-			System.out.println(",   ProjektLeder navn: " + p.getProjectManager().getFirstName());
-			System.out.print(",   ProjektLeder ID: " + p.getProjectManager().getID());
+			System.out.println(",   Projektleder-navn: " + p.getProjectManager().getFirstName());
+			System.out.print(",   Projektleder-ID: " + p.getProjectManager().getID());
 		}else {
-			System.out.println(",   Projektleder:   Projektleder ikke tildelt");
+			System.out.println(",   Projektleder:   projektleder ikke tildelt");
 		}
 		
 		System.out.println();
@@ -176,12 +176,13 @@ public class Interface {
 		System.out.println("1: Se dine aktiviteter");
 		System.out.println("2: Se dine projekter");
 		System.out.println("3: Start arbejde på aktivitet");
-		System.out.println("4: Se alle projecter");
+		System.out.println("4: Se alle projekter");
 		System.out.println("5: Tildel projektleder på projekt");
+		System.out.println("6: Logout");
 		
 		
 		while (true) {
-			int valg = scannerInt(1,5);
+			int valg = scannerInt(1,6);
 					
 			switch(valg) {
 			
@@ -207,6 +208,8 @@ public class Interface {
 					break;
 			case 5: setProjectLeaderOnProject();
 					employeeMenu();		
+					break;
+			case 6: mainMenu();
 					break;
 					
 					
@@ -448,7 +451,7 @@ public class Interface {
 
 
 	public static void loginAdmin(){
-		System.out.println("Du er nu i admin login. \nIndtast din adgangskode. skriv 2 for at gå tilbage "  );
+		System.out.println("Du er nu i admin-login. \nIndtast din adgangskode. Skriv 2 for at gå tilbage.");
 		System.out.println("Adgangskode: ");
 		String brugerID = scannerString();
 		while (!brugerID.equals("2")) {
@@ -466,9 +469,10 @@ public class Interface {
 		mainMenu();
 	}
 	public static void loginEmployee(){
-		System.out.print("BrugerID: ");
+		System.out.println("Du er nu i medarbejder-login. \nIndtast dit bruger-ID. Skriv 2 for at gå tilbage.");
+		System.out.println("Bruger-ID: ");
 		String brugerID = scannerString();
-		while (true) {
+		while (!brugerID.equals("2")) {
 
 			e = timeManagement.getEmployee(brugerID);
 
@@ -478,6 +482,7 @@ public class Interface {
 			System.out.println("Forkert brugerID, prøv igen");
 			brugerID = scannerString();
 		}
+		mainMenu();
 		
 	}
 	/*
