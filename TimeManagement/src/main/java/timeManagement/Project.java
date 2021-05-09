@@ -7,7 +7,7 @@ public class Project extends ActivityAndProjectParent {
 	
 	
 	private Employee projectManager;
-	private List<Activity> activityList = new ArrayList<Activity>();
+	private ArrayList<Activity> activityList = new ArrayList<Activity>();
 	
 	public Project(String name) {
 		super(name);
@@ -132,15 +132,10 @@ public class Project extends ActivityAndProjectParent {
 
 	public void setTime(Employee projectManager, int time) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
-		assert time>0 : "precondition not met, must be positive time";
 		setExpectedTime(time);
-		assert this.time==time: "postcondition not met";
 	}
-
-	public int getTime() {
-		
-		return this.time;
-	}
+	
+	
 
 	public void removeProjectManager(Employee projectManager) throws OperationNotAllowedException  {
 		isProjectManager(projectManager);
@@ -154,10 +149,14 @@ public class Project extends ActivityAndProjectParent {
 		Activity a = getActivity(activityID);
 		if(a!=null) {
 			a.addEmployee(employee);
+			employee.setActivity(a);
 		}else {
 			throw new Exception("Activity not found in project");
 		}
 		
+	}
+	public ArrayList<Activity> getActivityList() {
+		return this.activityList;
 	}
 	
 }

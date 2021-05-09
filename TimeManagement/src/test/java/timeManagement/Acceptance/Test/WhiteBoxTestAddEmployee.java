@@ -84,10 +84,10 @@ class WhiteBoxTestAddEmployee {
 		assertEquals(isManager, project.getProjectManager());
 		
 		int employeeListSize = project.listEmployees().size(); // size of the employeelist in the project
-		int projectListSize = employeeToAdd.getProjects().size(); //  size of the projectlist in the employee
+		int projectListSize = employeeToAdd.getProjectList().size(); //  size of the projectlist in the employee
 		project.addEmployee(employeeToAdd, isManager);
 		assertEquals(employeeListSize + 1, project.listEmployees().size());
-		assertEquals(projectListSize + 1, employeeToAdd.getProjects().size());
+		assertEquals(projectListSize + 1, employeeToAdd.getProjectList().size());
 	}
 	
 	@Test // C2

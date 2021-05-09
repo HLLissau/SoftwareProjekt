@@ -22,7 +22,7 @@ class WhiteboxTestCreateID {
 			assertTrue(true); // IF an exception is thrown, our test pass
 		}
 	}
-	
+
 	@Test //A2
 	void ifInputIsEmpty() {
 		try {

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import timeManagement.Activity;
 import timeManagement.Employee;
 import timeManagement.ErrorHandler;
 import timeManagement.OperationNotAllowedException;
@@ -27,8 +28,10 @@ public class ProjectSteps {
 	private ProjectHelper projectHelper;
 	private EmployeeHelper employeeHelper;
 	private ActivityHelper activityHelper;
-	private ArrayList<Employee> avaiableList;
+	private ArrayList<Employee> avaiableList = new ArrayList<Employee>();;
 	private int listSize;
+	private ArrayList<Project> projectlist;
+	private ArrayList<Activity> activitylist;
 
 	public ProjectSteps(TimeManagement timeManagement,
 						RegisterTime registerTime,
@@ -168,7 +171,7 @@ public class ProjectSteps {
 	public void theEmployeeRemovesTheActivityFromTheProject() {
 		try {
 			timeManagement.removeActivity(activityHelper.getActivity().getID(),project.getID(),employeeHelper.getEmployee().getID());
-		} catch (OperationNotAllowedException e) {
+		} catch (Exception e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
@@ -270,6 +273,61 @@ public class ProjectSteps {
 	public void systemReturnsAListOfEmployeesWithTheAddedEmployees(int int1) {
 		assertEquals(this.listSize +int1,timeManagement.listEmployeesOnProject(projectHelper.getProject().getID()).size());
 	}
+	@Then("the list of all projecs are returned.")
+	public void theListOfAllProjecsAreReturned() {
+	    assertTrue(projectlist.equals(timeManagement.getAllProjects()));
+	}
 
+	@When("the employee wants to get a list of all projecs in TimeManagement")
+	public void theEmployeeWantsToGetAListOfAllProjecsInTimeManagement() {
+	    projectlist = timeManagement.getAllProjects();
+	}
+	@Then("the list of all employees are returned.")
+	public void theListOfAllEmployeesAreReturned() {
+	    assertTrue(this.avaiableList.equals(timeManagement.getAllEmployees()));
+	}
+	@When("the employee wants to get a list of all employee in TimeManagement")
+	public void theEmployeeWantsToGetAListOfAllEmployeeInTimeManagement() {
+		this.avaiableList= timeManagement.getAllEmployees();
+		
+	}
+	@When("the project manager wants to get a list of all activities in project")
+	public void theProjectManagerWantsToGetAListOfAllActivitiesInProject() {
+	    this.activitylist = timeManagement.getProject(projectHelper.getProject().getID()).getActivityList();
+	}
+
+	@Then("the list of all activities are returned")
+	public void theListOfAllActivitiesAreReturned() {
+	    assertTrue(activitylist.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivityList()));
+	}
+	@When("the project manager wants to get a list of all employees working on activity")
+	public void theProjectManagerWantsToGetAListOfAllEmployeesWorkingOnActivity() {
+	    this.avaiableList = timeManagement.getProject(projectHelper.getProject().getID()).getActivityList().get(0).getEmployeeList();
+	}
+
+	@Then("the list of all employees working on activity are returned")
+	public void theListOfAllEmployeesWorkingOnActivityAreReturned() {
+	    assertTrue(avaiableList.equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivityList().get(0).getEmployeeList()));
+	}
+
+@When("the project manager wants to get a list of all activities an employee is working on")
+public void theProjectManagerWantsToGetAListOfAllActivitiesAnEmployeeIsWorkingOn() {
+	 this.activitylist = timeManagement.getEmployeeActivityList(employeeHelper.getSecondEmployee().getID());
+}
+
+@Then("the list of all all activities an employee is working on is returned")
+public void theListOfAllAllActivitiesAnEmployeeIsWorkingOnIsReturned() {
+    assertTrue(activitylist.equals(timeManagement.getEmployeeActivityList(employeeHelper.getSecondEmployee().getID())));
+}
+
+@When("the project manager wants to get a list of all projects an employee is working on")
+public void theProjectManagerWantsToGetAListOfAllProjectsAnEmployeeIsWorkingOn() {
+	this.projectlist = timeManagement.getEmployeeProjectList(employeeHelper.getSecondEmployee().getID());
+}
+
+@Then("the list of all all projects an employee is working on is returned")
+public void theListOfAllAllProjectsAnEmployeeIsWorkingOnIsReturned() {
+	 assertTrue(projectlist.equals(timeManagement.getEmployeeProjectList(employeeHelper.getSecondEmployee().getID())));
+}
 	
 }

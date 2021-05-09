@@ -39,19 +39,14 @@ public class Employee {
 		return presentActivityList.size();
 	}
 	public void setActivity(Activity activity) throws Exception {
-//		if (presentActivityList.contains(activity)) {
-//			throw new Exception("Employee already added to the activity");
-//		}
+	
 		this.presentActivityList.add(activity);
 	}
 	public void setProject(Project project) {
 		this.presentprojectList.add(project);
 	}
 	
-	public ArrayList<Project> getProjects() {
-		return presentprojectList;
-	}
-	public boolean canBeRemoved() {
+		public boolean canBeRemoved() {
 		if (this.presentActivityList.size()>0) {
 			return false;
 		}

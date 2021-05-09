@@ -28,7 +28,7 @@ public class TimeManagement {
 	public void adminLogin(String password) {
 		if (password.equals(this.adminPassword)) {
 			adminLoggedIn=true;
-		}
+		} 
 	} 
 	
 	public void adminlogout() {
@@ -151,6 +151,7 @@ public class TimeManagement {
 	public void addActivityToProject(Activity a, int pID, String managerID) throws Exception {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
+		this.activityList.add(a);
 	}
 	
 	public void addEmployeeToProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
@@ -175,10 +176,15 @@ public class TimeManagement {
 		
 	}
 	
-	public void removeActivity(int activityID, int projectID, String employeeID) throws OperationNotAllowedException {
+	public void removeActivity(int activityID, int projectID, String employeeID) throws Exception {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = getActivity(activityID);
-		getProject(projectID).removeActivity(activity.getID(),employee);
+		Project project =getProject(projectID);
+		if (project!=null) {
+			project.removeActivity(activity.getID(),employee);
+		} else {
+			throw new Exception("project not found");
+		}
 	}
 	
 	public void removeEmployeeFromProject(String employeeID, int projectID, String managerID) throws OperationNotAllowedException {
@@ -258,9 +264,9 @@ public class TimeManagement {
 		registerTime.setBeginTime(a, e,dateServer.getTime().getTime());
 	}
 	
-	public Date  stopWorkOnActivity(String employeeID, int activityID) throws Exception {
+	public Date stopWorkOnActivity(String employeeID, int activityID) throws Exception {
 		Employee employee = getEmployee(employeeID);
-		Activity activity = employee.getActivity(activityID);
+		Activity activity = getActivity(activityID);
 		
 		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
@@ -285,11 +291,19 @@ public class TimeManagement {
 		e.removeActivity(a);
 	}
 	public ArrayList<Employee> getAllEmployees() {
-		adminLoggedIn();
+		//adminLoggedIn();
 		return this.employeeList;
 	}
 	public ArrayList<Project> getAllProjects() {
 		return this.projectList;
+	}
+	public ArrayList<Activity> getEmployeeActivityList(String eID) {
+		Employee e = getEmployee(eID);
+		return e.getActivityList();
+	}
+	public ArrayList<Project> getEmployeeProjectList(String eID) {
+		Employee e = getEmployee(eID);
+		return e.getProjectList();
 	}
 	
 }
