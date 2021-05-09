@@ -6,6 +6,7 @@ import timeManagement.TimeManagement;
 public class ProjectHelper {
 	private TimeManagement timeManagement;
 	private Project project;
+	private Project secondProject;
 	
 	public ProjectHelper(TimeManagement timeManagement) {
 		this.timeManagement= timeManagement;
@@ -26,8 +27,21 @@ public class ProjectHelper {
 		}
 		return project;
 	}
+	
+	public Project getSecondProject() {
+		if (secondProject == null) {
+			secondProject = anotherExampleProject();
+		}
+		return secondProject;
+	}
+	
 	private Project exampleProject() {
 		Project p = new Project("some project");
+		return p;
+	}
+	
+	private Project anotherExampleProject() {
+		Project p = new Project("some other project");
 		return p;
 	}
 }

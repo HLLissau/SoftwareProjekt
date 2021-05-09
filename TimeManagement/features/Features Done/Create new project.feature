@@ -18,9 +18,10 @@ Scenario: Non-administrator creates new project
 Scenario: Project is assigned unique ID on creation
     Given that the administrator is logged in
     And a project named "some project" is created
-    When the project is added to TimeManagement
-    Then an ID is assigned to the project
-    And no other project has the same ID
+    And another project named "some other project" is created
+    When the projects are added to TimeManagement
+    Then IDs are assigned to the projects
+    And the projects don't have the same IDs
     
 Scenario: Administrator tries to add the same project twice    
     Given that the administrator is logged in

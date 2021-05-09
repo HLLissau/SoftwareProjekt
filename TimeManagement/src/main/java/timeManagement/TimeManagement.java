@@ -112,7 +112,7 @@ public class TimeManagement {
 		return projectList.stream().filter(p-> id==p.getID()).count();
 	}	
 	
-	private int createProjectID() {
+	public int createProjectID() {
 		int date =dateServer.getYear();
 		int i=1;
 		int id= (date*10000)+i;
@@ -123,12 +123,10 @@ public class TimeManagement {
 		return id;
 	}
 	
-	private int createActivityID() {
-		int i=1;
-		int id= i;
+	public int createActivityID() {
+		int id = 1;
 		while(amountOfActivitiesWithID(id) > 0) { // if amount of activities with that ID is NOT 0, then the ID is not unique 
-			i++;
-			id=  i;
+			id++;
 		}
 		return id;
 	}

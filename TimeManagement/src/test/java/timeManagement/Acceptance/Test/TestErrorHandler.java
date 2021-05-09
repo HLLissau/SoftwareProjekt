@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class WhiteboxTestErrorHandler {
+class TestErrorHandler {
 	ErrorMessageHolder e = new ErrorMessageHolder();
 	
 	// returns string when set

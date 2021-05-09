@@ -8,7 +8,13 @@ Scenario: Create a new activity
     When a new activity with name "new activity" is created
     And the employee adds the activity to timeManagement
     Then a activity with the name "new activity" is in TimeManagement
-    And the activity has a unique id
+
+Scenario: Project is assigned unique ID on creation
+    Given an employee is registered with TimeManagement
+    When a new activity with name "new activity" is created
+    And another activity with name "some other activity" is created
+    And the employee adds the activities to timeManagement
+    Then the activities has unique IDs
 
 Scenario: Create a new activity that is already in timeManagement
     Given an employee is registered with TimeManagement

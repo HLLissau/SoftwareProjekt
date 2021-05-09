@@ -23,6 +23,7 @@ import timeManagement.TimeManagement;
 public class ProjectSteps {
 	private TimeManagement timeManagement;
 	private Project project;
+	private Project secondProject;
 	private RegisterTime registerTime;
 	private ErrorHandler errorMessageHandler;
 	private ProjectHelper projectHelper;
@@ -90,7 +91,16 @@ public class ProjectSteps {
 	public void theProjectIsAddedToTimeManagement() {
 		 try {
 		    	timeManagement.createProject(project);
-		    	
+			} catch (OperationNotAllowedException e) {
+				errorMessageHandler.setErrorMessage(e.getMessage());
+			}
+	}
+	
+	@When("the projects are added to TimeManagement")
+	public void theProjectsAreAddedToTimeManagement() {
+		 try {
+		    	timeManagement.createProject(project);
+		    	timeManagement.createProject(secondProject);
 			} catch (OperationNotAllowedException e) {
 				errorMessageHandler.setErrorMessage(e.getMessage());
 			}
@@ -107,14 +117,16 @@ public class ProjectSteps {
 		assertFalse(project.equals(timeManagement.getProject(project.getID())));
 	}
 	
-	@Then("an ID is assigned to the project")
+	@Then("IDs are assigned to the projects")
 	public void anIDIsAssignedToTheProject() {
 	   assertNotNull(project.getID());
+	   assertNotNull(secondProject.getID());
 	}
 
-	@Then("no other project has the same ID")
+	@Then("the projects don't have the same IDs")
 	public void noOtherProjectHasTheSameID() {
 		assertEquals(1, timeManagement.amountOfProjectsWithID(project.getID()));
+		assertEquals(1, timeManagement.amountOfProjectsWithID(secondProject.getID()));
 	}
 	
 	@Given("an employee is not registered as project manager of the project")
@@ -328,6 +340,12 @@ public void theProjectManagerWantsToGetAListOfAllProjectsAnEmployeeIsWorkingOn()
 @Then("the list of all all projects an employee is working on is returned")
 public void theListOfAllAllProjectsAnEmployeeIsWorkingOnIsReturned() {
 	 assertTrue(projectlist.equals(timeManagement.getEmployeeProjectList(employeeHelper.getSecondEmployee().getID())));
+}
+
+@Given("another project named {string} is created")
+public void anotherProjectNamedIsCreated(String name) {
+    this.secondProject = projectHelper.getSecondProject();
+    assertEquals(name, secondProject.getName());
 }
 	
 }

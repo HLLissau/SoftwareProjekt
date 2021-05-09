@@ -30,6 +30,7 @@ public class ActivitySteps {
 	private EmployeeHelper employeeHelper;
 	private ActivityHelper activityHelper;
 	private Activity activity;
+	private Activity secondActivity;
 	private Date begin;
 	private Date finished;
 	private int time;
@@ -56,9 +57,15 @@ public class ActivitySteps {
 	@When("a new activity with name {string} is created")
 	public void aNewActivityWithNameIsCreated(String name) {
 		activity= new Activity(name);
-		
-		
+		assertEquals(name, activity.getName());
 	}
+	
+	@When("another activity with name {string} is created")
+	public void anotherActivityWithNameIsCreated(String name) {
+	    secondActivity = new Activity(name);
+	    assertEquals(name, secondActivity.getName());
+	}
+	
 	@When("the employee adds the activity to timeManagement")
 	public void theEmployeeAddsTheActivityToTimeManagement() {
 		try {
@@ -67,6 +74,17 @@ public class ActivitySteps {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
+	
+	@When("the employee adds the activities to timeManagement")
+	public void theEmployeeAddsTheActivitiesToTimeManagement() {
+		try {
+			timeManagement.createActivity(activity);
+			timeManagement.createActivity(secondActivity);
+		} catch (Exception e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+	
 	@When("the employee sets the time of the activity to {int}")
 	public void theProjectManagerSetsTheTimeOfTheActivityTo(int time) {
 	    try {
@@ -83,19 +101,16 @@ public class ActivitySteps {
 		assertTrue(name.equals(timeManagement.getActivity(activity.getID()).getName()));
 	}
 	
-//	@Then("a activity with the name {string} is not in TimeManagement")
-//	public void aActivityWithTheNameIsNotInTimeManagement(String string) {
-//	    assertFalse(activityHelper.getActivity().equals(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activity.getID())));
-//	}
 	
 	@Then("the time of the activity is set to {int}")
 	public void theTimeOfTheActivityIsSetTo(int time) {
 		assertEquals(time,(timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).getTimeRemaining()));
 	}
 	
-	@Then("the activity has a unique id")
+	@Then("the activities has unique IDs")
 	public void theActivityHasAUniqueId() {
 	    assertEquals(1, timeManagement.amountOfActivitiesWithID(activity.getID()));
+	    assertEquals(1, timeManagement.amountOfActivitiesWithID(secondActivity.getID()));
 	}
 	
 	@Then("the time of the activity is not set to {int}")
