@@ -31,7 +31,7 @@ Scenario: Project manager removes activity from project
     Then the activity is added to the project
     When the employee removes the activity from the project
     And the activity is not in the project
-
+    
 Scenario: Project manager removes activity that doesn't exist from project
     Given a project is in TimeManagement
     And an employee is registered with TimeManagement

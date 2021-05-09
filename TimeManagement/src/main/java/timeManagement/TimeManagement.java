@@ -180,8 +180,6 @@ public class TimeManagement {
 		Project project =getProject(projectID);
 		if (project!=null) {
 			project.removeActivity(activity.getID(),employee);
-		} else {
-			throw new Exception("project not found");
 		}
 	}
 	
