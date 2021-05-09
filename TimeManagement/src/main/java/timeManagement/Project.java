@@ -111,6 +111,7 @@ public class Project extends ActivityAndProjectParent {
 			throw new OperationNotAllowedException("Employee not found in project");
 		}
 	}
+	
 	private void canRemoveEmployee(Employee employee) throws OperationNotAllowedException {
 		for (Activity activity: activityList) {
 			

@@ -58,6 +58,7 @@ public class Employee {
 		
 		return true;
 	}
+	
 	public Activity getActivity(int activityID) {
 		return presentActivityList.stream().filter(a -> a.getID()==activityID).findAny().orElse(null);
 	}
