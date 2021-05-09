@@ -13,7 +13,7 @@ public class Interface {
 	private static ArrayList<Project> pl;
 	private static Activity activity;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		timeManagement = new TimeManagement();
 		scanner = new Scanner(System.in);
 		mainMenu();
@@ -21,7 +21,7 @@ public class Interface {
 
 
 
-	private static void mainMenu() {
+	private static void mainMenu() throws Exception {
 		/*
 		 * Besked til brugeren
 		 */
@@ -59,7 +59,7 @@ public class Interface {
 
 	}
 	
-	public static void adminMenu() {
+	public static void adminMenu() throws Exception {
 		clearConsole();
 		System.out.println("Du er nu logget på som administrator, her er dine muligheder:");
 		System.out.println("1: Opret ny bruger");
@@ -108,7 +108,7 @@ public class Interface {
 
 
 
-	private static void createNewProject() {
+	private static void createNewProject() throws Exception {
 		clearConsole();
 		System.out.println("Opret nyt Project.");
 		System.out.println("Indtast Navn");
@@ -305,7 +305,7 @@ public class Interface {
 
 
 	private static void beginwork(ActivityAndProjectParent app) {
-		timeManagement.
+		//timeManagement.
 		
 	}
 
@@ -326,7 +326,7 @@ public class Interface {
 		System.out.print(",   ID: " + app.getID() );
 		
 	}
-	private static void deleteUser() {
+	private static void deleteUser() throws Exception {
 		System.out.println("ADVARSEL:");
 		System.out.println("Du er ved at slette en bruger fra systemet");
 		System.out.println("Skrive 0 for at returnere");
@@ -384,7 +384,7 @@ public class Interface {
 
 
 
-	public static void createNewUser() {
+	public static void createNewUser() throws Exception {
 		clearConsole();
 		System.out.println("Opret ny bruger.");
 		System.out.println("Indtast fornavn ");
@@ -440,7 +440,7 @@ public class Interface {
 
 
 
-	public static void loginAdmin(){
+	public static void loginAdmin() throws Exception{
 		System.out.println("Du er nu i admin login. \nIndtast din adgangskode. skriv 2 for at gå tilbage "  );
 		System.out.println("Adgangskode: ");
 		String brugerID = scannerString();
