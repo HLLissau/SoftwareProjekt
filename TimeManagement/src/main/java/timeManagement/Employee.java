@@ -21,6 +21,7 @@ public class Employee {
 	}
 	public void setID(String iD) {
 		this.iD=iD;
+		this.email=(iD + "@SuperWorkplace.dk");
 	}
 	
 	public String getID() {

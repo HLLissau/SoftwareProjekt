@@ -3,6 +3,7 @@ package timeManagement.Acceptance.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -23,8 +24,7 @@ import timeManagement.TimeManagement;
 
 public class ActivitySteps {
 	private TimeManagement timeManagement;
-	private Project project;
-	private RegisterTime registerTime;
+	
 	private ErrorHandler errorMessageHandler;
 	private ProjectHelper projectHelper;
 	private EmployeeHelper employeeHelper;
@@ -42,7 +42,6 @@ public class ActivitySteps {
 			EmployeeHelper employeeHelper,
 			ActivityHelper activityHelper) {
 		this.timeManagement = timeManagement;
-		this.registerTime=registerTime;
 		this.errorMessageHandler = errorHandler;
 		this.projectHelper=projectHelper;
 		this.employeeHelper=employeeHelper;
@@ -208,5 +207,14 @@ public class ActivitySteps {
 		ArrayList<Employee> activitylist =timeManagement.getProject(projectHelper.getProject().getID()).getActivity(activityHelper.getActivity().getID()).listEmployees();
 		
 		assertFalse(activitylist.contains(employeeHelper.getSecondEmployee()));
+	}
+	@When("want to get activity")
+	public void wantToGetActivity() {
+	    activity =this.timeManagement.getActivity(activityHelper.getActivity().getID());
+	}
+
+	@Then("no activity is returned")
+	public void noActivityIsReturned() {
+	   assertNull(activity);
 	}
 }

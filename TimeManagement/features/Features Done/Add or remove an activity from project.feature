@@ -40,6 +40,12 @@ Scenario: Project manager removes activity that doesn't exist from project
     And the employee removes the activity from the project
     And the employee removes the activity from the project  
     Then the error message "Activity is not in project" is given
+
+Scenario: Employee want to work on acivity not in TimeManagent
+    Given a project is in TimeManagement
+    And an employee is registered with TimeManagement
+    When want to get activity
+    Then no activity is returned
     
 Scenario: Employee adds activity to project
     Given a project is in TimeManagement

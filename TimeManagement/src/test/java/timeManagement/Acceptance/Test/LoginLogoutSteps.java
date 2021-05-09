@@ -101,5 +101,16 @@ public class LoginLogoutSteps {
 	public void theEmployeeIsStillRegisteredWithTimeManagement() {
 		assertTrue(employeeHelper.getEmployee().equals(timeManagement.getEmployee(employeeHelper.getEmployee().getID())));
 	}
+	
+
+	@When("the administrator types the wrong password")
+	public void theAdministratorTypesTheWrongPassword() {
+		timeManagement.adminLogin("wrongpassword");
+	}
+
+	@Then("the administrator is not logged in")
+	public void theAdministratorIsNotLoggedIn() {
+	    assertFalse(timeManagement.adminLoggedIn());
+	}
 
 }

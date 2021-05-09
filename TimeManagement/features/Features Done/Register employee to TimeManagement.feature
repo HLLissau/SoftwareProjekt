@@ -9,6 +9,10 @@ Scenario: Add employee to TimeManagement
     Then the employee is given a unique id
     And the employee is registered in TimeManagement
  
+Scenario: Administrator tries to login with wrong password
+    Given that the administrator is not logged in
+    When the administrator types the wrong password
+    Then the administrator is not logged in
 
 Scenario: Add employee when not the administrator
     Given that the administrator is not logged in

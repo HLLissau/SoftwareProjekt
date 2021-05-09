@@ -13,10 +13,6 @@ public class Project extends ActivityAndProjectParent {
 		super(name);
 		
 	}
-
-
-	
-	
 		
 	/*
 	 * Set a new project manager
