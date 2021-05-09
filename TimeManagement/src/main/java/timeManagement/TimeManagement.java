@@ -17,7 +17,7 @@ public class TimeManagement {
 	private DateServer dateServer = new DateServer();
 	
 	public TimeManagement() {
-		this.registerTime = new RegisterTime(dateServer);
+		this.registerTime = new RegisterTime();
 	}
 	
 	public RegisterTime getRegisterTime() throws OperationNotAllowedException {
@@ -147,7 +147,7 @@ public class TimeManagement {
 		p.setID(id);
 		projectList.add(p);
 	}
-	
+
 	public void addActivityToProject(Activity a, int pID, String managerID) throws Exception {
 		Employee manager = getEmployee(managerID);
 		getProject(pID).addActivity(a, manager);
@@ -198,17 +198,13 @@ public class TimeManagement {
 		checkIfAdminIsLoggedIn();
 		Employee employeeToRemove = getEmployee(eID);
 		if (employeeToRemove!=null) { // check if Employee is found in project
-			if (!employeeNotWorkingOnActivities(employeeToRemove)) { // check the Employee is not working on activities
+			if (!employeeToRemove.canBeRemoved()) { // check the Employee is not working on activities
 				throw new Exception("Employee is working on activity");
 			}
 		} else {
 			throw new Exception("Employee not found in TimeManagement");
 		}
 		employeeList.remove(employeeToRemove);
-	}
-	
-	private boolean employeeNotWorkingOnActivities(Employee employeeToRemove) {
-		return employeeToRemove.canBeRemoved();
 	}
 	
 	public void setProjectDescription(String description, int projectID, String managerID) throws OperationNotAllowedException {
@@ -272,7 +268,6 @@ public class TimeManagement {
 		Employee employee = getEmployee(employeeID);
 		Activity activity = getActivity(activityID);
 		
-		
 		return registerTime.setFinishedTime(activity, employee, dateServer.getTime().getTime());
 	}
 	
@@ -289,7 +284,7 @@ public class TimeManagement {
 		return a.getTimeSpent();
 	}
 
-	public void removeEmployeeToActivity(String employeeID, int activityID) throws Exception {
+	public void removeEmployeeFromActivity(String employeeID, int activityID) throws Exception {
 		Activity a = getActivity(activityID);
 		Employee e = getEmployee(employeeID);
 		a.removeEmployee(e);

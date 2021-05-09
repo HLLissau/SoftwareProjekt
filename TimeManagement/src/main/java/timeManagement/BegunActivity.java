@@ -22,7 +22,7 @@ public class BegunActivity {
 		this.activity = activity;
 	}
 
-	public Date endActivity() {
+	public Date getBeginTime() {
 		return beginTime;
 	}
 

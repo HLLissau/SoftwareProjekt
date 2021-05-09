@@ -458,7 +458,7 @@ public class Interface {
 				el = project.getEmployeeList();
 				employee = getEmployeefromList(activity.getEmployeeList());
 				try {
-					timeManagement.removeEmployeeToActivity(employee.getID(), activity.getID());
+					timeManagement.removeEmployeeFromActivity(employee.getID(), activity.getID());
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}

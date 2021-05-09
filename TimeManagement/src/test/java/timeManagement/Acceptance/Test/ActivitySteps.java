@@ -181,7 +181,7 @@ public class ActivitySteps {
 
 	private void removeEmployeeFromActivity(Employee employee, Employee manager) {
 		try {
-			timeManagement.removeEmployeeToActivity(employee.getID(), activityHelper.getActivity().getID());
+			timeManagement.removeEmployeeFromActivity(employee.getID(), activityHelper.getActivity().getID());
 		} catch (Exception e) {
 			
 			errorMessageHandler.setErrorMessage(e.getMessage());
