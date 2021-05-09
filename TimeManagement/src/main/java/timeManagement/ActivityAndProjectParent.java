@@ -34,4 +34,7 @@ public class ActivityAndProjectParent {
 		return this.employeeList;
 		
 	}
+	public ArrayList<Employee> getEmployeeList() {
+		return this.employeeList;
+	}
 }
