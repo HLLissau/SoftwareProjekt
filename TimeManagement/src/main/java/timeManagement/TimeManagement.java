@@ -79,12 +79,13 @@ public class TimeManagement {
 		
 	}
 	
-	// public for testing
 	public String createID(String firstName, String lastName) throws Exception {
+		assert firstName != null || lastName != null || firstName.length() >= 2 || lastName.length() >= 2;
 		String initials = firstName.substring(0,2).toUpperCase() + lastName.substring(0,2).toUpperCase();
 		if (amountOfEmployeesWithID(initials) > 0) { // > 0 => ID is not unique
 			initials = getAvailableID(initials);
 		}
+		assert getEmployee(initials)==null;
 		return initials;
 	}
 	
