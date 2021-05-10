@@ -555,7 +555,7 @@ public class Interface {
 	}
 	private static void addActivityToProject() {
 		System.out.println("Vælg navn på aktiviteten");
-		String navn = scannerString();
+		String navn = scannerLine();
 		Activity a = new Activity(navn);
 		try {
 			timeManagement.createActivity(a);
@@ -769,6 +769,14 @@ public class Interface {
 		String textOutput = ("");
 		if (scanner.hasNext()){
 			textOutput = scanner.next();
+		}
+
+		return textOutput;
+	}
+	public static String scannerLine() {
+		String textOutput = ("");
+		if (scanner.hasNextLine()){
+			textOutput = scanner.nextLine();
 		}
 
 		return textOutput;
