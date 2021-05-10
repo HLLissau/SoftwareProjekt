@@ -13,7 +13,7 @@ public class TimeManagement {
 	private ArrayList<Employee> employeeList = new ArrayList<>();
 	private ArrayList<Project> projectList = new ArrayList<>();
 	private RegisterTime registerTime;
-	private Collection<Activity> activityList = new ArrayList<>();
+	private ArrayList<Activity> activityList = new ArrayList<>();
 	private DateServer dateServer = new DateServer();
 	
 	public TimeManagement() {
