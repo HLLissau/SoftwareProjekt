@@ -1,5 +1,7 @@
 package timeManagement;
-
+/*
+ * Made by : Harald
+ */
 public class Activity extends ActivityAndProjectParent {
 	
 

@@ -5,7 +5,9 @@ import java.util.Collection;
 
 import java.util.Date;
 
-
+/*
+ * Made by : Erik, Anton and Harald combined
+ */
 
 public class TimeManagement {
 	private	String adminPassword = "adminadmin"; 

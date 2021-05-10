@@ -1,5 +1,7 @@
 package timeManagement;
-
+/*
+ * Made by : Harald
+ */
 import java.util.ArrayList;
 
 

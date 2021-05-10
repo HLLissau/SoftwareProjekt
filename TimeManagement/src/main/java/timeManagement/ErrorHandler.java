@@ -1,4 +1,7 @@
 package timeManagement;
+/*
+ * Made by : Anton
+ */
 
 public class ErrorHandler extends Exception {
 	private String errorMessage;

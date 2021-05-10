@@ -1,5 +1,10 @@
 package timeManagement.Acceptance.Test;
 
+/*
+ * Heavily reuse of Hubers class from Library app.
+ * it is edited by group
+ */
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
