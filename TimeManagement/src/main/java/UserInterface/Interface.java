@@ -530,18 +530,16 @@ public class Interface {
 	}
 
 	private static void removeActivityFromProject() {
-		if(project.getActivityList().size()!=0) {
-			Activity activity = chooseActivity(project.getActivityList());
-
-			try {
+		if(project.getActivityList().size()==0) {
+			System.out.println("Ingen aktiviteter i projektet.");
+		}
+		Activity activity = chooseActivity(project.getActivityList());
+		try {
 				timeManagement.removeActivity(activity.getID(), project.getID(), e.getID());
 				System.out.println("Aktivitet fjernet.");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-		} else {
-			System.out.println("Ingen aktiviteter i projektet.");
-		}
 	}
 	private static void setProjectTime() {
 		int current = project.getTime();
