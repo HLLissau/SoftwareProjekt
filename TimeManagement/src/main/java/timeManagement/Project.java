@@ -121,9 +121,10 @@ public class Project extends ActivityAndProjectParent {
 		this.registerTimeSpent=0;
 		for (Activity a : activityList) {
 			this.registerTimeSpent= a.getTimeSpent();
+			
 		}
 		
-		return registerTimeSpent;
+		return budgettedTime-registerTimeSpent;
 	}
 
 	public void setDescription(Employee projectManager, String description) throws OperationNotAllowedException {

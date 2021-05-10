@@ -6,8 +6,8 @@ public class ActivityAndProjectParent {
 	protected String name;
 	protected String description;
 	protected ArrayList<Employee> employeeList;
-	protected int budgettedTime;
-	protected int registerTimeSpent;
+	protected int budgettedTime=0;
+	protected int registerTimeSpent=0;
 	private int id;
 	protected int time;
 	public ActivityAndProjectParent(String name){

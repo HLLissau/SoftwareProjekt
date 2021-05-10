@@ -17,7 +17,7 @@ public class TimeManagement {
 	private DateServer dateServer = new DateServer();
 	
 	public TimeManagement() {
-		this.registerTime = new RegisterTime();
+		this.registerTime = new RegisterTime();	
 	}
 	
 	public RegisterTime getRegisterTime() throws OperationNotAllowedException {

@@ -2,8 +2,8 @@ package UserInterface;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
-
 import timeManagement.Activity;
 import timeManagement.ActivityAndProjectParent;
 import timeManagement.Employee;
@@ -333,7 +333,6 @@ public class Interface {
 		int userchoice = scannerInt(1, max);
 		if (userchoice<=al.size()) {
 			activity =al.get(userchoice-1);
-			beginWorkOnActivity();
 			editActivity();
 		} else {
 			project = pl.get(userchoice-1-al.size());
@@ -352,8 +351,7 @@ public class Interface {
 		} catch (OperationNotAllowedException e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.print("you are working on activity : ");
-		printActivity(activity);
+		
 	}
 	private static void beginWorkOnProject(Project project) {
 		boolean inmenu=true;
@@ -406,11 +404,11 @@ public class Interface {
 
 				break;
 			case 8: 
-				System.out.println("Tid tilbage på projektet :" + project.getTime());
+				System.out.println("Tid tilbage på projektet :" + project.getTimeSpent());
 				break;
 			case 9: 
 				inmenu=false;
-				projectManager=true;
+				projectManager=false;
 				break;
 
 			}
@@ -484,8 +482,11 @@ public class Interface {
 		try {
 			timeManagement.stopWorkOnActivity(e.getID(), activity.getID());
 			System.out.println("Stoppet med at arbejde på følgende aktivitet:");
+			
 			printActivity(activity);
+			System.out.println();
 		} catch (Exception e) {
+			
 			System.out.println(e.getMessage());
 
 		}

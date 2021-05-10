@@ -40,7 +40,10 @@ public class Employee {
 		return presentActivityList.size();
 	}
 	public void setActivity(Activity activity) throws Exception {
-		this.presentActivityList.add(activity);
+		Activity a = getActivity(activity.getID());
+		if (a==null) {
+			this.presentActivityList.add(activity);
+		}
 		
 	}
 	public void setProject(Project project) {
