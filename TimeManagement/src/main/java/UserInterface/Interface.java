@@ -20,6 +20,7 @@ public class Interface {
 	private static ArrayList<Project> pl;
 	private static Activity activity;
 	private static ArrayList<Employee> el;
+	private static boolean projectManager=false;
 
 
 	public static void main(String[] args) {
@@ -162,13 +163,19 @@ public class Interface {
 				try {
 					timeManagement.createProject(p);
 					Project test =timeManagement.getProject(p.getID());
+					Activity a =new Activity("Project management");
+					test.setProjectManager(e, e);
+					timeManagement.createActivity(a);
+					timeManagement.addActivityToProject(a, test.getID(), e.getID());
 					if(test!=null) {
 						System.out.println("Det nye projekt findes som:");
 						printProject(test);
 					}
+					test.setProjectManager(null, e);
 
-				} catch (OperationNotAllowedException e1) {
+				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
+				
 				}
 				adminMenu();
 				break;
@@ -205,7 +212,8 @@ public class Interface {
 
 			case 1: 
 				System.out.println("Dine aktiviteter: ");
-				printActivityList(e.getActivityList());
+				al=e.getActivityList();
+				printActivityList(al);
 				System.out.println();
 				break;
 
@@ -290,7 +298,7 @@ public class Interface {
 		System.out.println("Vælg et projekt:");
 		for (int i=1; i<=allProjects.size();i++) {
 			System.out.print(i+ ": " );
-			printActivity(allProjects.get(i-1));
+			printProject(allProjects.get(i-1));
 			System.out.println();
 		}
 		int valg=scannerInt(1, allProjects.size())-1;
@@ -318,7 +326,7 @@ public class Interface {
 		}
 		for (int i=0; i<pl.size();i++) {
 			System.out.print((i+1+al.size()) + ": " );
-			printActivity(pl.get(i));
+			printProject(pl.get(i));
 			System.out.println();
 		}	
 		int max= al.size()+pl.size();
@@ -326,6 +334,7 @@ public class Interface {
 		if (userchoice<=al.size()) {
 			activity =al.get(userchoice-1);
 			beginWorkOnActivity();
+			editActivity();
 		} else {
 			project = pl.get(userchoice-1-al.size());
 			beginWorkOnProject(project);
@@ -348,6 +357,7 @@ public class Interface {
 	}
 	private static void beginWorkOnProject(Project project) {
 		boolean inmenu=true;
+		projectManager=true;
 		while (inmenu) {
 			System.out.println("");
 			System.out.println("Du er logged på projekt: ");
@@ -386,7 +396,10 @@ public class Interface {
 				break;
 			case 6:
 				al = project.getActivityList();
-				editActivity();
+				activity= chooseActivity(al);
+				if (activity!=null){
+					editActivity();
+				}
 				break;
 			case 7: 
 				setProjectTime();
@@ -397,6 +410,7 @@ public class Interface {
 				break;
 			case 9: 
 				inmenu=false;
+				projectManager=true;
 				break;
 
 			}
@@ -408,8 +422,9 @@ public class Interface {
 
 
 	private static void editActivity() {
-		activity= chooseActivity(al);
-		beginWorkOnActivity();
+		if(!projectManager) {
+			beginWorkOnActivity();
+		}
 		Boolean inmenu=true;
 		while (inmenu) {
 			System.out.println("");
@@ -431,6 +446,7 @@ public class Interface {
 				Employee employee = getEmployeefromList(el);
 				try {
 					timeManagement.addEmployeeToActivity(employee.getID(), project.getID(), activity.getID(), e.getID());
+					
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -456,7 +472,10 @@ public class Interface {
 
 			}
 		}
-		stopWorkOnActivity();
+		if(!projectManager) {
+			stopWorkOnActivity();
+		}
+		
 	}
 
 
@@ -540,7 +559,8 @@ public class Interface {
 		try {
 			timeManagement.createActivity(a);
 			timeManagement.addActivityToProject(a, project.getID(), e.getID());
-			System.out.println("Aktiviteten " + navn + " er tilføjet.");
+			System.out.println("Aktiviteten " + timeManagement.getActivity(a.getID()).getName()+ " er tilføjet.");
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -706,6 +726,7 @@ public class Interface {
 
 	}
 	public static void loginEmployee(){
+		
 		System.out.println("Du er nu i medarbejder-login. \nIndtast dit bruger-ID. Skriv 2 for at gå tilbage.");
 		System.out.println("Bruger-ID: ");
 		String brugerID = scannerString();
@@ -758,14 +779,14 @@ public class Interface {
 		}
 	}
 	private static void printActivityList(ArrayList<Activity> activityList) {
-		for(ActivityAndProjectParent app : activityList) {
-			printActivity(app);
+		for(Activity a : activityList) {
+			printActivity(a);
 			System.out.println();
 		}
 	}
-	private static void printActivity(ActivityAndProjectParent app) {
-		System.out.print("Navn: "+ app.getName());
-		System.out.print(",   ID: " + app.getID() );
+	private static void printActivity(Activity a) {
+		System.out.print("Navn: "+ a.getName());
+		System.out.print(",   ID: " + a.getID() );
 
 	}
 	private static void printEmployee(Employee e) {

@@ -42,7 +42,7 @@ public class Project extends ActivityAndProjectParent {
 		Activity activityexists = getActivity(a.getID());
 		if (activityexists ==null) {
 			activityList.add(a);
-			e.setActivity(activityexists);
+			e.setActivity(a);
 		}else {
 			throw new OperationNotAllowedException("Activity already added to project");
 		}
@@ -97,12 +97,14 @@ public class Project extends ActivityAndProjectParent {
 
 	public void removeEmployee(Employee employee, Employee projectManager) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
-		if ((getEmployee(employee)!=null)) {
-			canRemoveEmployee(employee);
-			employeeList.remove(employee);
-		} else {
+		if ((getEmployee(employee)==null)) {
+			
 			throw new OperationNotAllowedException("Employee not found in project");
-		}
+		} 
+		
+		canRemoveEmployee(employee);
+		employeeList.remove(employee);
+		employee.removeProject(this);
 	}
 	
 	private void canRemoveEmployee(Employee employee) throws OperationNotAllowedException {
@@ -147,12 +149,12 @@ public class Project extends ActivityAndProjectParent {
 		
 		isProjectManager(manager);
 		Activity a = getActivity(activityID);
-		if(a!=null) {
-			a.addEmployee(employee);
-			employee.setActivity(a);
-		}else {
+		if(a==null) {
 			throw new Exception("Activity not found in project");
+			
 		}
+		a.addEmployee(employee);
+		employee.setActivity(a);
 		
 	}
 	public ArrayList<Activity> getActivityList() {
