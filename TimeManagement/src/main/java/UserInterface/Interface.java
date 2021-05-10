@@ -34,20 +34,17 @@ public class Interface {
 		try {
 			timeManagement.createEmployee(e);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		e = new Employee("Anton","Engelbrecht","S200859@student.dtu.dk");
 		try {
 			timeManagement.createEmployee(e);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			timeManagement.createProject(new Project("TimeManagement"));
 		} catch (OperationNotAllowedException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		timeManagement.adminlogout();
@@ -60,7 +57,6 @@ public class Interface {
 			/*
 			 * Besked til brugeren
 			 */
-			clearConsole();
 			System.out.println("Velkommen til TimeManagement, venligst log in for at fortsætte:");
 			System.out.println("1: Login som administrator");
 			System.out.println("2: Login som medarbejder");
@@ -89,7 +85,6 @@ public class Interface {
 	}
 
 	public static void adminMenu() {
-		clearConsole();
 		System.out.println("Du er nu logget på som administrator, her er dine muligheder:");
 		System.out.println("1: Opret ny bruger");
 		System.out.println("2: Se ledige medarbejdere");
@@ -146,7 +141,6 @@ public class Interface {
 	private static void createNewProject() {
 		boolean inmenu=true;
 		while (inmenu) {
-			clearConsole();
 			System.out.println("Opret nyt projekt.");
 			System.out.println("Indtast navn");
 			String name = scannerString();
@@ -213,14 +207,12 @@ public class Interface {
 				System.out.println("Dine aktiviteter: ");
 				printActivityList(e.getActivityList());
 				System.out.println();
-				
 				break;
 
 			case 2: 
 				System.out.println("Dine projekter: ");
 				printProjectList(e.getProjectList());
 				System.out.println();
-				
 				break;
 			case 3: 
 				startWorkOnActivity();
@@ -232,8 +224,7 @@ public class Interface {
 				System.out.println();
 				break;
 			case 5: 
-				setProjectLeaderOnProject();
-					
+				setProjectLeaderOnProject();	
 				break;
 			case 6: 
 				inmenu=false;
@@ -246,7 +237,7 @@ public class Interface {
 	}
 
 	private static void setProjectLeaderOnProject() {
-		project = vælgProjekt(timeManagement.getAllProjects());
+		project = chooseProject(timeManagement.getAllProjects());
 		String newLeader= getUser();
 		if(newLeader==null) {
 			System.out.println("Der er ingen medarbejdere på projektet endnu.");
@@ -289,7 +280,7 @@ public class Interface {
 
 
 
-	private static Project vælgProjekt(ArrayList<Project> allProjects) {
+	private static Project chooseProject(ArrayList<Project> allProjects) {
 
 		if(allProjects.size()==0) {
 			System.out.println("Der er ingen projekter at vælge imellem endnu.");
@@ -315,8 +306,7 @@ public class Interface {
 		pl= e.getProjectList();
 		if(al.size()==0 && pl.size()==0) {
 			System.out.println("Du har ingen aktiviter endnu.");
-			employeeMenu();
-		}
+		} else {
 
 
 		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
@@ -340,7 +330,7 @@ public class Interface {
 			project = pl.get(userchoice-1-al.size());
 			beginWorkOnProject(project);
 		}
-
+		}
 
 	}
 
@@ -380,22 +370,15 @@ public class Interface {
 
 			case 1:
 				addEmployeeToProject();
-
 				break;
 			case 2: 
 				removeEmployeeFromProject();
-
-
-
 				break;
 			case 3:
 				addActivityToProject();
-
 				break;
-
 			case 4: 
 				removeActivityFromProject();
-
 				break;
 			case 5: 
 				al =project.getActivityList();
@@ -404,7 +387,6 @@ public class Interface {
 			case 6:
 				al = project.getActivityList();
 				editActivity();
-
 				break;
 			case 7: 
 				setProjectTime();
@@ -482,7 +464,7 @@ public class Interface {
 
 		try {
 			timeManagement.stopWorkOnActivity(e.getID(), activity.getID());
-			System.out.println("Stopped working activity :");
+			System.out.println("Stoppet med at arbejde på følgende aktivitet:");
 			printActivity(activity);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -533,17 +515,17 @@ public class Interface {
 
 			try {
 				timeManagement.removeActivity(activity.getID(), project.getID(), e.getID());
-				System.out.println("Aktivitet fjernet");
+				System.out.println("Aktivitet fjernet.");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		} else {
-			System.out.println("Ingen aktiviteter i projektet");
+			System.out.println("Ingen aktiviteter i projektet.");
 		}
 	}
 	private static void setProjectTime() {
 		int current = project.getTime();
-		System.out.println("nuværende tid:" +current);
+		System.out.println("Nuværende tid:" +current);
 		System.out.println("Vælg ny tid til projektet: ");
 		try {
 			project.setTime(e, scannerInt(0, Integer.MAX_VALUE));
@@ -578,12 +560,12 @@ public class Interface {
 			Employee employee1 = project.getEmployeeList().get(number);
 			try {
 				timeManagement.removeEmployeeFromProject(employee1.getID(), project.getID(), e.getID());
-				System.out.println("medarbejder fjernet");
+				System.out.println("medarbejder fjernet.");
 			} catch (OperationNotAllowedException e) {
 				System.out.println(e.getMessage());
 			}
 		} else {
-			System.out.println("Ingen medarbejdere i projektet");
+			System.out.println("Ingen medarbejdere i projektet.");
 		}
 
 	}
@@ -608,8 +590,8 @@ public class Interface {
 		System.out.println("Indtast brugerID:");
 		String id = scannerString();
 		if (id.equals("0")) {
-			adminMenu();
-		}
+
+		}else {
 		Employee e =timeManagement.getEmployee(id);
 		if(e==null) {
 			System.out.println(e + "ID : " + id);
@@ -636,15 +618,11 @@ public class Interface {
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
-			adminMenu();
 			break;
-		case 2: 	deleteUser();
+		case 2:
 		break;
-
 		}
-
-
-
+		}
 	}
 
 
@@ -665,7 +643,6 @@ public class Interface {
 
 
 	public static void createNewUser() {
-		clearConsole();
 		System.out.println("Opret ny bruger.");
 		System.out.println("Indtast fornavn: ");
 		String firstName = scannerString();
@@ -701,10 +678,8 @@ public class Interface {
 			} catch (Exception e1) {
 				System.out.println(e1.getMessage());
 			}
-			adminMenu();
 			break;
-		case 2: System.out.flush();
-		createNewUser();
+		case 2:
 		break;
 
 		}
@@ -818,30 +793,4 @@ public class Interface {
 			System.out.println();
 		}
 	}
-
-	public final static void clearConsole()  {
-		/*
-		 * clearscreen 
-		 */
-		try
-		{
-			final String os = System.getProperty("os.name");
-
-			if (os.contains("Windows"))
-			{
-				Runtime.getRuntime().exec("cls");
-			}
-			else
-			{
-				Runtime.getRuntime().exec("clear");
-			}
-		}
-		catch (final Exception e)
-		{
-			// System.out.println(e.getMessage());
-		}
-
-
-	}
-
 }
