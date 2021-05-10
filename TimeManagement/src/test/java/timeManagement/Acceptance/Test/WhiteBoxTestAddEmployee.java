@@ -42,7 +42,7 @@ class WhiteBoxTestAddEmployee {
 			project.addEmployee(employeeToAdd, isManager); // will never be green, otherwise the test fails
 			fail("No exception thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertEquals("ID cannot be null!", e.getMessage());
+			assertEquals("Employees without an ID cannot be added", e.getMessage());
 		}
 	}
 	
