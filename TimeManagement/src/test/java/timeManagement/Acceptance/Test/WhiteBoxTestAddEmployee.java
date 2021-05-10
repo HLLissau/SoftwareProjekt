@@ -26,7 +26,7 @@ class WhiteBoxTestAddEmployee {
 			project.addEmployee(employeeToAdd, isManager); // will never be green, otherwise the test fails
 			fail("No null pointer exception thrown!");
 		} catch (NullPointerException e) {
-			assertTrue(true);
+			assertTrue(e.getMessage().contains("employee"));
 		}
 	}
 	
@@ -42,7 +42,7 @@ class WhiteBoxTestAddEmployee {
 			project.addEmployee(employeeToAdd, isManager); // will never be green, otherwise the test fails
 			fail("No exception thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
+			assertEquals("Employees without an ID cannot be added", e.getMessage());
 		}
 	}
 	
@@ -56,19 +56,20 @@ class WhiteBoxTestAddEmployee {
 			project.addEmployee(employeeToAdd, isManager); // will never be green, otherwise the test fails
 			fail("No exception thrown!");
 		} catch (NullPointerException e) {
-			assertTrue(true);
+			assertTrue(e.getMessage().contains(".equals"));
 		}
 	}
 	
 	@Test // B2
 	void nonProjectManager() throws Exception {
+		isManager.setID(timeManagement.createID(isManager.getFirstName(), isManager.getLastName()));
 		Employee employeeToAdd = new Employee("AA", "BB", "CC");
 		employeeToAdd.setID(timeManagement.createID(employeeToAdd.getFirstName(), employeeToAdd.getLastName()));
 		try {
 			project.addEmployee(employeeToAdd, isManager); // will never be green, otherwise the test fails
 			fail("No exception thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
+			assertEquals("Not logged in as project manager",e.getMessage());
 		}
 	}
 	
@@ -107,7 +108,7 @@ class WhiteBoxTestAddEmployee {
 			project.addEmployee(employeeToAdd, isManager);
 			fail("No exception thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
+			assertEquals("Employee already added to project", e.getMessage());
 		}
 	}
 }
