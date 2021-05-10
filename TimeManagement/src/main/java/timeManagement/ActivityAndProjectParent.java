@@ -16,7 +16,6 @@ public class ActivityAndProjectParent {
 	}
 	public void setBudgettedTime(int time) {
 		this.budgettedTime = time;
-		this.registerTimeSpent=0;
 	}
 	
 	public int getTimeRemaining() {
@@ -43,7 +42,7 @@ public class ActivityAndProjectParent {
 		return this.description;
 	}
 	protected void setExpectedTime(int time) {
-		this.time=time;
+		this.budgettedTime=time;
 	}
 	public ArrayList<Employee> listEmployees() {
 		return this.employeeList;
@@ -54,6 +53,6 @@ public class ActivityAndProjectParent {
 	}
 	public int getTime() {
 		
-		return this.time;
+		return this.budgettedTime;
 	}
 }

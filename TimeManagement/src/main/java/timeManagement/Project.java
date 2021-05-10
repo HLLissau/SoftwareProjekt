@@ -148,7 +148,7 @@ public class Project extends ActivityAndProjectParent {
 
 	public void addEmployeeToActivity(Employee employee, int activityID, Employee manager) throws Exception {
 		
-		isProjectManager(manager);
+		isProjectManager(manager); 
 		Activity a = getActivity(activityID);
 		if(a==null) {
 			throw new Exception("Activity not found in project");
