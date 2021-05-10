@@ -67,3 +67,5 @@ Scenario: Employee removes activity from project
     Then the error message "Not logged in as project manager" is given
     Then the activity is added to the project
 
+    
+

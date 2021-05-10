@@ -21,6 +21,7 @@ Scenario: Employee adds employee to activity
     When the project manager adds an employee to the project
     And the second employee adds an employee to an activity
     Then the error message "Not logged in as project manager" is given
+    
 
 Scenario: Project manager adds employee to activity that employee is already in
     Given a project is in TimeManagement

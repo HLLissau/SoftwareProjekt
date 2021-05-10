@@ -217,4 +217,5 @@ public class ActivitySteps {
 	public void noActivityIsReturned() {
 	   assertNull(activity);
 	}
+	
 }
