@@ -33,6 +33,7 @@ public class ProjectSteps {
 	private int listSize;
 	private ArrayList<Project> projectlist;
 	private ArrayList<Activity> activitylist;
+	private int timeSpent;
 
 	public ProjectSteps(TimeManagement timeManagement,
 			RegisterTime registerTime,
@@ -346,6 +347,19 @@ public class ProjectSteps {
 	public void anotherProjectNamedIsCreated(String name) {
 		this.secondProject = projectHelper.getSecondProject();
 		assertEquals(name, secondProject.getName());
+	}
+	@When("the employee gets the time spent on project")
+	public void theProjectManagerGetsTheTimeSpentOnProject() {
+	    try {
+			this.timeSpent = timeManagement.getTimeSpentOnProject(projectHelper.getProject().getID());
+		} catch (OperationNotAllowedException e) {
+			errorMessageHandler.setErrorMessage(e.getMessage());
+		}
+	}
+
+	@Then("the project consumed time is increated by {int}")
+	public void theProjectConsumedTimeIsIncreatedBy(int int1) {
+	    assertEquals(timeSpent,int1);
 	}
 
 

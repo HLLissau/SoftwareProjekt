@@ -301,5 +301,14 @@ public class TimeManagement {
 		Employee e = getEmployee(eID);
 		return e.getProjectList();
 	}
+
+	public int getTimeSpentOnProject(int id) throws OperationNotAllowedException {
+		Project p = getProject(id);
+		if (p ==null) {
+			throw new OperationNotAllowedException("Project not found");
+		}
+		
+		return p.getTimeSpent();
+	}
 	
 }

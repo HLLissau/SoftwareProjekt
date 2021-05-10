@@ -6,21 +6,36 @@ public class ActivityAndProjectParent {
 	protected String name;
 	protected String description;
 	protected ArrayList<Employee> employeeList;
+	protected int budgettedTime;
+	protected int registerTimeSpent;
 	private int id;
 	protected int time;
 	public ActivityAndProjectParent(String name){
 		this.name = name;
 		this.employeeList=new ArrayList<Employee>();
 	}
+	public void setBudgettedTime(int time) {
+		this.budgettedTime = time;
+		this.registerTimeSpent=0;
+	}
 	
+	public int getTimeRemaining() {
+		return budgettedTime-registerTimeSpent;
+	}
 	public int getID() {
 		return this.id;
+	}
+	public void registerTimeSpent(int diffInMinutes) {
+		this.registerTimeSpent += diffInMinutes;
 	}
 
 	protected void setID(int id) {
 		this.id=id;
 	}
-	
+
+	public int getTimeSpent() {
+		return registerTimeSpent;
+	}
 	public String getName() {
 		return this.name;
 	}

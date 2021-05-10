@@ -11,7 +11,6 @@ public class Project extends ActivityAndProjectParent {
 	
 	public Project(String name) {
 		super(name);
-		
 	}
 		
 	/*
@@ -54,8 +53,6 @@ public class Project extends ActivityAndProjectParent {
 	public Activity getActivity(int activity) {
 		return activityList.stream().filter(a -> a.getID()==activity).findAny().orElse(null);
 	}
-
-
 
 	public void setActivityTime(Employee employee, int activityID, int time) throws OperationNotAllowedException {
 		isProjectManager(employee);
@@ -118,7 +115,14 @@ public class Project extends ActivityAndProjectParent {
 		}
 		
 	}
-
+	public int getTimeSpent() {
+		this.registerTimeSpent=0;
+		for (Activity a : activityList) {
+			this.registerTimeSpent= a.getTimeSpent();
+		}
+		
+		return registerTimeSpent;
+	}
 
 	public void setDescription(Employee projectManager, String description) throws OperationNotAllowedException {
 		isProjectManager(projectManager);
@@ -154,5 +158,6 @@ public class Project extends ActivityAndProjectParent {
 	public ArrayList<Activity> getActivityList() {
 		return this.activityList;
 	}
+
 	
 }
