@@ -70,7 +70,7 @@ public class Project extends ActivityAndProjectParent {
 
 	public void addEmployee(Employee employee, Employee manager) throws OperationNotAllowedException {
 		if (employee.getID() == null) {
-			throw new OperationNotAllowedException("Employees without an ID cannot be added");
+			throw new OperationNotAllowedException("ID cannot be null!");
 		}
 		isProjectManager(manager);
 		if ((getEmployee(employee)==null)) {
