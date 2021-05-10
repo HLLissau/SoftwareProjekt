@@ -18,7 +18,7 @@ class WhiteboxTestGetFinishedTime {
 	Employee employee = new Employee("Some first name", "Some last name", "email");
 	DateServer dateServerTest = new DateServer();
 	
-	@Test //A1
+	@Test //A1(1)
 	void nullActivityTest() throws Exception {
 		try {
 			registerTimeTest.setFinishedTime(null, employee, null); // date value should not matter in this case
@@ -28,7 +28,7 @@ class WhiteboxTestGetFinishedTime {
 		}
 	}
 	
-	@Test //A2
+	@Test //A1(2)
 	void nullEmployeeTest() throws Exception {
 		try {
 			registerTimeTest.setFinishedTime(activity, null, null); // date value should not matter in this case
@@ -61,7 +61,7 @@ class WhiteboxTestGetFinishedTime {
 		assertEquals(amountOfBegunActivities-1, registerTimeTest.getAmountOfBegunActivities());
 	}
 	
-	@Test // B1
+	@Test // B2
 	void activityAndEmployeeInDifferentBegunActivity() throws Exception {
 		Activity otherActivity = new Activity("other activity");
 		Employee otherEmployee = new Employee("AAAA", "BBBB", "email");
