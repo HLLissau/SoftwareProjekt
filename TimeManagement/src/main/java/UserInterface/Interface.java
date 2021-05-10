@@ -190,7 +190,7 @@ public class Interface {
 					timeManagement.createProject(p);
 					Project test =timeManagement.getProject(p.getID());
 					Activity a =new Activity("Project management");
-					test.setProjectManager(e, e);
+					timeManagement.setProjectManager(test.getID(), e.getID(), e.getID());
 					timeManagement.createActivity(a);
 					timeManagement.addActivityToProject(a, test.getID(), e.getID());
 					if(test!=null) {
@@ -198,12 +198,12 @@ public class Interface {
 						printProject(test);
 					}
 					test.setProjectManager(null, e);
-
+					timeManagement.removeProjectManagerFromProject(test.getID(), e.getID());
 				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
 
 				}
-				adminMenu();
+				inmenu=false;
 				break;
 			case 2: inmenu=false;
 			break;
