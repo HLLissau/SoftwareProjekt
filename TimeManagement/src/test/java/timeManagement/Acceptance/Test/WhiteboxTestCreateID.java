@@ -13,7 +13,7 @@ class WhiteboxTestCreateID {
 	TimeManagement timeManagement = new TimeManagement();
 	EmployeeHelper employeeHelper = new EmployeeHelper(timeManagement);
 	
-	@Test //A1
+	@Test //A1(1)
 	void ifInputIsNull() {
 		try {
 			String id = timeManagement.createID(null, null);
@@ -23,7 +23,7 @@ class WhiteboxTestCreateID {
 		}
 	}
 
-	@Test //A2
+	@Test //A1(2)
 	void ifInputIsEmpty() {
 		try {
 			String id = timeManagement.createID("", "");
