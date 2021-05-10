@@ -1,5 +1,9 @@
 package UserInterface;
-
+/*
+ * The user interface is made as a colaboration within the group.
+ * Most funktions were made when needed, the menu structure were
+ * divided among the members. 
+ */
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +33,12 @@ public class Interface {
 		testsetting();
 		mainMenu();
 	}
+	/*
+	 * Helper to setup a small test case.
+	 * used to troubleshoot
+	 * 
+	 * made by: Anton
+	 */
 	public static void testsetting() {
 		timeManagement.adminLogin("adminadmin");
 		Employee e = new Employee("Harald","Lissau","S204436@student.dtu.dk");
@@ -51,7 +61,12 @@ public class Interface {
 		timeManagement.adminlogout();
 	}
 
-
+	/*
+	 * main menu.
+	 * This is where the user enters the interface
+	 * Made by : Anton
+	 * 
+	 */
 	private static void mainMenu() {
 		boolean inmenu=true;
 		while (inmenu) {
@@ -84,6 +99,13 @@ public class Interface {
 		System.out.println("Tak for i dag.");
 		System.exit(1);	
 	}
+
+	/*
+	 * Admin menu. 
+	 * This is for creating new users and creating projects
+	 * Made by : Harald
+	 * 
+	 */
 
 	public static void adminMenu() {
 		System.out.println("Du er nu logget på som administrator, her er dine muligheder:");
@@ -138,7 +160,11 @@ public class Interface {
 	}
 
 
-
+	/*
+	 * Menu for creating new project
+	 * Made by: Harald
+	 * 
+	 */
 	private static void createNewProject() {
 		boolean inmenu=true;
 		while (inmenu) {
@@ -175,7 +201,7 @@ public class Interface {
 
 				} catch (Exception e1) {
 					System.out.println(e1.getMessage());
-				
+
 				}
 				adminMenu();
 				break;
@@ -189,7 +215,11 @@ public class Interface {
 
 
 
-
+	/*
+	 * Menu for employee login.
+	 * This is the menu for Employees who login with ID
+	 * made by: Erik
+	 */
 
 	public static void employeeMenu() {
 
@@ -244,115 +274,11 @@ public class Interface {
 
 	}
 
-	private static void setProjectLeaderOnProject() {
-		project = chooseProject(timeManagement.getAllProjects());
-		String newLeader= getUser();
-		if(newLeader==null) {
-			System.out.println("Der er ingen medarbejdere på projektet endnu.");
-			System.out.println("Du er blevet sat til projektleder.");
-			try {
-				timeManagement.setProjectManager(project.getID(),e.getID(), e.getID());
-			} catch (OperationNotAllowedException e) {
-				System.out.println(e.getMessage());
-			}
-		}else if (project!=null){
-			try {
-				timeManagement.setProjectManager(project.getID(),newLeader, e.getID());
-				printProject(project);
-			} catch (OperationNotAllowedException e) {
-				System.out.println(e.getMessage());
-			}
-		}
-	}
-
-
-
-	private static String getUser() {
-		ArrayList<Employee> list = timeManagement.getProject(project.getID()).getEmployeeList();
-		if(list.size()==0) {
-			System.out.println("Der er ingen medarbejdere at vælge imellem.");
-			return null;
-		}
-
-		System.out.println("Vælg en medarbejder.");
-		for (int i=1; i<=list.size();i++) {
-			System.out.print(i+ ": " );
-			printEmployee(list.get(i-1));
-			System.out.println();
-		}
-		int valg=scannerInt(1, list.size())-1;
-
-		return list.get(valg).getID();
-
-	}
-
-
-
-	private static Project chooseProject(ArrayList<Project> allProjects) {
-
-		if(allProjects.size()==0) {
-			System.out.println("Der er ingen projekter at vælge imellem endnu.");
-			return null;
-		}
-
-		System.out.println("Vælg et projekt:");
-		for (int i=1; i<=allProjects.size();i++) {
-			System.out.print(i+ ": " );
-			printProject(allProjects.get(i-1));
-			System.out.println();
-		}
-		int valg=scannerInt(1, allProjects.size())-1;
-
-		return allProjects.get(valg);
-
-	}
-
-
-
-	private static void startWorkOnActivity() {
-		al= e.getActivityList();
-		pl= e.getProjectList();
-		if(al.size()==0 && pl.size()==0) {
-			System.out.println("Du har ingen aktiviter endnu.");
-		} else {
-
-
-		System.out.println("Vælg en aktivitet eller projekt at arbejde på");
-		for (int i=0; i<al.size();i++) {
-			System.out.print((i+1) + ": " );
-			printActivity(al.get(i));
-
-			System.out.println();
-		}
-		for (int i=0; i<pl.size();i++) {
-			System.out.print((i+1+al.size()) + ": " );
-			printProject(pl.get(i));
-			System.out.println();
-		}	
-		int max= al.size()+pl.size();
-		int userchoice = scannerInt(1, max);
-		if (userchoice<=al.size()) {
-			activity =al.get(userchoice-1);
-			editActivity();
-		} else {
-			project = pl.get(userchoice-1-al.size());
-			beginWorkOnProject(project);
-		}
-		}
-
-	}
-
-
-
-	private static void beginWorkOnActivity() {
-
-		try {
-			timeManagement.beginWorkOnActivity(e.getID(), activity.getID());
-		} catch (OperationNotAllowedException e) {
-			System.out.println(e.getMessage());
-		}
-		
-	}
+	/*
+	 * Menu for project managers
+	 * This is where you can add or remove activites and employees
+	 * Made by: Harald
+	 */
 	private static void beginWorkOnProject(Project project) {
 		boolean inmenu=true;
 		projectManager=true;
@@ -417,6 +343,178 @@ public class Interface {
 
 	}
 
+	/*
+	 * Made by: Anton
+	 */
+	private static void deleteUser() {
+		System.out.println("ADVARSEL:");
+		System.out.println("Du er ved at slette en bruger fra systemet.");
+		System.out.println("Skrive 0 for at vende tilbage.");
+		System.out.println("Indtast brugerID:");
+		String id = scannerString();
+		if (id.equals("0")) {
+
+		}else {
+			Employee e =timeManagement.getEmployee(id);
+			if(e==null) {
+				System.out.println(e + "ID : " + id);
+				System.out.println("Brugeren findes ikke i TimeManagement.");
+				deleteUser();
+			}
+
+			System.out.println("Vil du slette denne bruger?");
+			System.out.println("1: Ja");
+			System.out.println("2: Nej");
+			printEmployee(e);
+			int i = scannerInt(1,2);
+			switch (i) {
+			case 1: 
+
+				try {
+					timeManagement.removeEmployeeFromTimeManagement(id);
+					Employee test =timeManagement.getEmployee(e.getID());
+					if(test==null) {
+						System.out.println("Brugeren er slettet.");
+
+					}
+
+				} catch (Exception e1) {
+					System.out.println(e1.getMessage());
+				}
+				break;
+			case 2:
+				break;
+			}
+		}
+	}
+	/*
+	 * Made by: Erik
+	 */
+	private static void setProjectLeaderOnProject() {
+		project = chooseProject(timeManagement.getAllProjects());
+		String newLeader= getUser();
+		if(newLeader==null) {
+			System.out.println("Der er ingen medarbejdere på projektet endnu.");
+			System.out.println("Du er blevet sat til projektleder.");
+			try {
+				timeManagement.setProjectManager(project.getID(),e.getID(), e.getID());
+			} catch (OperationNotAllowedException e) {
+				System.out.println(e.getMessage());
+			}
+		}else if (project!=null){
+			try {
+				timeManagement.setProjectManager(project.getID(),newLeader, e.getID());
+				printProject(project);
+			} catch (OperationNotAllowedException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+
+	/*
+	 * Made by : Erik
+	 */
+	private static String getUser() {
+		ArrayList<Employee> list = timeManagement.getProject(project.getID()).getEmployeeList();
+		if(list.size()==0) {
+			System.out.println("Der er ingen medarbejdere at vælge imellem.");
+			return null;
+		}
+
+		System.out.println("Vælg en medarbejder.");
+		for (int i=1; i<=list.size();i++) {
+			System.out.print(i+ ": " );
+			printEmployee(list.get(i-1));
+			System.out.println();
+		}
+		int valg=scannerInt(1, list.size())-1;
+
+		return list.get(valg).getID();
+
+	}
+
+
+	/*
+	 * Made by : Erik
+	 */
+	private static Project chooseProject(ArrayList<Project> allProjects) {
+
+		if(allProjects.size()==0) {
+			System.out.println("Der er ingen projekter at vælge imellem endnu.");
+			return null;
+		}
+
+		System.out.println("Vælg et projekt:");
+		for (int i=1; i<=allProjects.size();i++) {
+			System.out.print(i+ ": " );
+			printProject(allProjects.get(i-1));
+			System.out.println();
+		}
+		int valg=scannerInt(1, allProjects.size())-1;
+
+		return allProjects.get(valg);
+
+	}
+
+	/*
+	 * Made by Anton
+	 */
+
+	private static void startWorkOnActivity() {
+		al= e.getActivityList();
+		pl= e.getProjectList();
+		if(al.size()==0 && pl.size()==0) {
+			System.out.println("Du har ingen aktiviter endnu.");
+		} else {
+
+
+			System.out.println("Vælg en aktivitet eller projekt at arbejde på");
+			for (int i=0; i<al.size();i++) {
+				System.out.print((i+1) + ": " );
+				printActivity(al.get(i));
+
+				System.out.println();
+			}
+			for (int i=0; i<pl.size();i++) {
+				System.out.print((i+1+al.size()) + ": " );
+				printProject(pl.get(i));
+				System.out.println();
+			}	
+			int max= al.size()+pl.size();
+			int userchoice = scannerInt(1, max);
+			if (userchoice<=al.size()) {
+				activity =al.get(userchoice-1);
+				editActivity();
+			} else {
+				project = pl.get(userchoice-1-al.size());
+				beginWorkOnProject(project);
+			}
+		}
+
+	}
+
+
+	/*
+	 * Made by: Anton
+	 */
+
+	private static void beginWorkOnActivity() {
+
+		try {
+			timeManagement.beginWorkOnActivity(e.getID(), activity.getID());
+		} catch (OperationNotAllowedException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	/*
+	 * This is the menu for editiing activites
+	 * Made by : Anton
+	 * 
+	 */
+
 
 
 	private static void editActivity() {
@@ -444,7 +542,7 @@ public class Interface {
 				Employee employee = getEmployeefromList(el);
 				try {
 					timeManagement.addEmployeeToActivity(employee.getID(), project.getID(), activity.getID(), e.getID());
-					
+
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
@@ -473,25 +571,33 @@ public class Interface {
 		if(!projectManager) {
 			stopWorkOnActivity();
 		}
-		
-	}
 
+	}
+	/*
+	 * This is a helper funktion for stopping time used on activites
+	 * Made by : Harald
+	 */
 
 	private static void stopWorkOnActivity() {
 
 		try {
 			timeManagement.stopWorkOnActivity(e.getID(), activity.getID());
 			System.out.println("Stoppet med at arbejde på følgende aktivitet:");
-			
+
 			printActivity(activity);
 			System.out.println();
 		} catch (Exception e) {
-			
+
 			System.out.println(e.getMessage());
 
 		}
 
 	}
+	/*
+	 * Made by : Anton
+	 * 
+	 */
+
 	private static Employee getEmployeefromList(ArrayList<Employee> temp) {
 
 		if(temp.size()==0) {
@@ -510,6 +616,10 @@ public class Interface {
 		return temp.get(valg);
 
 	}
+
+	/*
+	 * Made by: Anton
+	 */
 	private static Activity chooseActivity(ArrayList<Activity> temp) {
 		if(temp.size()==0) {
 			System.out.println("Der er ingen aktiviteter at vælge imellem endnu.");
@@ -528,7 +638,9 @@ public class Interface {
 
 
 	}
-
+	/*
+	 * Made by: Harald
+	 */
 	private static void removeActivityFromProject() {
 		if(project.getActivityList().size()!=0) {
 			Activity activity = chooseActivity(project.getActivityList());
@@ -543,6 +655,9 @@ public class Interface {
 			System.out.println("Ingen aktiviteter i projektet.");
 		}
 	}
+	/*
+	 * Made by: Anton
+	 */
 	private static void setProjectTime() {
 		int current = project.getTime();
 		System.out.println("Nuværende tid:" +current);
@@ -553,6 +668,9 @@ public class Interface {
 			System.out.println(e.getMessage());
 		}
 	}
+	/*
+	 * Made by: Anton
+	 */
 	private static void addActivityToProject() {
 		System.out.println("Vælg navn på aktiviteten");
 		String navn = scannerLine();
@@ -561,11 +679,14 @@ public class Interface {
 			timeManagement.createActivity(a);
 			timeManagement.addActivityToProject(a, project.getID(), e.getID());
 			System.out.println("Aktiviteten " + timeManagement.getActivity(a.getID()).getName()+ " er tilføjet.");
-			
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
+	/*
+	 * Made by: Anton
+	 */
 	private static void removeEmployeeFromProject() {
 		if(project.getEmployeeList().size()!=0) {
 			System.out.println("Vælg en medarbejder fra listen: ");
@@ -590,6 +711,9 @@ public class Interface {
 		}
 
 	}
+	/*
+	 * Made by: Anton
+	 */
 	private static void addEmployeeToProject() {
 		System.out.println("Vælg en medarbejder: ");
 		getAllUsers();
@@ -604,50 +728,11 @@ public class Interface {
 		}
 	}
 
-	private static void deleteUser() {
-		System.out.println("ADVARSEL:");
-		System.out.println("Du er ved at slette en bruger fra systemet.");
-		System.out.println("Skrive 0 for at vende tilbage.");
-		System.out.println("Indtast brugerID:");
-		String id = scannerString();
-		if (id.equals("0")) {
-
-		}else {
-		Employee e =timeManagement.getEmployee(id);
-		if(e==null) {
-			System.out.println(e + "ID : " + id);
-			System.out.println("Brugeren findes ikke i TimeManagement.");
-			deleteUser();
-		}
-
-		System.out.println("Vil du slette denne bruger?");
-		System.out.println("1: Ja");
-		System.out.println("2: Nej");
-		printEmployee(e);
-		int i = scannerInt(1,2);
-		switch (i) {
-		case 1: 
-
-			try {
-				timeManagement.removeEmployeeFromTimeManagement(id);
-				Employee test =timeManagement.getEmployee(e.getID());
-				if(test==null) {
-					System.out.println("Brugeren er slettet.");
-
-				}
-
-			} catch (Exception e1) {
-				System.out.println(e1.getMessage());
-			}
-			break;
-		case 2:
-		break;
-		}
-		}
-	}
 
 
-
+	/*
+	 * Made by : Erik
+	 */
 	private static void getAllUsers() {
 		System.out.println("Liste over alle medarbejdere.");
 		int i=1;
@@ -662,7 +747,9 @@ public class Interface {
 	}
 
 
-
+/*
+ * Made by: Erik
+ */
 	public static void createNewUser() {
 		System.out.println("Opret ny bruger.");
 		System.out.println("Indtast fornavn: ");
@@ -701,12 +788,14 @@ public class Interface {
 			}
 			break;
 		case 2:
-		break;
+			break;
 
 		}
 	}
 
-
+/*
+ * Made by: Anton
+ */
 
 
 	public static void loginAdmin(){
@@ -726,13 +815,16 @@ public class Interface {
 
 
 	}
+	/*
+	 * Made by: Anton
+	 */
 	public static void loginEmployee(){
-		
+
 		System.out.println("Du er nu i medarbejder-login. \nIndtast dit bruger-ID. Skriv 2 for at gå tilbage.");
 		System.out.println("Bruger-ID: ");
 		String brugerID = scannerString();
-		
-		
+
+
 		if (!brugerID.equals("2")) {
 
 			e = timeManagement.getEmployee(brugerID);
@@ -745,7 +837,7 @@ public class Interface {
 				loginEmployee();
 			}
 		}
-	
+
 
 	}
 	/*
@@ -781,23 +873,34 @@ public class Interface {
 
 		return textOutput;
 	}
-
+/*
+ * Made by: Harald
+ */
 	private static void printProjectList(ArrayList<Project> projectList) {
 		for(Project app : projectList) {
 			printProject(app);
 		}
 	}
+	/*
+	 * Made by: Harald
+	 */
 	private static void printActivityList(ArrayList<Activity> activityList) {
 		for(Activity a : activityList) {
 			printActivity(a);
 			System.out.println();
 		}
 	}
+	/*
+	 * Made by: Harald
+	 */
 	private static void printActivity(Activity a) {
 		System.out.print("Navn: "+ a.getName());
 		System.out.print(",   ID: " + a.getID() );
 
 	}
+	/*
+	 * Made by: Harald
+	 */
 	private static void printEmployee(Employee e) {
 		System.out.print("First name: " +e.getFirstName());
 		System.out.print(",   Last name: " +e.getLastName());
@@ -805,6 +908,9 @@ public class Interface {
 
 
 	}
+	/*
+	 * Made by: Harald
+	 */
 	private static void printProject(Project p) {
 		System.out.print("Navn: " +p.getName());
 		System.out.print(",   ID: " +p.getID());
@@ -817,6 +923,9 @@ public class Interface {
 
 		System.out.println();
 	}
+	/*
+	 * Made by: Harald
+	 */
 	private static void printEmployeeList(ArrayList<Employee> employeeList) {
 		for(Employee employee : employeeList) {
 			printEmployee(employee);
