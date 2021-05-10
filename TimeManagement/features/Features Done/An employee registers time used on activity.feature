@@ -1,4 +1,4 @@
-Feature: Add / remove employee from project
+Feature: An employee registers time used on activity
 Description: Employees can add / remove employees from projects that they are project managers on; 
     trying to add / remove employees from projects they are not project 
     managers on will result in an error message. You cannot add an employee twice.
@@ -72,7 +72,7 @@ Scenario: project manager wants to get total time spent on project
     Then the activity consumed time is increased by 30
     Then the begin time is set and the begun activity is in begun activity List
     When the employee gets the time spent on project
-    Then the project consumed time is increated by 30
+    Then the project consumed time is increased by 30
 
 Scenario: project manager wants to get total time spent on project that does not exits
     And an employee is registered with TimeManagement

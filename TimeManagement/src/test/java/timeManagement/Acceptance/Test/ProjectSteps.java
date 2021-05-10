@@ -33,7 +33,7 @@ public class ProjectSteps {
 	private int listSize;
 	private ArrayList<Project> projectlist;
 	private ArrayList<Activity> activitylist;
-	private int timeSpent;
+	private int timeremaining;
 
 	public ProjectSteps(TimeManagement timeManagement,
 			RegisterTime registerTime,
@@ -351,15 +351,15 @@ public class ProjectSteps {
 	@When("the employee gets the time spent on project")
 	public void theProjectManagerGetsTheTimeSpentOnProject() {
 	    try {
-			this.timeSpent = timeManagement.getTimeSpentOnProject(projectHelper.getProject().getID());
+			this.timeremaining = timeManagement.getTimeSpentOnProject(projectHelper.getProject().getID());
 		} catch (OperationNotAllowedException e) {
 			errorMessageHandler.setErrorMessage(e.getMessage());
 		}
 	}
 
-	@Then("the project consumed time is increated by {int}")
+	@Then("the project consumed time is increased by {int}")
 	public void theProjectConsumedTimeIsIncreatedBy(int int1) {
-	    assertEquals(timeSpent,int1);
+	    assertEquals(0,int1+timeremaining);
 	}
 
 
