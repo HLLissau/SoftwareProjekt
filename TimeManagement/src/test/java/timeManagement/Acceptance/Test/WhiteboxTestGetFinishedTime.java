@@ -19,33 +19,47 @@ class WhiteboxTestGetFinishedTime {
 	DateServer dateServerTest = new DateServer();
 	
 	@Test //A1(1)
-	void nullActivityTest() throws Exception {
+	void nullTest() throws Exception {
 		try {
-			registerTimeTest.setFinishedTime(null, employee, null); // date value should not matter in this case
+			registerTimeTest.setFinishedTime(null, null, dateServerTest.getTime().getTime());
 			fail("Exception not thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
+			assertEquals("Employee not working on the activity", e.getMessage());
 		}
 	}
 	
 	@Test //A1(2)
 	void nullEmployeeTest() throws Exception {
 		try {
-			registerTimeTest.setFinishedTime(activity, null, null); // date value should not matter in this case
+			registerTimeTest.setFinishedTime(activity, employee, dateServerTest.getTime().getTime()); 
 			fail("Exception not thrown!");
 		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
+			assertEquals("Employee not working on the activity", e.getMessage());
+		}
+	}
+	
+	@Test // A2
+	void activityAndEmployeeInDifferentBegunActivity() throws Exception {
+		Activity otherActivity = new Activity("other activity");
+		Employee otherEmployee = new Employee("AAAA", "BBBB", "email");
+		registerTimeTest.setBeginTime(activity, otherEmployee, dateServerTest.getTime().getTime()); // adds them to a begunActivity in registertime
+		registerTimeTest.setBeginTime(otherActivity, employee, dateServerTest.getTime().getTime()); // adds them to a begunActivity in registertime
+		try {
+			registerTimeTest.setFinishedTime(activity, employee, dateServerTest.getTime().getTime());
+			fail("Exception not thrown!");
+		} catch (OperationNotAllowedException e) {
+			assertEquals("Employee not working on the activity", e.getMessage());
 		}
 	}
 	
 	@Test //A3
 	void nullDateTest() throws Exception {
-		registerTimeTest.setBeginTime(activity, employee, null); // adds them to a begunActivity in registertime
+		registerTimeTest.setBeginTime(activity, employee, dateServerTest.getTime().getTime()); // adds them to a begunActivity in registertime
 		try {
 			registerTimeTest.setFinishedTime(activity, employee, null);
 			fail("Exception not thrown!");
 		} catch (NullPointerException e) {
-			assertTrue(true);
+			assertTrue(e.getMessage().contains("Date.getTime()")); // we know it's the "right" null exception if it includes Date.getTime()
 		}
 	}
 	
@@ -59,19 +73,5 @@ class WhiteboxTestGetFinishedTime {
 		int diffInMinutes = registerTimeTest.getDiffInMinutes();
 		assertEquals(timeSpent + diffInMinutes, activity.getTimeSpent());
 		assertEquals(amountOfBegunActivities-1, registerTimeTest.getAmountOfBegunActivities());
-	}
-	
-	@Test // B2
-	void activityAndEmployeeInDifferentBegunActivity() throws Exception {
-		Activity otherActivity = new Activity("other activity");
-		Employee otherEmployee = new Employee("AAAA", "BBBB", "email");
-		registerTimeTest.setBeginTime(activity, otherEmployee, dateServerTest.getTime().getTime()); // adds them to a begunActivity in registertime
-		registerTimeTest.setBeginTime(otherActivity, employee, dateServerTest.getTime().getTime()); // adds them to a begunActivity in registertime
-		try {
-			registerTimeTest.setFinishedTime(activity, employee, null); // dateserver value doesn't matter in this case
-			fail("Exception not thrown!");
-		} catch (OperationNotAllowedException e) {
-			assertTrue(true);
-		}
 	}
 }
